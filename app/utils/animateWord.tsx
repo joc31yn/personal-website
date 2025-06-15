@@ -14,6 +14,9 @@ interface AnimateWordProps {
   f_smallest: string;
   f_sm: string;
   f_xl: string;
+  border_col: string;
+  fill_col: string;
+  pixel: number;
   delay: number;
 }
 export default function AnimateWord(props: AnimateWordProps) {
@@ -41,8 +44,8 @@ export default function AnimateWord(props: AnimateWordProps) {
     },
   };
   const [dimensions, setDimensions] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: 0,
+    height: 0,
   });
 
   useEffect(() => {
@@ -54,7 +57,7 @@ export default function AnimateWord(props: AnimateWordProps) {
         });
       }
     };
-
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -73,7 +76,7 @@ export default function AnimateWord(props: AnimateWordProps) {
           x={props.x}
           y={props.y}
           textAnchor="middle"
-          className={`${sora.className} font-bold z-1 ${
+          className={`${sora.className} font-bold ${
             dimensions.width < 640
               ? props.f_smallest
               : dimensions.width < 1024
@@ -81,9 +84,9 @@ export default function AnimateWord(props: AnimateWordProps) {
               : props.f_xl
           } truncate`}
           style={{
-            stroke: "#fcba03", // #6000d6
-            strokeWidth: "2.5px",
-            fill: "#ffffff",
+            stroke: props.border_col,
+            strokeWidth: dimensions.width < 768 ? props.pixel - 1 : props.pixel,
+            fill: props.fill_col,
           }}
           variants={textVariants}
         >

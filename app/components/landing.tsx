@@ -1,13 +1,9 @@
 "use client";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "@/app/utils/mobile";
-import { Sora, Caveat } from "next/font/google";
+import { Caveat } from "next/font/google";
 import AnimateWord from "@/app/utils/animateWord";
-
-const sora = Sora({
-  subsets: ["latin"],
-  weight: ["400", "600"],
-});
+import { ChevronDown } from "lucide-react";
 
 const caveat = Caveat({
   subsets: ["latin"],
@@ -16,54 +12,58 @@ const caveat = Caveat({
 
 export default function Landing() {
   const words = ["Hi", "my", "name", "is", "Jocelyn Xu"];
-  const isSmall = useMediaQuery("(max-width: 640px)");
-  const isMedium = useMediaQuery("(max-width: 1024px)");
+  const isSmall = useMediaQuery("(max-width: 767px)");
+  const isMedium = useMediaQuery("(max-width: 1023px)");
+
   const pathCoordinates = isSmall
     ? [
         { x: 1, y: 43 },
         { x: 11, y: 50 },
         { x: 22, y: 57 },
         { x: 43, y: 64 },
-        { x: 52, y: 71 },
+        { x: 51, y: 70 },
       ]
     : isMedium
     ? [
-        { x: 2, y: 28 },
-        { x: 11, y: 43 },
-        { x: 23, y: 58 },
-        { x: 42, y: 73 },
-        { x: 52, y: 85 },
+        { x: 2, y: 13 },
+        { x: 11, y: 28 },
+        { x: 23, y: 43 },
+        { x: 42, y: 58 },
+        { x: 52, y: 70 },
       ]
     : [
-        { x: 3, y: 21 },
-        { x: 12, y: 37 },
-        { x: 24, y: 52 },
-        { x: 43, y: 67 },
-        { x: 54, y: 74 },
+        { x: 3, y: 6 },
+        { x: 12, y: 22 },
+        { x: 24, y: 37 },
+        { x: 43, y: 52 },
+        { x: 53, y: 60 },
       ];
   return (
     <div
-      className={`relative w-full h-screen ${caveat.className} bg-black text-white flex flex-col items-start justify-center`}
+      className={`relative w-full h-full ${caveat.className} text-white flex flex-col items-start justify-center`}
     >
       <AnimateWord
         word="Welcome"
         x="50%"
-        y="35%"
+        y="20%"
         f_smallest="text-[4rem]"
         f_sm="text-8xl"
         f_xl="text-[8rem]"
+        border_col="#ffffff"
+        fill_col="#000000"
+        pixel={3}
         delay={2}
       />
       {/* Animated stair path */}
       <svg
-        className="absolute top-0 left-0 w-full h-full z-0"
+        className="absolute top-0 left-0 w-full h-full"
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
       >
         <motion.path
           d={
             !isSmall
-              ? "M 0 35 L 10 35 L 10 50 L 20 50 L 20 65 L 40 65 L 40 80 L 50 80 L 50 95 L 100 95"
+              ? "M 0 20 L 10 20 L 10 35 L 20 35 L 20 50 L 40 50 L 40 65 L 50 65 L 50 80 L 100 80"
               : "M 0 50 L 10 50 L 10 57 L 21 57 L 21 64 L 42 64 L 42 71 L 50 71 L 50 78 L 100 78"
           }
           fill="transparent"
@@ -83,15 +83,15 @@ export default function Landing() {
       </svg>
 
       {/* Words */}
-      <div className="z-10">
+      <div className="w-auto h-auto">
         {words.map((word, i) => (
           <motion.span
             key={i}
-            className={`absolute top-0 left-0`}
+            className={`absolute`}
             style={{
               fontSize: isSmall
                 ? i === words.length - 1
-                  ? "3rem"
+                  ? "3.1rem"
                   : "2.5rem"
                 : isMedium
                 ? i === words.length - 1
@@ -100,22 +100,46 @@ export default function Landing() {
                 : i === words.length - 1
                 ? "8.25rem"
                 : "5rem",
-              left: `calc(${pathCoordinates[i]?.x || 0}%)`,
-              top: `calc(${pathCoordinates[i]?.y || 0}%)`,
+              left: `${pathCoordinates[i]?.x}%`,
+              top: `${pathCoordinates[i]?.y}%`,
               fontWeight: 600,
             }}
-            initial={{ opacity: 0, rotate: -90, y: -200 }}
+            initial={{ opacity: 0, rotate: -180, y: -250 }}
             animate={{ opacity: 1, rotate: 0, y: 0 }}
             transition={{
               delay: 0.21 + i * 0.4,
-              duration: 0.6,
+              duration: 0.65,
               type: "spring",
             }}
           >
-            {word}
+            {i !== words.length - 1 ? (
+              word
+            ) : (
+              <span
+                className="text-white"
+                // style={{
+                //   textShadow: `
+                //   0 0 2px white,
+                //   0 0 4px white,
+                //   0 0 6px white,
+                //   0 0 8px white,
+                //   0 0 10px white
+                //   `,
+                // }}
+              >
+                {word}
+              </span>
+            )}
           </motion.span>
         ))}
       </div>
+      <a
+        href="#About"
+        className="absolute bottom-[8%] left-1/2 transform -translate-x-1/2 flex flex-col justify-center items-center cursor-pointer hover:scale-110 duration-100"
+      >
+        <span className="text-2xl md:text-[2rem] -mb-3 md:-mb-5">About</span>
+        <ChevronDown className="w-10 h-10 md:w-14 md:h-14 stroke-[1.5]" />
+      </a>
     </div>
   );
 }
