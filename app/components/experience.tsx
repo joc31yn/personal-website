@@ -2,14 +2,14 @@
 import AnimateWord from "../utils/animateWord";
 import { useMediaQuery } from "../utils/mobile";
 
-export default function About() {
+export default function Experience() {
   const isSmall = useMediaQuery("(max-width: 767px)");
   const isMedium = useMediaQuery("(max-width: 1023px)");
   return (
     // need to chagne to animate on scroll
-    <section id="About" data-guidestar="true">
+    <section id="Experience" data-guidestar="true">
       <AnimateWord
-        word={"About"}
+        word={"Experience"}
         x={"50%"}
         y={isSmall ? "6%" : isMedium ? "8%" : "10%"}
         f_smallest={"text-3xl"}

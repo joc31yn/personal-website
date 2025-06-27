@@ -4,7 +4,6 @@ import { useMediaQuery } from "@/app/utils/mobile";
 import { Caveat } from "next/font/google";
 import AnimateWord from "@/app/utils/animateWord";
 import { ChevronDown } from "lucide-react";
-
 const caveat = Caveat({
   subsets: ["latin"],
   weight: ["400", "600"],

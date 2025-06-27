@@ -24,6 +24,8 @@ export default function Nav() {
             src="logo.svg"
             className="w-10 h-10"
             alt="website logo"
+            width={48}
+            height={48}
             onClick={scrollToTop}
           />
           <button onClick={toggleMenu}>
@@ -84,6 +86,8 @@ export default function Nav() {
           src="logo.svg"
           className="w-12 lg:w-14 cursor-pointer"
           alt="website logo"
+          width={48}
+          height={48}
           onClick={scrollToTop}
         />
         <div className="flex flex-row gap-24 lg:gap-28">
