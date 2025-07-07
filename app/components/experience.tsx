@@ -12,7 +12,7 @@ export default function Experience() {
         word={"Experience"}
         x={"50%"}
         y={isSmall ? "6%" : isMedium ? "8%" : "10%"}
-        f_smallest={"text-3xl"}
+        f_smallest={"text-4xl"}
         f_sm={"text-5xl"}
         f_xl={"text-6xl"}
         border_col={"#ffffff"}

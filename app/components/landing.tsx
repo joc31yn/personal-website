@@ -4,6 +4,8 @@ import { useMediaQuery } from "@/app/utils/mobile";
 import { Caveat } from "next/font/google";
 import AnimateWord from "@/app/utils/animateWord";
 import { ChevronDown } from "lucide-react";
+import Image from "next/image";
+
 const caveat = Caveat({
   subsets: ["latin"],
   weight: ["400", "600"],
@@ -39,8 +41,15 @@ export default function Landing() {
       ];
   return (
     <div
-      className={`relative w-full h-full ${caveat.className} text-white flex flex-col items-start justify-center`}
+      className={`relative w-full h-full min-h-screen ${caveat.className} text-white flex flex-col items-start justify-center`}
     >
+      <Image
+        className="absolute left-0 bottom-0 -translate-x-1/2 translate-y-[40%]"
+        src="moon.svg"
+        alt="moon"
+        width={700}
+        height={700}
+      />
       <AnimateWord
         word="Welcome"
         x="50%"
@@ -136,8 +145,8 @@ export default function Landing() {
         href="#About"
         className="absolute bottom-[8%] left-1/2 transform -translate-x-1/2 flex flex-col justify-center items-center cursor-pointer hover:scale-110 duration-100"
       >
-        <span className="text-2xl md:text-[2rem] -mb-3 md:-mb-5">About</span>
-        <ChevronDown className="w-10 h-10 md:w-14 md:h-14 stroke-[1.5]" />
+        <span className="text-2xl md:text-[2rem] -mb-3">About</span>
+        <ChevronDown className="w-10 h-10 md:w-12 md:h-12 stroke-[1.5]" />
       </a>
     </div>
   );
