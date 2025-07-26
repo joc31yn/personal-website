@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-import Image from 'next/image';
+import Image from "next/image";
 
 export default function Nav() {
   const navItems = ["About", "Experience", "Projects", "Contact"];
@@ -67,7 +67,7 @@ export default function Nav() {
                 {navItems.map((e) => (
                   <div key={e} className="text-center p-3">
                     <a
-                      className="sm:text-lg font-semibold"
+                      className="text-xl sm:text-2xl font-semibold font-caveat"
                       onClick={toggleMenu}
                       href={`#${e}`}
                     >
@@ -94,7 +94,7 @@ export default function Nav() {
           {navItems.map((e) => (
             <a
               key={e}
-              className="font-semibold md:text-base lg:text-lg hover:text-[#fcba03] duration-150"
+              className="text-base md:text-lg lg:text-2xl hover:text-[#fcba03] duration-150 font-caveat"
               href={`#${e}`}
             >
               {e}

@@ -120,7 +120,7 @@ export default function Contact() {
             />
           </div>
           <p className="text-xs md:text-sm">
-            © 2025 Jocelyn Xu. All rights reserved.
+            &copy; 2025 Jocelyn Xu. All rights reserved.
           </p>
         </div>
       </div>

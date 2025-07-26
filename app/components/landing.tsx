@@ -1,15 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "@/app/utils/mobile";
-import { Caveat } from "next/font/google";
 import AnimateWord from "@/app/utils/animateWord";
 import { ChevronDown } from "lucide-react";
-import Image from "next/image";
-
-const caveat = Caveat({
-  subsets: ["latin"],
-  weight: ["400", "600"],
-});
 
 export default function Landing() {
   const words = ["Hi", "my", "name", "is", "Jocelyn Xu"];
@@ -41,15 +34,9 @@ export default function Landing() {
       ];
   return (
     <div
-      className={`relative w-full h-full min-h-screen ${caveat.className} text-white flex flex-col items-start justify-center`}
+      className={`relative w-full h-full min-h-screen font-caveat text-white flex flex-col items-start justify-center`}
     >
-      <Image
-        className="absolute left-0 bottom-0 -translate-x-1/2 translate-y-[40%]"
-        src="moon.svg"
-        alt="moon"
-        width={700}
-        height={700}
-      />
+      {/* <Image src="girl_coding.svg" className="absolute bottom-[8%] left-0" alt="girl coding" width={300} height={300} /> */}
       <AnimateWord
         word="Welcome"
         x="50%"

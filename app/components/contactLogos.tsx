@@ -7,7 +7,7 @@ interface ContactLogoProps {
 }
 export default function ContactLogo(props: ContactLogoProps) {
   return (
-    <div className="bg-white rounded-full p-2">
+    <div className="bg-white rounded-full p-2 cursor-pointe hover:scale-[115%] transition-all duration-200">
       <a href={props.link} target="_blank">
         <Image
           className="w-4 h-4 md:w-6 md:h-6"
