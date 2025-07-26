@@ -11,8 +11,8 @@ export default function Experience() {
       <AnimateWord
         word={"Experience"}
         x={"50%"}
-        y={isSmall ? "6%" : isMedium ? "8%" : "10%"}
-        f_smallest={"text-4xl"}
+        y={!isMedium ? "10%" : "8%"}
+        f_smallest={"text-[2.5rem]"}
         f_sm={"text-5xl"}
         f_xl={"text-6xl"}
         border_col={"#ffffff"}

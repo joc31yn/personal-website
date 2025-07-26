@@ -1,11 +1,5 @@
 import { motion } from "framer-motion";
-import { Sora } from "next/font/google";
 import { useState, useEffect } from "react";
-
-const sora = Sora({
-  subsets: ["latin"],
-  weight: ["400", "600"],
-});
 
 interface AnimateWordProps {
   word: string;
@@ -76,7 +70,7 @@ export default function AnimateWord(props: AnimateWordProps) {
           x={props.x}
           y={props.y}
           textAnchor="middle"
-          className={`${sora.className} font-bold ${
+          className={`font-sora font-bold ${
             dimensions.width < 640
               ? props.f_smallest
               : dimensions.width < 1024

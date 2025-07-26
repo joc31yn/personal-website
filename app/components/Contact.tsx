@@ -3,39 +3,43 @@ import { motion } from "framer-motion";
 import AnimateWord from "../utils/animateWord";
 import { useMediaQuery } from "../utils/mobile";
 import ContactLogos from "./contactLogos";
-// import Swal from "sweetalert2";
+import Swal from "sweetalert2";
 
 export default function Contact() {
-  const isSmall = useMediaQuery("(max-width: 767px)");
+  // const isSmall = useMediaQuery("(max-width: 767px)");
   const isMedium = useMediaQuery("(max-width: 1023px)");
 
-  // const onSubmit = async (event) => {
-  //   event.preventDefault();
-  //   const formData = new FormData(event.target);
-
-  //   formData.append("access_key", "652057f0-ac36-4344-b87c-3894f2c62bbe");
-
-  //   const object = Object.fromEntries(formData);
-  //   const json = JSON.stringify(object);
-
-  //   const res = await fetch("https://api.web3forms.com/submit", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Accept: "application/json",
-  //     },
-  //     body: json,
-  //   }).then((res) => res.json());
-
-  //   if (res.success) {
-  //     Swal.fire({
-  //       title: "Success!",
-  //       text: "Thank you for your message!",
-  //       icon: "success",
-  //       confirmButtonColor: "#2868EE",
-  //     });
-  //   }
-  // };
+  const onSubmit = async (event: any) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    formData.append("access_key", "652057f0-ac36-4344-b87c-3894f2c62bbe");
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: json,
+    }).then((res) => res.json());
+    if (res.success) {
+      console.log("Success", res);
+      Swal.fire({
+        title: "Success!",
+        html: "Thank you for your message.",
+        icon: "success",
+        confirmButtonColor: "#000000",
+      });
+    } else {
+      Swal.fire({
+        title: "Error",
+        html: "Message failed to send. Please try a different method of contact.",
+        icon: "error",
+        confirmButtonColor: "#000000",
+      });
+    }
+  };
 
   return (
     // need to chagne to animate on scroll
@@ -43,8 +47,8 @@ export default function Contact() {
       <AnimateWord
         word={"Contact"}
         x={"50%"}
-        y={isSmall ? "6%" : isMedium ? "8%" : "10%"}
-        f_smallest={"text-4xl"}
+        y={!isMedium ? "10%" : "8%"}
+        f_smallest={"text-[2.5rem]"}
         f_sm={"text-5xl"}
         f_xl={"text-6xl"}
         border_col={"#ffffff"}
@@ -54,35 +58,30 @@ export default function Contact() {
       />
       <div className="absolute top-0 left-0 w-full h-full min-h-screen flex flex-col items-center justify-center">
         <form
-          // onSubmit={onSubmit}
+          onSubmit={onSubmit}
           className="w-[70%] min-w-64 max-w-[800px] text-white flex flex-col justify-center gap-5 relative"
         >
-          <div className="">
-            <input
-              type="text"
-              name="name"
-              className="w-full p-2 bg-transparent border-[1px] rounded-xl border-gray-200 placeholder:text-gray-400 outline-none focus:border-white focus:shadow-[0_0_8px_0_rgba(255,255,255,0.85)] transition-shadow"
-              placeholder="Full Name"
-              required
-            />
-          </div>
-          <div className="">
-            <input
-              type="text"
-              name="name"
-              className="w-full p-2 bg-transparent border-[1px] rounded-xl border-gray-200 placeholder:text-gray-400 outline-none focus:border-white focus:shadow-[0_0_8px_0_rgba(255,255,255,0.85)] transition-shadow"
-              placeholder="Email"
-              required
-            />
-          </div>
-          <div className="">
-            <textarea
-              name="message"
-              className="w-full h-28 sm:h-40 resize-none my-2 py-4 px-2.5 bg-transparent border-[1px] rounded-xl border-gray-200 placeholder:text-gray-400 outline-none focus:border-white focus:shadow-[0_0_8px_0_rgba(255,255,255,0.85)] transition-shadow"
-              placeholder="Enter your message!"
-              required
-            ></textarea>
-          </div>
+          <input
+            type="text"
+            name="name"
+            className="w-full p-3 bg-transparent border-[1px] rounded-xl border-gray-200 placeholder:text-gray-400 outline-none focus:border-white focus:shadow-[0_0_8px_0_rgba(255,255,255,0.85)] transition-shadow"
+            placeholder="Full Name"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            autoComplete="email"
+            required
+            className="w-full p-3 bg-transparent border-[1px] rounded-xl border-gray-200 placeholder:text-gray-400 outline-none focus:border-white focus:shadow-[0_0_8px_0_rgba(255,255,255,0.85)] transition-shadow"
+            placeholder="Email"
+          />
+          <textarea
+            name="message"
+            className="w-full h-28 sm:h-40 resize-none my-2 py-4 px-3 bg-transparent border-[1px] rounded-xl border-gray-200 placeholder:text-gray-400 outline-none focus:border-white focus:shadow-[0_0_8px_0_rgba(255,255,255,0.85)] transition-shadow"
+            placeholder="Enter your message!"
+            required
+          ></textarea>
           <motion.button
             className="absolute -bottom-[20%] right-[0%] text-black bg-white py-2 px-6 cursor-pointer outline-none rounded-lg"
             whileHover="hover"
@@ -101,7 +100,7 @@ export default function Contact() {
             </p>
           </motion.button>
         </form>
-        <div className="absolute bottom-0 flex flex-col gap-5 items-center justify-center text-gray-300 p-5">
+        <div className="absolute bottom-0 flex flex-col gap-6 items-center justify-center text-gray-300 p-5">
           <div className="flex flex-row gap-10 items-center justify-center">
             <ContactLogos
               svgUrl="/linkedin.svg"

@@ -13,9 +13,10 @@ export default {
         foreground: "var(--foreground)",
       },
       fontFamily: {
-        inter: ['var(--font-inter)', 'sans-serif'],
-        caveat: ['var(--font-caveat)', 'sans-serif'],
-        poppins: ['var(--font-poppins)', 'sans-serif'],
+        inter: ["var(--font-inter)", "sans-serif"],
+        caveat: ["var(--font-caveat)", "sans-serif"],
+        poppins: ["var(--font-poppins)", "sans-serif"],
+        sora: ["var(--font-sora)", "sans-serif"],
       },
     },
   },
