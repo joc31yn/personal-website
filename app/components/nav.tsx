@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import ContactLogos from "./contactLogos";
 
 export default function Nav() {
   const navItems = ["About", "Experience", "Projects", "Contact"];
@@ -16,10 +17,21 @@ export default function Nav() {
   const scrollToTop = () => {
     window.scrollTo(0, 0); // smooth behaviour defined in globals.css
   };
+
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+    return () => document.body.classList.remove("overflow-hidden");
+  }, [menuOpen]);
+
   return (
     <>
       <div className="block md:hidden bg-white flex-row px-3 py-2 items-center justify-between relative z-10">
-        <div className="flex justify-between items-center">
+        <div className="md:hidden fixed top-0 left-0 w-full bg-white flex flex-row px-3 py-2 items-center justify-between z-20">
           <Image
             src="logo.svg"
             className="w-10 h-10"
@@ -40,34 +52,20 @@ export default function Nav() {
         <AnimatePresence>
           {menuOpen && (
             <motion.div
-              className="absolute top-full left-0 w-full bg-white flex flex-col z-10 overflow-hidden"
-              custom={menuOpen}
-              variants={{
-                open: {
-                  height: "auto",
-                  transition: {
-                    type: "spring",
-                    stiffness: 115,
-                    damping: 12,
-                  },
-                },
-                closed: {
-                  height: 0,
-                  transition: {
-                    ease: "easeInOut",
-                    duration: 0.3,
-                  },
-                },
+              className="fixed inset-0 bg-white flex flex-col overflow-hidden"
+              initial={{ clipPath: "circle(0% at 100% 0%)" }}
+              animate={{ clipPath: "circle(150% at 100% 0%)" }}
+              exit={{ clipPath: "circle(0% at 100% 0%)" }}
+              transition={{
+                duration: 0.7,
+                ease: [0.22, 1, 0.36, 1], // easeOutCubic
               }}
-              initial="closed"
-              animate="open"
-              exit="closed"
             >
-              <div className="flex flex-col items-center justify-center gap-3 my-5">
+              <div className="flex flex-col items-center justify-center gap-5 my-5 h-full">
                 {navItems.map((e) => (
                   <div key={e} className="text-center p-3">
                     <a
-                      className="text-xl sm:text-2xl font-semibold font-caveat"
+                      className="text-2xl sm:text-3xl font-semibold font-caveat hover:text-[#fcba03]"
                       onClick={toggleMenu}
                       href={`#${e}`}
                     >
@@ -75,6 +73,26 @@ export default function Nav() {
                     </a>
                   </div>
                 ))}
+              </div>
+              <div className="flex flex-row gap-10 items-center justify-center mb-20">
+                <ContactLogos
+                  svgUrl="/linkedin.svg"
+                  link="https://www.linkedin.com/in/jocelyn-xu-741106289/"
+                  alt="linkedin"
+                  usedInNav={true}
+                />
+                <ContactLogos
+                  svgUrl="/github.svg"
+                  link="https://github.com/joc31yn"
+                  alt="github"
+                  usedInNav={true}
+                />
+                <ContactLogos
+                  svgUrl="/gmail.svg"
+                  link="mailto:joce.xxt22@gmail.com"
+                  alt="gmail"
+                  usedInNav={true}
+                />
               </div>
             </motion.div>
           )}
@@ -94,7 +112,7 @@ export default function Nav() {
           {navItems.map((e) => (
             <a
               key={e}
-              className="text-base md:text-lg lg:text-2xl hover:text-[#fcba03] duration-150 font-caveat"
+              className="md:text-xl lg:text-2xl hover:text-[#fcba03] font-medium duration-150 font-caveat"
               href={`#${e}`}
             >
               {e}
