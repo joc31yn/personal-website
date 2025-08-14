@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #000000;
+  --foreground: #000000;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-sora);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.swal2-popup {
+  max-width: 450px !important;
+}
+
+.swal2-html-container {
+  padding: 0.5rem 2.5rem 0 2.5rem !important;
+}
+.swal2-title {
+  padding-top: 1rem !important;
+}
+
+.swal2-confirm:hover {
+  background-color: white;
+  outline: 1.5px solid black;
+  color: black;
+  box-sizing: border-box;
+}
+
+@media (max-width: 639px) {
+  .swal2-html-container {
+    padding: 0.5rem 1.5rem 0 1.5rem !important;
+    font-size: medium !important;
+  }
+  .swal2-popup {
+    width: 80% !important;
+  }
+}
