@@ -19,6 +19,8 @@ export default function Projects() {
         fill_col={"transparent"}
         pixel={2.25}
         delay={0}
+        once={false}
+        strokeDuration={2.5}
       />
     </section>
   );

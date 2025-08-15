@@ -12,6 +12,8 @@ interface AnimateWordProps {
   fill_col: string;
   pixel: number;
   delay: number;
+  once: boolean;
+  strokeDuration: number;
 }
 export default function AnimateWord(props: AnimateWordProps) {
   const textVariants = {
@@ -25,7 +27,7 @@ export default function AnimateWord(props: AnimateWordProps) {
       fillOpacity: 1,
       transition: {
         strokeDashoffset: {
-          duration: 3.5,
+          duration: props.strokeDuration,
           ease: "easeInOut",
           delay: props.delay,
         },
@@ -63,8 +65,6 @@ export default function AnimateWord(props: AnimateWordProps) {
       <motion.svg
         className="w-full h-full"
         viewBox={`0 0 ${dimensions.width} ${dimensions.height}`}
-        initial="hidden"
-        animate="visible"
       >
         <motion.text
           x={props.x}
@@ -82,6 +82,9 @@ export default function AnimateWord(props: AnimateWordProps) {
             strokeWidth: dimensions.width < 768 ? props.pixel - 1 : props.pixel,
             fill: props.fill_col,
           }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: props.once, amount: 0.5 }}
           variants={textVariants}
         >
           {props.word}

@@ -48,6 +48,8 @@ export default function Landing() {
         fill_col="#000000"
         pixel={3}
         delay={2}
+        once={true}
+        strokeDuration={3.5}
       />
       {/* Animated stair path */}
       <svg

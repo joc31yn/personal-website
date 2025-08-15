@@ -4,28 +4,48 @@ import AnimateWord from "../utils/animateWord";
 import { useMediaQuery } from "../utils/mobile";
 import ContactLogos from "./contactLogos";
 import Swal from "sweetalert2";
-
+import { FormEvent, useState } from "react";
+import axios from "axios";
 
 export default function Contact() {
-  // const isSmall = useMediaQuery("(max-width: 767px)");
   const isMedium = useMediaQuery("(max-width: 1023px)");
-  const temp = true
-  const onSubmit = async (event: any) => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const data = {submitted: true, error: undefined};
+  const onSubmit = async (event: FormEvent) => {
     event.preventDefault();
     try {
-      if (temp) {
+      const { data } = await axios.post("/api/sendEmail", {
+        name,
+        email,
+        message,
+      });
+
+      if (data.submitted) {
         Swal.fire({
           title: "Success!",
           html: "Thank you for your message.",
           icon: "success",
           confirmButtonColor: "#000000",
         });
+      } else {
+        Swal.fire({
+          title: "Error",
+          html:
+            data.error ||
+            "Message failed to send. Please try a different method of contact.",
+          icon: "error",
+          confirmButtonColor: "#000000",
+        });
       }
-    } catch (err) {
+    } catch (err: any) {
       console.log(err);
       Swal.fire({
         title: "Error",
-        html: "Message failed to send. Please try a different method of contact.",
+        html:
+          err.response?.data?.error ||
+          "Message failed to send. Please try a different method of contact.",
         icon: "error",
         confirmButtonColor: "#000000",
       });
@@ -46,6 +66,8 @@ export default function Contact() {
         fill_col={"transparent"}
         pixel={2.25}
         delay={0}
+        once={false}
+        strokeDuration={2.5}
       />
       <div className="absolute top-0 left-0 w-full h-full min-h-screen flex flex-col items-center justify-center">
         <form
@@ -55,6 +77,9 @@ export default function Contact() {
           <input
             type="text"
             name="name"
+            autoComplete="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             className="w-full p-3 bg-transparent border-[1px] rounded-xl border-gray-200 placeholder:text-gray-400 outline-none focus:border-white focus:shadow-[0_0_8px_0_rgba(255,255,255,0.85)] transition-shadow"
             placeholder="Full Name"
             required
@@ -63,6 +88,8 @@ export default function Contact() {
             type="email"
             name="email"
             autoComplete="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
             className="w-full p-3 bg-transparent border-[1px] rounded-xl border-gray-200 placeholder:text-gray-400 outline-none focus:border-white focus:shadow-[0_0_8px_0_rgba(255,255,255,0.85)] transition-shadow"
             placeholder="Email"
@@ -71,6 +98,8 @@ export default function Contact() {
             name="message"
             className="w-full h-28 sm:h-40 resize-none my-2 py-4 px-3 bg-transparent border-[1px] rounded-xl border-gray-200 placeholder:text-gray-400 outline-none focus:border-white focus:shadow-[0_0_8px_0_rgba(255,255,255,0.85)] transition-shadow"
             placeholder="Enter your message!"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
             required
           ></textarea>
           <motion.button

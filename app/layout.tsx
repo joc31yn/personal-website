@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Caveat, Open_Sans, Sora } from "next/font/google";
 import "../styles/globals.css";
 import Nav from "@/app/components/nav";
+import FlashlightCursor from "./utils/flashlightCursor";
 
 const caveat = Caveat({
   subsets: ["latin"],
