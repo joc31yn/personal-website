@@ -1,6 +1,6 @@
 "use client";
-import AnimateWord from "../utils/animateWord";
-import { useMediaQuery } from "../utils/mobile";
+import AnimateWord from "../components/animateWord";
+import { useMediaQuery } from "../components/mobile";
 
 export default function Projects() {
   const isSmall = useMediaQuery("(max-width: 767px)");

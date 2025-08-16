@@ -1,8 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
-import AnimateWord from "../utils/animateWord";
-import { useMediaQuery } from "../utils/mobile";
-import ContactLogos from "./contactLogos";
+import AnimateWord from "../components/animateWord";
+import { useMediaQuery } from "../components/mobile";
+import ContactLogos from "../components/contactLogos";
 import Swal from "sweetalert2";
 import { FormEvent, useState } from "react";
 import axios from "axios";
@@ -80,7 +80,7 @@ export default function Contact() {
             autoComplete="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full p-3 bg-transparent border-[1px] rounded-xl border-gray-200 placeholder:text-gray-400 outline-none focus:border-white focus:shadow-[0_0_8px_0_rgba(255,255,255,0.85)] transition-shadow"
+            className="w-full p-3 bg-transparent border-[1px] rounded-xl border-gray-200 placeholder:text-gray-400 outline-none focus:border-gray-200 focus:outline focus:outline-2 focus:outline-white focus:outline-offset-4 transition-shadow"
             placeholder="Full Name"
             required
           />
@@ -91,12 +91,12 @@ export default function Contact() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="w-full p-3 bg-transparent border-[1px] rounded-xl border-gray-200 placeholder:text-gray-400 outline-none focus:border-white focus:shadow-[0_0_8px_0_rgba(255,255,255,0.85)] transition-shadow"
+            className="w-full p-3 bg-transparent border-[1px] rounded-xl border-gray-200 placeholder:text-gray-400 outline-none focus:border-gray-200 focus:outline focus:outline-2 focus:outline-white focus:outline-offset-4 transition-shadow"
             placeholder="Email"
           />
           <textarea
             name="message"
-            className="w-full h-28 sm:h-40 resize-none my-2 py-4 px-3 bg-transparent border-[1px] rounded-xl border-gray-200 placeholder:text-gray-400 outline-none focus:border-white focus:shadow-[0_0_8px_0_rgba(255,255,255,0.85)] transition-shadow"
+            className="w-full h-28 sm:h-40 resize-none my-2 py-4 px-3 bg-transparent border-[1px] rounded-xl border-gray-200 placeholder:text-gray-400 outline-none focus:border-gray-200 focus:outline focus:outline-2 focus:outline-white focus:outline-offset-4 transition-shadow"
             placeholder="Enter your message!"
             value={message}
             onChange={(e) => setMessage(e.target.value)}

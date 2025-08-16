@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
-import { useMediaQuery } from "@/app/utils/mobile";
-import AnimateWord from "@/app/utils/animateWord";
+import { useMediaQuery } from "@/app/components/mobile";
+import AnimateWord from "@/app/components/animateWord";
 import { ChevronDown } from "lucide-react";
 
 export default function Landing() {

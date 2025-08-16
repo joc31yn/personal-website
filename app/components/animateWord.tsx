@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { easeInOut, easeOut } from "framer-motion";
 
 interface AnimateWordProps {
   word: string;
@@ -28,12 +29,12 @@ export default function AnimateWord(props: AnimateWordProps) {
       transition: {
         strokeDashoffset: {
           duration: props.strokeDuration,
-          ease: "easeInOut",
+          ease: easeInOut,
           delay: props.delay,
         },
         fillOpacity: {
           duration: 1,
-          ease: "easeOut",
+          ease: easeOut,
           delay: props.delay + 1,
         },
       },

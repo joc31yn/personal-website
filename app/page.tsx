@@ -1,8 +1,8 @@
-import Landing from "./components/landing";
-import About from "./components/about";
-import Experience from "./components/experience";
-import Projects from "./components/projects";
-import Contact from "./components/contact";
+import Landing from "./component_sections/landing";
+import About from "./component_sections/about";
+import Experience from "./component_sections/experience";
+import Projects from "./component_sections/projects";
+import Contact from "./component_sections/contact";
 export default function Home() {
   return (
     <div className="w-full h-full">

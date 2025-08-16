@@ -102,7 +102,7 @@ export default function MatrixGlitchText({
 
   return (
     <span ref={ref}>
-      <span className="border-2 border-green-400 p-0.5 w-fit rounded-lg">
+      <span className="p-0.5 w-fit rounded-lg">
         <span className={`inline-block font-mono ${className}`}>
           {displayText.map((char, index) => (
             <motion.span
