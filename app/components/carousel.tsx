@@ -7,7 +7,7 @@ const images = [
   "/carousel/matcha.svg",
   "/carousel/pingpong.svg",
   "/carousel/kayak.svg",
-  "/carousel/aurora.jpg",
+//   "/carousel/aurora.jpg",
   "/carousel/half_marathon.svg",
   "/carousel/ice.svg",
   "/carousel/biking.svg",
