@@ -18,6 +18,7 @@ export default {
         caveat: ["var(--font-caveat)", "sans-serif"],
         poppins: ["var(--font-opensans)", "sans-serif"],
         sora: ["var(--font-sora)", "sans-serif"],
+        lato: ["var(--font-lato)", "sans-serif"],
       },
     },
   },

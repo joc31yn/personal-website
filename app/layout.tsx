@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { Caveat, Open_Sans, Sora } from "next/font/google";
+import { Caveat, Open_Sans, Sora, Lato } from "next/font/google";
 import "../styles/globals.css";
 import Nav from "@/app/components/nav";
-import FlashlightCursor from "./components/flashlightCursor";
 import CanvasCursor from "@/cursors/canvasCursor";
 
 const caveat = Caveat({
@@ -23,6 +22,12 @@ const sora = Sora({
   variable: "--font-sora",
 });
 
+const lato = Lato({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-lato",
+});
+
 export const metadata: Metadata = {
   title: "Jocelyn Xu | Portfolio",
   icons: {
@@ -39,7 +44,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${caveat.variable} ${opensans.variable} ${sora.variable} antialiased`}
+        className={`${caveat.variable} ${opensans.variable} ${sora.variable} ${lato.variable} antialiased`}
       >
         <Nav />
         <CanvasCursor />
