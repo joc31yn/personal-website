@@ -4,11 +4,14 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 const images = [
-  "/carousel/temp.jpg",
-  "/carousel/temp.jpg",
-  "/carousel/temp.jpg",
-  "/carousel/temp.jpg",
-  "/carousel/temp.jpg",
+  "/carousel/matcha.svg",
+  "/carousel/pingpong.svg",
+  "/carousel/kayak.svg",
+  "/carousel/aurora.jpg",
+  "/carousel/half_marathon.svg",
+  "/carousel/ice.svg",
+  "/carousel/biking.svg",
+  "/carousel/minion.svg",
 ];
 
 export default function Carousel() {
@@ -22,11 +25,9 @@ export default function Carousel() {
     setCenterIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   };
 
-  // Calculate indices for left, center, right
   const leftIndex = (centerIndex - 1 + images.length) % images.length;
   const rightIndex = (centerIndex + 1) % images.length;
 
-  // Only render the 3 images
   const visibleSlides = [
     { index: leftIndex, offset: -1 },
     { index: centerIndex, offset: 0 },
@@ -35,30 +36,32 @@ export default function Carousel() {
 
   return (
     <div className="relative w-full flex items-center justify-center">
-      <div className="relative w-full h-44 flex items-center justify-center">
+      <div className="relative w-full h-44 flex items-center justify-center overflow-hidden">
         {visibleSlides.map(({ index, offset }) => (
           <motion.div
             key={index}
-            initial={{ scale: 0.7, x: offset * 220, opacity: 0 }}
+            initial={false}
             animate={{
-              scale: offset === 0 ? 1.2 : 0.9,
               x: offset * 220,
+              scale: offset === 0 ? 1.15 : 0.9,
               opacity: 1,
               zIndex: offset === 0 ? 10 : 0,
             }}
-            transition={{ type: "spring", stiffness: 120, damping: 20 }}
+            transition={{ type: "spring", stiffness: 300, damping: 25 }}
             className="absolute"
           >
-            <div className="relative w-60 h-36 rounded-lg overflow-hidden">
+            <div
+              className={`relative w-56 h-32 sm:w-60 sm:h-36 rounded-lg overflow-hidden`}
+            >
               <Image
                 src={images[index]}
                 alt={`carousel-${index}`}
                 fill
                 className="object-cover"
+                priority
               />
-              {/* Overlay for non-center slides */}
               {offset !== 0 && (
-                <div className="absolute inset-0 bg-black/35 pointer-events-none"></div>
+                <div className="absolute inset-0 bg-black/35 pointer-events-none" />
               )}
             </div>
           </motion.div>

@@ -36,7 +36,6 @@ export default function Landing() {
     <div
       className={`relative w-full h-full min-h-screen font-caveat text-white flex flex-col items-start justify-center`}
     >
-      {/* <Image src="girl_coding.svg" className="absolute bottom-[8%] left-0" alt="girl coding" width={300} height={300} /> */}
       <AnimateWord
         word="Welcome"
         x="50%"
@@ -68,14 +67,7 @@ export default function Landing() {
           strokeWidth="0.5"
           initial={{ pathLength: 0 }}
           animate={{ pathLength: 1 }}
-          transition={{ duration: 2.5, ease: "easeInOut" }}
-          // style={{
-          //   filter: `
-          //   drop-shadow(0 0 0.5px white)
-          //   drop-shadow(0 0 1px #200589)
-          //   drop-shadow(0 0 2px #200589)
-          // `,
-          // }}
+          transition={{ duration: 2.75, ease: "easeInOut" }}
         />
       </svg>
 
@@ -132,7 +124,9 @@ export default function Landing() {
       </div>
       <a
         href="#About"
-        className={`absolute ${isSmall ? 'bottom-5' : 'bottom-0'} left-1/2 transform -translate-x-1/2 flex flex-col justify-center items-center cursor-pointer hover:scale-110 duration-100`}
+        className={`absolute ${
+          isSmall ? "bottom-5" : "bottom-0"
+        } left-1/2 transform -translate-x-1/2 flex flex-col justify-center items-center cursor-pointer hover:scale-110 duration-100`}
       >
         <span className="text-2xl md:text-[2rem] -mb-2">About</span>
         <ChevronDown className="w-10 h-10 md:w-12 md:h-12 stroke-[1.5]" />
