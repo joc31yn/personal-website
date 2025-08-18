@@ -29,7 +29,7 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: "Jocelyn Xu | Portfolio",
+  title: "Jocelyn Xu",
   icons: {
     icon: "/logo.svg",
     shortcut: "/logo.svg",

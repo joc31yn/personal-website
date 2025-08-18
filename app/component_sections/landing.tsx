@@ -36,20 +36,20 @@ export default function Landing() {
     <div
       className={`relative w-full h-full min-h-screen font-caveat text-white flex flex-col items-start justify-center`}
     >
-      <AnimateWord
-        word="Welcome"
-        x="50%"
-        y="27%"
-        f_smallest="text-[4.2rem]"
-        f_sm="text-8xl"
-        f_xl="text-[8rem]"
-        border_col="#ffffff"
-        fill_col="#000000"
-        pixel={3}
-        delay={2}
-        once={true}
-        strokeDuration={3.5}
-      />
+      <div className="absolute top-[27%] left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <AnimateWord
+          word="Welcome"
+          f_smallest="text-[4.2rem]"
+          f_sm="text-8xl"
+          f_lg="text-[8rem]"
+          border_col="#ffffff"
+          fill_col="transparent"
+          pixel={2.5}
+          delay={2}
+          once={true}
+          strokeDuration={3.5}
+        />
+      </div>
       {/* Animated stair path */}
       <svg
         className="absolute top-0 left-0 w-full h-full"

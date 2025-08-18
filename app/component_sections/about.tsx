@@ -16,45 +16,50 @@ export default function About() {
   });
 
   return (
-    <section id="About" className="relative w-full min-h-screen">
-      <AnimateWord
-        word={"About"}
-        x={"50%"}
-        y={!isMedium ? "18%" : "13%"}
-        f_smallest={"text-[2.5rem]"}
-        f_sm={"text-5xl"}
-        f_xl={"text-6xl"}
-        border_col={"#ffffff"}
-        fill_col={"transparent"}
-        pixel={2.25}
-        delay={0}
-        once={false}
-        strokeDuration={2.5}
-      />
-      <div className="absolute top-0 left-0 w-full h-full flex justify-center text-white">
-        <div className="absolute top-[15%] md:top-1/2 md:-translate-y-1/4 flex items-center flex-col md:flex-row justify-center gap-12 md:gap-16 lg:gap-24 w-full h-fit px-8 sm:px-16 md:px-10 xl:px-40">
+    <section
+      id="About"
+      className="w-full min-h-screen h-full flex flex-col items-center"
+    >
+      <div className="mt-20">
+        <AnimateWord
+          word="About"
+          f_smallest="text-[2.5rem]"
+          f_sm="text-5xl"
+          f_lg="text-6xl"
+          border_col="#ffffff"
+          fill_col="transparent"
+          pixel={1.5}
+          delay={0}
+          once={false}
+          strokeDuration={2.5}
+        />
+      </div>
+
+      <div className="w-full flex justify-center text-white md:mt-16">
+        <div className="flex items-center flex-col md:flex-row justify-center gap-8 md:gap-16 lg:gap-24 w-full h-fit px-8 sm:px-16 md:px-10 xl:px-40">
           <div
-            data-aos="fade-up-right"
+            data-aos="fade-up"
             data-aos-anchor-placement="top-bottom"
             data-aos-once="true"
-            className="relative w-40 h-40 sm:w-52 sm:h-52 md:w-72 md:h-72 lg:w-80 lg:h-80 flex-shrink-0"
+            className="relative mt-5 md:mt-0 w-48 h-48 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-96 lg:h-96 flex-shrink-0"
           >
             <Image
-              src="girl_coding.svg"
-              alt="girl coding"
+              className="md:-rotate-[8deg]"
+              src="headshot.svg"
+              alt="headshot"
               fill
               style={{ objectFit: "contain" }}
-              sizes="(max-width: 640px) 10rem, (max-width: 768px) 13rem, (max-width: 1024px) 18rem, 20rem"
+              sizes="(max-width: 640px) 12rem, (max-width: 768px) 14rem, (max-width: 1024px) 18rem, 24rem"
               priority
             />
           </div>
-          <div className="flex flex-col gap-5 text-base sm:text-lg font-lato">
-            <p
-              data-aos="fade-up-left"
-              data-aos-once="true"
-              data-aos-anchor-placement="top-bottom"
-              className="leading-relaxed"
-            >
+          <div
+            className="flex flex-col gap-5 text-base sm:text-lg font-lato"
+            data-aos="fade-up"
+            data-aos-once="true"
+            data-aos-anchor-placement="top-bottom"
+          >
+            <p className="leading-relaxed xl:mb-10 text-center md:text-left">
               Hey, I'm Jocelyn :D and I'm currently in my 2nd year studying{" "}
               <MatrixGlitchText
                 className="sm:text-xl"
@@ -65,16 +70,12 @@ export default function About() {
               />{" "}
               at the <span className="sm:text-xl">University of Waterloo</span>.
               I'm currently on co-op working at BMO as a Software Developer! But
-              enough about careers [find more in the next sections ;)]... In my
-              free time I LOVE playing ping pong and badminton, or any sport at
-              that. If you ever find me, invite me to a game, I love the
-              challenge and getting to meet new people 🤩
+              enough about careers... In my free time I LOVE playing ping pong
+              and badminton, or any sport at that. If you ever find me, invite
+              me to a game, I love the challenge and getting to meet new people
+              🤩
             </p>
-            <div
-              data-aos="fade-up"
-              data-aos-anchor-placement="top-bottom"
-              data-aos-once="true"
-            >
+            <div>
               <p className="mb-2 sm:mb-8">
                 A couple snapshots of my interests&nbsp;&nbsp;📸
               </p>

@@ -2,12 +2,13 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const images = [
   "/carousel/matcha.svg",
   "/carousel/pingpong.svg",
   "/carousel/kayak.svg",
-//   "/carousel/aurora.jpg",
+  //   "/carousel/aurora.jpg",
   "/carousel/half_marathon.svg",
   "/carousel/ice.svg",
   "/carousel/biking.svg",
@@ -67,19 +68,17 @@ export default function Carousel() {
           </motion.div>
         ))}
       </div>
-
-      {/* Controls */}
       <button
         onClick={prevSlide}
-        className="absolute -left-3 top-1/2 -translate-y-1/2 text-white/70 hover:text-white hover:scale-125 text-4xl font-caveat font-semibold duration-200"
+        className="absolute -left-5 xl:-left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white hover:scale-125 font-caveat font-semibold duration-200"
       >
-        ‹
+        <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" strokeWidth={2.5} />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute -right-3 top-1/2 -translate-y-1/2 text-white/70 hover:text-white hover:scale-125 text-4xl font-caveat font-semibold duration-200"
+        className="absolute -right-5 xl:-right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white hover:scale-125 font-caveat font-semibold duration-200"
       >
-        ›
+        <ChevronRight className="w-6 h-6 md:w-8 md:h-8" strokeWidth={2.5} />
       </button>
     </div>
   );
