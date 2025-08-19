@@ -1,6 +1,34 @@
 "use client";
 import AnimateWord from "../components/animateWord";
 import { useMediaQuery } from "../components/mobile";
+import BallCavas from "@/app/components/canvas/BallCanvas";
+
+const languages = [
+  {
+    name: "Java",
+    icon: "/languages/java.svg",
+  },
+  {
+    name: "Python",
+    icon: "/languages/python.svg",
+  },
+  {
+    name: "Webdev",
+    icon: "/languages/webdev.svg",
+  },
+  {
+    name: "C",
+    icon: "/languages/c.svg",
+  },
+  {
+    name: "Racket",
+    icon: "/languages/racket.svg",
+  },
+  {
+    name: "SQL",
+    icon: "/languages/sql.svg",
+  },
+]
 
 export default function Experience() {
   const isSmall = useMediaQuery("(max-width: 767px)");
@@ -24,6 +52,11 @@ export default function Experience() {
           once={false}
           strokeDuration={2.5}
         />
+      </div>
+      <div className="flex flex-row gap-16 flex-wrap justify-center mt-10">
+        {languages.map((tech) => (<div className="w-20 h-20 sm:w-24 sm:h-24" key={tech.name}>
+          <BallCavas icon={tech.icon} />
+        </div>))}
       </div>
     </section>
   );

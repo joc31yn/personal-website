@@ -36,7 +36,7 @@ export default function About() {
       </div>
 
       <div className="w-full flex justify-center text-white md:mt-16">
-        <div className="flex items-center flex-col md:flex-row justify-center gap-8 md:gap-16 lg:gap-24 w-full h-fit px-8 sm:px-16 md:px-10 xl:px-40">
+        <div className="flex items-center flex-col md:flex-row justify-center gap-8 md:gap-16 lg:gap-24 w-full h-fit px-10 sm:px-16 md:px-10 xl:px-36">
           <div
             data-aos="fade-up"
             data-aos-anchor-placement="top-bottom"
@@ -54,26 +54,45 @@ export default function About() {
             />
           </div>
           <div
-            className="flex flex-col gap-5 text-base sm:text-lg font-lato"
+            className="flex flex-col gap-8 text-base sm:text-lg font-lato"
             data-aos="fade-up"
             data-aos-once="true"
             data-aos-anchor-placement="top-bottom"
           >
             <p className="leading-relaxed xl:mb-10 text-center md:text-left">
               Hey, I'm Jocelyn :D and I'm currently in my 2nd year studying{" "}
-              <MatrixGlitchText
-                className="sm:text-xl"
-                text="Computer Science"
-                solveChance={0.15}
-                glitchSpeed={100}
-                startDelay={100}
-              />{" "}
-              at the <span className="sm:text-xl">University of Waterloo</span>.
-              I'm currently on co-op working at BMO as a Software Developer! But
-              enough about careers... In my free time I LOVE playing ping pong
-              and badminton, or any sport at that. If you ever find me, invite
-              me to a game, I love the challenge and getting to meet new people
-              🤩
+              <span className="inline-flex items-center gap-1 whitespace-nowrap">
+                <span className="text-xl font-mono text-green-400 font-semibold">
+                  {"{"}
+                </span>
+                <MatrixGlitchText
+                  className="sm:text-xl"
+                  text="Computer Science"
+                  solveChance={0.15}
+                  glitchSpeed={100}
+                  startDelay={100}
+                />
+                <span className="text-xl font-mono text-green-400 font-semibold">
+                  {"}"}
+                </span>
+              </span>{" "}
+              at the{" "}
+              <span className="inline-flex items-center gap-1 whitespace-nowrap">
+                <span className="text-xl font-mono text-waterlooYellow font-semibold">
+                  {"{"}
+                </span>{" "}
+                <span className="sm:text-xl font-mono">
+                  University of Waterloo
+                </span>{" "}
+                <span className="text-xl font-mono text-waterlooYellow font-semibold">
+                  {"}"}
+                </span>
+              </span>
+              . I'm currently on co-op working at BMO as a Software Developer!
+              But enough about career... In my free time I LOVE playing ping
+              pong and badminton, or any sport at that. If you ever find me,
+              invite me to a game, I love the challenge and getting to meet new
+              people {"\u{1F929}"}
             </p>
             <div>
               <p className="mb-2 sm:mb-8">

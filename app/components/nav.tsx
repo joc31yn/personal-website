@@ -80,19 +80,19 @@ export default function Nav() {
               </div>
               <div className="flex flex-row gap-10 items-center justify-center mb-20">
                 <ContactLogos
-                  svgUrl="/linkedin.svg"
+                  svgUrl="/myContacts/linkedin.svg"
                   link="https://www.linkedin.com/in/jocelyn-xu-741106289/"
                   alt="linkedin"
                   usedInNav={true}
                 />
                 <ContactLogos
-                  svgUrl="/github.svg"
+                  svgUrl="/myContacts/github.svg"
                   link="https://github.com/joc31yn"
                   alt="github"
                   usedInNav={true}
                 />
                 <ContactLogos
-                  svgUrl="/gmail.svg"
+                  svgUrl="/myContacts/gmail.svg"
                   link="mailto:joce.xxt22@gmail.com"
                   alt="gmail"
                   usedInNav={true}
