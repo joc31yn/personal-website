@@ -18,18 +18,20 @@ const Ball = (props: BallProps) => {
 
   return (
     <Float speed={1.75} rotationIntensity={1} floatIntensity={2}>
-      <ambientLight intensity={0.25} />
-      <directionalLight position={[5, 5, 5]} intensity={1} />
-      <directionalLight position={[-5, -5, 5]} intensity={0.5} />
+      <ambientLight intensity={0.6} />
+      <directionalLight position={[5, 5, 5]} intensity={1.5} />
+      <directionalLight position={[-5, -5, 5]} intensity={1.2} />
+      <directionalLight position={[0, 5, -5]} intensity={0.8} />
 
-      <mesh castShadow receiveShadow scale={2.75}>
+      <mesh castShadow receiveShadow scale={1.4}>
         <icosahedronGeometry args={[1, 1]} />
-
         <meshStandardMaterial
-          color="#fff"
+          color="#ffffff"
           polygonOffset
           polygonOffsetFactor={-5}
           flatShading
+          roughness={0.3}
+          metalness={0.1}
         />
         <Decal
           position={[0, 0, 1]}
@@ -51,6 +53,8 @@ const BallCanvas = (props: BallCanvasProps) => {
       frameloop="demand"
       dpr={[1, 2]}
       gl={{ preserveDrawingBuffer: true }}
+      // Add camera settings for better exposure
+      camera={{ fov: 45, near: 0.1, far: 200, position: [0, 0, 4] }}
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls enableZoom={false} />
