@@ -28,7 +28,22 @@ const languages = [
     name: "SQL",
     icon: "/languages/sql.svg",
   },
-]
+];
+
+const frameworksTools = [
+  {
+    name: "React",
+    icon: "/frameworks-tools/react.svg",
+  },
+  {
+    name: "Tailwind",
+    icon: "/frameworks-tools/tailwind.svg",
+  },
+  {
+    name: "Git",
+    icon: "/frameworks-tools/git.svg",
+  },
+];
 
 export default function Experience() {
   const isSmall = useMediaQuery("(max-width: 767px)");
@@ -39,7 +54,7 @@ export default function Experience() {
       id="Experience"
       className="w-full min-h-screen h-full flex flex-col items-center"
     >
-      <div className="mt-20">
+      <div className="my-20">
         <AnimateWord
           word="Experience"
           f_smallest="text-[2.5rem]"
@@ -53,10 +68,23 @@ export default function Experience() {
           strokeDuration={2.5}
         />
       </div>
-      <div className="flex flex-row gap-16 flex-wrap justify-center mt-10">
-        {languages.map((tech) => (<div className="w-20 h-20 sm:w-24 sm:h-24" key={tech.name}>
-          <BallCavas icon={tech.icon} />
-        </div>))}
+      <p className="text-5xl font-caveat font-bold text-white">Languages</p>
+      <div className="flex flex-row gap-16 flex-wrap justify-center my-10">
+        {languages.map((tech) => (
+          <div className="w-20 h-20 sm:w-24 sm:h-24" key={tech.name}>
+            <BallCavas icon={tech.icon} />
+          </div>
+        ))}
+      </div>
+      <p className="text-5xl font-caveat font-bold text-white">
+        Frameworks & Tools
+      </p>
+      <div className="flex flex-row gap-16 flex-wrap justify-center my-10">
+        {frameworksTools.map((tech) => (
+          <div className="w-20 h-20 sm:w-24 sm:h-24" key={tech.name}>
+            <BallCavas icon={tech.icon} />
+          </div>
+        ))}
       </div>
     </section>
   );
