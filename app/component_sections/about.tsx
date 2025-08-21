@@ -30,7 +30,6 @@ export default function About() {
           fill_col="transparent"
           pixel={1.5}
           delay={0}
-          once={false}
           strokeDuration={2.5}
         />
       </div>

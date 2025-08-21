@@ -11,11 +11,24 @@ interface AnimateWordProps {
   fill_col: string;
   pixel: number;
   delay: number;
-  once: boolean;
+  once?: boolean;
   strokeDuration: number;
+  whenInView?: boolean;
 }
 
-export default function AnimateWord(props: AnimateWordProps) {
+export default function AnimateWord({
+  word,
+  f_smallest,
+  f_sm,
+  f_lg,
+  border_col,
+  fill_col,
+  pixel,
+  delay,
+  once = false,
+  strokeDuration,
+  whenInView = true,
+}: AnimateWordProps) {
   const [dimensions, setDimensions] = useState({
     width: 0,
     height: 0,
@@ -38,24 +51,39 @@ export default function AnimateWord(props: AnimateWordProps) {
       fillOpacity: 1,
       transition: {
         strokeDashoffset: {
-          duration: props.strokeDuration,
+          duration: strokeDuration,
           ease: easeInOut,
-          delay: props.delay,
+          delay: delay,
         },
         fillOpacity: {
           duration: 1,
           ease: easeOut,
-          delay: props.delay + 1,
+          delay: delay + 1,
         },
       },
     },
   };
 
+  const motionProps = whenInView
+    ? {
+        initial: "hidden",
+        whileInView: "visible",
+        viewport: {
+          once: once,
+          amount: 0.3,
+          margin: "0px 0px -100px 0px",
+        },
+      }
+    : {
+        initial: "hidden",
+        animate: "visible",
+      };
+
   // Get current font size class based on screen width
   const getFontSizeClass = (width: number) => {
-    if (width < 640) return props.f_smallest;
-    if (width < 1024) return props.f_sm;
-    return props.f_lg;
+    if (width < 640) return f_smallest;
+    if (width < 1024) return f_sm;
+    return f_lg;
   };
 
   useEffect(() => {
@@ -105,14 +133,7 @@ export default function AnimateWord(props: AnimateWordProps) {
       };
       requestAnimationFrame(measureText);
     }
-  }, [
-    dimensions,
-    props.pixel,
-    props.word,
-    props.f_smallest,
-    props.f_sm,
-    props.f_lg,
-  ]);
+  }, [dimensions, pixel, word, f_smallest, f_sm, f_lg]);
 
   if (dimensions.width === 0 || textBounds.width === 0) {
     return (
@@ -132,18 +153,18 @@ export default function AnimateWord(props: AnimateWordProps) {
             dimensions.width
           )}`}
           style={{
-            strokeWidth: props.pixel,
-            stroke: props.border_col,
-            fill: props.fill_col,
+            strokeWidth: pixel,
+            stroke: border_col,
+            fill: fill_col,
           }}
         >
-          {props.word}
+          {word}
         </text>
       </svg>
     );
   }
 
-  const strokeWidth = props.pixel;
+  const strokeWidth = pixel;
   const centerX = textBounds.width / 2;
   const centerY = textBounds.height / 2;
 
@@ -162,20 +183,14 @@ export default function AnimateWord(props: AnimateWordProps) {
         dominantBaseline="middle"
         className={`font-sora font-bold ${getFontSizeClass(dimensions.width)}`}
         style={{
-          stroke: props.border_col,
+          stroke: border_col,
           strokeWidth: strokeWidth,
-          fill: props.fill_col,
-        }}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{
-          once: props.once,
-          amount: 0.3,
-          margin: "0px 0px -100px 0px",
+          fill: fill_col,
         }}
         variants={textVariants}
+        {...motionProps}
       >
-        {props.word}
+        {word}
       </motion.text>
     </motion.svg>
   );

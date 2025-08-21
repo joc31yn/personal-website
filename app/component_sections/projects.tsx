@@ -1,6 +1,7 @@
 "use client";
 import AnimateWord from "../components/animateWord";
 import { useMediaQuery } from "../components/mobile";
+import ProjectCard from "../components/projectCard";
 
 export default function Projects() {
   const isSmall = useMediaQuery("(max-width: 767px)");
@@ -21,8 +22,20 @@ export default function Projects() {
           fill_col="transparent"
           pixel={1.5}
           delay={0}
-          once={false}
           strokeDuration={2.5}
+        />
+      </div>
+      <div>
+        <ProjectCard
+          title="ResuMix"
+          githubLink="test"
+          imgUrl="/resumix_home.png"
+          alt="test"
+          description={`ML-powered resume builder that tailors resumes to specific job
+          descriptions. By analyzing the semantic similarity between a user’s
+          experiences and job postings, it automatically selects and rewrites
+          the most relevant bullet points, generating ATS-optimized PDFs.`}
+          link="https://resu-mix.vercel.app/"
         />
       </div>
     </section>

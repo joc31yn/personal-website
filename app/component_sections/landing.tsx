@@ -47,6 +47,7 @@ export default function Landing() {
           pixel={2.5}
           delay={2}
           once={true}
+          whenInView={false}
           strokeDuration={3.5}
         />
       </div>

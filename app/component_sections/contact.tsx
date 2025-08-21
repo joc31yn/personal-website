@@ -8,7 +8,6 @@ import { FormEvent, useState } from "react";
 import axios from "axios";
 
 export default function Contact() {
-  const isMedium = useMediaQuery("(max-width: 1023px)");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -57,7 +56,6 @@ export default function Contact() {
   };
 
   return (
-    // need to chagne to animate on scroll
     <section
       id="Contact"
       className="relative w-full min-h-screen h-full flex flex-col items-center justify-between"
@@ -72,7 +70,6 @@ export default function Contact() {
           fill_col="transparent"
           pixel={1.5}
           delay={0}
-          once={false}
           strokeDuration={2.5}
         />
       </div>

@@ -16,6 +16,11 @@ interface BallProps {
 const Ball = (props: BallProps) => {
   const [decal] = useTexture([props.imgUrl]);
 
+  const aspect = decal.image.width / decal.image.height;
+
+  const decalScale: [number, number, number] =
+    aspect >= 1 ? [1, 1 / aspect, 1] : [aspect, 1, 1];
+
   return (
     <Float speed={1.75} rotationIntensity={1} floatIntensity={2}>
       <ambientLight intensity={0.6} />
@@ -36,7 +41,7 @@ const Ball = (props: BallProps) => {
         <Decal
           position={[0, 0, 1]}
           rotation={[2 * Math.PI, 0, 6.25]}
-          scale={1}
+          scale={decalScale}
           map={decal}
         />
       </mesh>
@@ -53,7 +58,6 @@ const BallCanvas = (props: BallCanvasProps) => {
       frameloop="demand"
       dpr={[1, 2]}
       gl={{ preserveDrawingBuffer: true }}
-      // Add camera settings for better exposure
       camera={{ fov: 45, near: 0.1, far: 200, position: [0, 0, 4] }}
     >
       <Suspense fallback={<CanvasLoader />}>

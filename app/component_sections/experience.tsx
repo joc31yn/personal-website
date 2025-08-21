@@ -35,6 +35,10 @@ const frameworksTools = [
     name: "React",
     icon: "/frameworks-tools/react.svg",
   },
+    {
+    name: "Angular",
+    icon: "/frameworks-tools/angular.svg",
+  },
   {
     name: "Tailwind",
     icon: "/frameworks-tools/tailwind.svg",
@@ -43,18 +47,47 @@ const frameworksTools = [
     name: "Git",
     icon: "/frameworks-tools/git.svg",
   },
+  {
+    name: "Node",
+    icon: "/frameworks-tools/node.svg",
+  },
+];
+
+const databases = [
+  {
+    name: "Supabase",
+    icon: "/databases/supabase.svg",
+  },
+    {
+    name: "MongoDB",
+    icon: "/databases/mongo.svg",
+  },
+  {
+    name: "Neon",
+    icon: "/databases/neon.svg",
+  },
 ];
 
 export default function Experience() {
-  const isSmall = useMediaQuery("(max-width: 767px)");
-  const isMedium = useMediaQuery("(max-width: 1023px)");
+  const renderBallCanvases = (title: string, data: {name: string, icon: string}[]) => (
+    <>
+    <p className="text-5xl font-caveat font-bold">{title}</p>
+      <div className="flex flex-row gap-16 flex-wrap justify-center my-10">
+        {data.map((tech) => (
+          <div className="w-20 h-20 sm:w-24 sm:h-24" key={tech.name}>
+            <BallCavas icon={tech.icon} />
+          </div>
+        ))}
+      </div>
+    </>
+  )
   return (
     // need to chagne to animate on scroll
     <section
       id="Experience"
-      className="w-full min-h-screen h-full flex flex-col items-center"
+      className="w-full min-h-screen h-full flex flex-col items-center text-white"
     >
-      <div className="my-20">
+      <div className="mt-20 mb-10">
         <AnimateWord
           word="Experience"
           f_smallest="text-[2.5rem]"
@@ -64,28 +97,12 @@ export default function Experience() {
           fill_col="transparent"
           pixel={1.5}
           delay={0}
-          once={false}
           strokeDuration={2.5}
         />
       </div>
-      <p className="text-5xl font-caveat font-bold text-white">Languages</p>
-      <div className="flex flex-row gap-16 flex-wrap justify-center my-10">
-        {languages.map((tech) => (
-          <div className="w-20 h-20 sm:w-24 sm:h-24" key={tech.name}>
-            <BallCavas icon={tech.icon} />
-          </div>
-        ))}
-      </div>
-      <p className="text-5xl font-caveat font-bold text-white">
-        Frameworks & Tools
-      </p>
-      <div className="flex flex-row gap-16 flex-wrap justify-center my-10">
-        {frameworksTools.map((tech) => (
-          <div className="w-20 h-20 sm:w-24 sm:h-24" key={tech.name}>
-            <BallCavas icon={tech.icon} />
-          </div>
-        ))}
-      </div>
+      {renderBallCanvases("Languages", languages)}
+      {renderBallCanvases("Framework & Tools", frameworksTools)}
+      {renderBallCanvases("Databases", databases)}
     </section>
   );
 }
