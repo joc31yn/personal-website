@@ -1,13 +1,13 @@
 "use client";
 import { motion } from "framer-motion";
 import AnimateWord from "../components/animateWord";
-import { useMediaQuery } from "../components/mobile";
 import ContactLogos from "../components/contactLogos";
 import Swal from "sweetalert2";
 import { FormEvent, useState } from "react";
 import axios from "axios";
+import SectionWrapper from "../hoc/SectionWrapper";
 
-export default function Contact() {
+const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -147,4 +147,6 @@ export default function Contact() {
       </div>
     </section>
   );
-}
+};
+
+export default SectionWrapper(Contact);

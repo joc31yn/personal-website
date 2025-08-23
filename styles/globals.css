@@ -42,6 +42,20 @@ html {
   box-sizing: border-box;
 }
 
+/* globals.css */
+.text-glow-green {
+  text-shadow: 0 0 8px #22c55e, 0 0 16px #22c55e;
+}
+
+.text-glow-yellow {
+  text-shadow: 0 0 8px #ffd600, 0 0 16px #ffd600;
+}
+
+.text-glow-blue {
+  text-shadow: 0 0 8px #0078C1, 0 0 16px #0078C1;
+}
+
+
 @media (max-width: 639px) {
   .swal2-html-container {
     padding: 0.5rem 1.5rem 0 1.5rem !important;

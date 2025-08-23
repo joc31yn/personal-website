@@ -2,12 +2,13 @@
 import AnimateWord from "../components/animateWord";
 import { useMediaQuery } from "../components/mobile";
 import ProjectCard from "../components/projectCard";
+import SectionWrapper from "../hoc/SectionWrapper";
 
-export default function Projects() {
+const Projects = () => {
   const isSmall = useMediaQuery("(max-width: 767px)");
   const isMedium = useMediaQuery("(max-width: 1023px)");
   return (
-    // need to chagne to animate on scroll
+    // need to change to animate on scroll
     <section
       id="Projects"
       className="w-full min-h-screen h-full flex flex-col items-center"
@@ -40,4 +41,6 @@ export default function Projects() {
       </div>
     </section>
   );
-}
+};
+
+export default SectionWrapper(Projects);

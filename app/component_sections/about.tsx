@@ -7,8 +7,9 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Carousel from "../components/carousel";
+import SectionWrapper from "../hoc/SectionWrapper";
 
-export default function About() {
+const About = () => {
   const isMedium = useMediaQuery("(max-width: 1023px)");
 
   useEffect(() => {
@@ -18,7 +19,7 @@ export default function About() {
   return (
     <section
       id="About"
-      className="w-full min-h-screen h-full flex flex-col items-center"
+      className="w-full h-full flex flex-col items-center"
     >
       <div className="mt-20">
         <AnimateWord
@@ -35,7 +36,7 @@ export default function About() {
       </div>
 
       <div className="w-full flex justify-center text-white md:mt-16">
-        <div className="flex items-center flex-col md:flex-row justify-center gap-8 md:gap-16 lg:gap-24 w-full h-fit px-10 sm:px-16 md:px-10 xl:px-36">
+        <div className="flex items-center flex-col md:flex-row justify-center gap-8 md:gap-16 lg:gap-24 w-full h-full">
           <div
             data-aos="fade-up"
             data-aos-anchor-placement="top-bottom"
@@ -61,7 +62,7 @@ export default function About() {
             <p className="leading-relaxed xl:mb-10 text-center md:text-left">
               Hey, I'm Jocelyn :D and I'm currently in my 2nd year studying{" "}
               <span className="inline-flex items-center gap-1 whitespace-nowrap">
-                <span className="text-xl font-mono text-green-400 font-semibold">
+                <span className="text-xl font-mono text-green-400 font-semibold text-glow-green">
                   {"{"}
                 </span>
                 <MatrixGlitchText
@@ -71,27 +72,37 @@ export default function About() {
                   glitchSpeed={100}
                   startDelay={100}
                 />
-                <span className="text-xl font-mono text-green-400 font-semibold">
+                <span className="text-xl font-mono text-green-400 font-semibold text-glow-green">
                   {"}"}
                 </span>
               </span>{" "}
               at the{" "}
               <span className="inline-flex items-center gap-1 whitespace-nowrap">
-                <span className="text-xl font-mono text-waterlooYellow font-semibold">
+                <span className="text-xl font-mono text-waterlooYellow font-semibold text-glow-yellow">
                   {"{"}
                 </span>{" "}
                 <span className="sm:text-xl font-mono">
                   University of Waterloo
                 </span>{" "}
-                <span className="text-xl font-mono text-waterlooYellow font-semibold">
+                <span className="text-xl font-mono text-waterlooYellow font-semibold text-glow-yellow">
                   {"}"}
                 </span>
               </span>
-              . I'm currently on co-op working at BMO as a Software Developer!
-              But enough about career... In my free time I LOVE playing ping
-              pong and badminton, or any sport at that. If you ever find me,
-              invite me to a game, I love the challenge and getting to meet new
-              people {"\u{1F929}"}
+              . I'm currently on co-op working at{" "}
+              <span className="inline-flex items-center gap-1 whitespace-nowrap">
+                <span className="text-xl font-mono text-[#0078C1] font-semibold text-glow-blue">
+                  {"{"}
+                </span>{" "}
+                <span className="sm:text-xl font-mono">BMO</span>{" "}
+                <span className="text-xl font-mono text-[#0078C1] font-semibold text-glow-blue">
+                  {"}"}
+                </span>
+              </span>{" "}
+              as a Software Developer! But enough about career [find more in the
+              next sections ;)]... In my free time I LOVE playing ping pong and
+              badminton, or any sport at that. If you ever find me, invite me to
+              a game, I love the challenge and getting to meet new people{" "}
+              {"\u{1F929}"}
             </p>
             <div>
               <p className="mb-2 sm:mb-8">
@@ -104,4 +115,5 @@ export default function About() {
       </div>
     </section>
   );
-}
+};
+export default SectionWrapper(About);

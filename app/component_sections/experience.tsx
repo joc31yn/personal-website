@@ -2,6 +2,7 @@
 import AnimateWord from "../components/animateWord";
 import { useMediaQuery } from "../components/mobile";
 import BallCavas from "@/app/components/canvas/BallCanvas";
+import SectionWrapper from "../hoc/SectionWrapper";
 
 const languages = [
   {
@@ -35,7 +36,7 @@ const frameworksTools = [
     name: "React",
     icon: "/frameworks-tools/react.svg",
   },
-    {
+  {
     name: "Angular",
     icon: "/frameworks-tools/angular.svg",
   },
@@ -58,7 +59,7 @@ const databases = [
     name: "Supabase",
     icon: "/databases/supabase.svg",
   },
-    {
+  {
     name: "MongoDB",
     icon: "/databases/mongo.svg",
   },
@@ -68,10 +69,13 @@ const databases = [
   },
 ];
 
-export default function Experience() {
-  const renderBallCanvases = (title: string, data: {name: string, icon: string}[]) => (
+const Experience = () => {
+  const renderBallCanvases = (
+    title: string,
+    data: { name: string; icon: string }[]
+  ) => (
     <>
-    <p className="text-5xl font-caveat font-bold">{title}</p>
+      <p className="text-5xl font-caveat font-bold">{title}</p>
       <div className="flex flex-row gap-16 flex-wrap justify-center my-10">
         {data.map((tech) => (
           <div className="w-20 h-20 sm:w-24 sm:h-24" key={tech.name}>
@@ -80,7 +84,7 @@ export default function Experience() {
         ))}
       </div>
     </>
-  )
+  );
   return (
     // need to chagne to animate on scroll
     <section
@@ -105,4 +109,6 @@ export default function Experience() {
       {renderBallCanvases("Databases", databases)}
     </section>
   );
-}
+};
+
+export default SectionWrapper(Experience);
