@@ -15,7 +15,7 @@ export default function ProjectCard(props: ProjectCardProps) {
       <Image src={props.imgUrl} alt={props.alt} height={250} width={450} />
       <div className="px-3 py-2 w-full text-wrap">
         <p className="text-2xl font-bold">{props.title}</p>
-        <p>{props.description}</p>
+        <p className="text-sm">{props.description}</p>
       </div>
     </div>
   );

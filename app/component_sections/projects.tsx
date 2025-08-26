@@ -13,7 +13,7 @@ const Projects = () => {
       id="Projects"
       className="w-full min-h-screen h-full flex flex-col items-center"
     >
-      <div className="mt-20">
+      <div className="mt-24">
         <AnimateWord
           word="Projects"
           f_smallest="text-[2.5rem]"

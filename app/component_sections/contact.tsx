@@ -6,6 +6,9 @@ import Swal from "sweetalert2";
 import { FormEvent, useState } from "react";
 import axios from "axios";
 import SectionWrapper from "../hoc/SectionWrapper";
+import { SiGithub } from "react-icons/si";
+import { SlSocialLinkedin } from "react-icons/sl";
+import { BiLogoGmail } from "react-icons/bi";
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -60,7 +63,7 @@ const Contact = () => {
       id="Contact"
       className="relative w-full min-h-screen h-full flex flex-col items-center justify-between"
     >
-      <div className="mt-20">
+      <div className="mt-24">
         <AnimateWord
           word="Contact"
           f_smallest="text-[2.5rem]"
@@ -99,7 +102,7 @@ const Contact = () => {
         />
         <textarea
           name="message"
-          className="w-full h-28 sm:h-40 resize-none my-2 py-4 px-3 bg-transparent border-[1px] rounded-xl border-gray-200 placeholder:text-gray-400 outline-none focus:border-gray-200 focus:outline focus:outline-2 focus:outline-white focus:outline-offset-4 transition-shadow"
+          className="w-full h-32 sm:h-40 resize-none my-2 py-4 px-3 bg-transparent border-[1px] rounded-xl border-gray-200 placeholder:text-gray-400 outline-none focus:border-gray-200 focus:outline focus:outline-2 focus:outline-white focus:outline-offset-4 transition-shadow"
           placeholder="Enter your message!"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
@@ -126,20 +129,17 @@ const Contact = () => {
       <div className="flex flex-col gap-6 items-center justify-center text-gray-300 p-5">
         <div className="flex flex-row gap-10 items-center justify-center">
           <ContactLogos
-            svgUrl="/myContacts/linkedin.svg"
+            icon={<SlSocialLinkedin className="text-black w-6 h-6" />}
             link="https://www.linkedin.com/in/jocelyn-xu-741106289/"
-            alt="linkedin"
-          />
+          ></ContactLogos>
           <ContactLogos
-            svgUrl="/myContacts/github.svg"
+            icon={<SiGithub className="text-black w-6 h-6" />}
             link="https://github.com/joc31yn"
-            alt="github"
-          />
+          ></ContactLogos>
           <ContactLogos
-            svgUrl="/myContacts/gmail.svg"
+            icon={<BiLogoGmail className="text-black w-6 h-6" />}
             link="mailto:joce.xxt22@gmail.com"
-            alt="gmail"
-          />
+          ></ContactLogos>
         </div>
         <p className="text-xs md:text-sm">
           &copy; 2025 Jocelyn Xu. All rights reserved.

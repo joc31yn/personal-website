@@ -5,6 +5,9 @@ import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import ContactLogos from "./contactLogos";
+import { SiGithub } from "react-icons/si";
+import { SlSocialLinkedin } from "react-icons/sl";
+import { BiLogoGmail } from "react-icons/bi";
 
 export default function Nav() {
   const navItems = ["About", "Experience", "Projects", "Contact"];
@@ -80,23 +83,20 @@ export default function Nav() {
               </div>
               <div className="flex flex-row gap-10 items-center justify-center mb-20">
                 <ContactLogos
-                  svgUrl="/myContacts/linkedin.svg"
+                  icon={<SlSocialLinkedin className="text-black w-6 h-6" />}
                   link="https://www.linkedin.com/in/jocelyn-xu-741106289/"
-                  alt="linkedin"
                   usedInNav={true}
-                />
+                ></ContactLogos>
                 <ContactLogos
-                  svgUrl="/myContacts/github.svg"
+                  icon={<SiGithub className="text-black w-6 h-6" />}
                   link="https://github.com/joc31yn"
-                  alt="github"
                   usedInNav={true}
-                />
+                ></ContactLogos>
                 <ContactLogos
-                  svgUrl="/myContacts/gmail.svg"
+                  icon={<BiLogoGmail className="text-black w-6 h-6" />}
                   link="mailto:joce.xxt22@gmail.com"
-                  alt="gmail"
                   usedInNav={true}
-                />
+                ></ContactLogos>
               </div>
             </motion.div>
           )}
