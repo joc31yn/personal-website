@@ -5,14 +5,14 @@ import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const images = [
-  "/carousel/matcha.svg",
-  "/carousel/pingpong.svg",
-  "/carousel/kayak.svg",
-  //   "/carousel/aurora.jpg",
-  "/carousel/half_marathon.svg",
-  "/carousel/ice.svg",
-  "/carousel/biking.svg",
-  "/carousel/minion.svg",
+  "/carousel/matcha.jpg",
+  "/carousel/pingpong.jpg",
+  "/carousel/kayak.jpg",
+  "/carousel/half_marathon.jpg",
+  "/carousel/ice.jpg",
+  "/carousel/biking.jpg",
+  "/carousel/minion.jpg",
+  "/carousel/bear.jpg",
 ];
 
 export default function Carousel() {

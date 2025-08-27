@@ -128,18 +128,15 @@ const Contact = () => {
       </form>
       <div className="flex flex-col gap-6 items-center justify-center text-gray-300 p-5">
         <div className="flex flex-row gap-10 items-center justify-center">
-          <ContactLogos
-            icon={<SlSocialLinkedin className="text-black w-6 h-6" />}
-            link="https://www.linkedin.com/in/jocelyn-xu-741106289/"
-          ></ContactLogos>
-          <ContactLogos
-            icon={<SiGithub className="text-black w-6 h-6" />}
-            link="https://github.com/joc31yn"
-          ></ContactLogos>
-          <ContactLogos
-            icon={<BiLogoGmail className="text-black w-6 h-6" />}
-            link="mailto:joce.xxt22@gmail.com"
-          ></ContactLogos>
+          <ContactLogos link="https://www.linkedin.com/in/jocelyn-xu-741106289/">
+            <SlSocialLinkedin className="text-black w-6 h-6" />
+          </ContactLogos>
+          <ContactLogos link="https://github.com/joc31yn">
+            <SiGithub className="text-black w-6 h-6" />
+          </ContactLogos>
+          <ContactLogos link="mailto:joce.xxt22@gmail.com">
+            <BiLogoGmail className="text-black w-6 h-6" />
+          </ContactLogos>
         </div>
         <p className="text-xs md:text-sm">
           &copy; 2025 Jocelyn Xu. All rights reserved.

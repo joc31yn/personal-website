@@ -68,7 +68,7 @@ export default function Nav() {
                 ease: [0.22, 1, 0.36, 1], // easeOutCubic
               }}
             >
-              <div className="flex flex-col items-center justify-center gap-5 my-5 h-full">
+              <div className="flex flex-col items-center justify-center gap-5 my-5 h-full overflow-y-auto">
                 {navItems.map((e) => (
                   <div key={e} className="text-center p-3">
                     <a
@@ -81,22 +81,16 @@ export default function Nav() {
                   </div>
                 ))}
               </div>
-              <div className="flex flex-row gap-10 items-center justify-center mb-20">
-                <ContactLogos
-                  icon={<SlSocialLinkedin className="text-black w-6 h-6" />}
-                  link="https://www.linkedin.com/in/jocelyn-xu-741106289/"
-                  usedInNav={true}
-                ></ContactLogos>
-                <ContactLogos
-                  icon={<SiGithub className="text-black w-6 h-6" />}
-                  link="https://github.com/joc31yn"
-                  usedInNav={true}
-                ></ContactLogos>
-                <ContactLogos
-                  icon={<BiLogoGmail className="text-black w-6 h-6" />}
-                  link="mailto:joce.xxt22@gmail.com"
-                  usedInNav={true}
-                ></ContactLogos>
+              <div className="flex flex-row gap-10 items-center justify-center mb-10">
+                <ContactLogos link="https://www.linkedin.com/in/jocelyn-xu-741106289/">
+                  <SlSocialLinkedin className="text-black w-8 h-8" />
+                </ContactLogos>
+                <ContactLogos link="https://github.com/joc31yn">
+                  <SiGithub className="text-black w-8 h-8" />
+                </ContactLogos>
+                <ContactLogos link="mailto:joce.xxt22@gmail.com">
+                  <BiLogoGmail className="text-black w-8 h-8" />
+                </ContactLogos>
               </div>
             </motion.div>
           )}

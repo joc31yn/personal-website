@@ -45,7 +45,7 @@ const About = () => {
           >
             <Image
               className="md:-rotate-[8deg]"
-              src="headshot.svg"
+              src="/headshot.png"
               alt="headshot"
               fill
               style={{ objectFit: "contain" }}

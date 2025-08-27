@@ -2,6 +2,7 @@
 import AnimateWord from "../components/animateWord";
 import { useMediaQuery } from "../components/mobile";
 import ProjectCard from "../components/projectCard";
+import ProjectChip from "../components/projectChip";
 import SectionWrapper from "../hoc/SectionWrapper";
 
 const Projects = () => {
@@ -37,7 +38,10 @@ const Projects = () => {
           experiences and job postings, it automatically selects and rewrites
           the most relevant bullet points, generating ATS-optimized PDFs.`}
           link="https://resu-mix.vercel.app/"
-        />
+        >
+          <ProjectChip text="Python" border_bg="4B8BBE" />
+           <ProjectChip text="React" border_bg="61DBFB" />
+        </ProjectCard>
       </div>
     </section>
   );
