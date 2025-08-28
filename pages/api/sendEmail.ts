@@ -20,10 +20,11 @@ export default async function handler(
     text: `Hello,\n\nYou have a new form entry from: ${name} (${email}).\n\n${message}`,
   };
   try {
-    const emailRes = await client.messages.create(DOMAIN, messageData);
+    await client.messages.create(DOMAIN, messageData);
     res
       .status(200)
       .json({ submitted: true, message: "Email sent successfully!" });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     console.log(err);
     res.status(err.status || 500).json({

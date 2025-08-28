@@ -45,7 +45,7 @@ export default function MatrixGlitchText({
       // Stop animation when out of view
       setIsAnimating(false);
     }
-  }, [inView, text, startDelay]);
+  }, [inView, text, startDelay, textLen]);
 
   // Glitch animation
   useEffect(() => {
@@ -55,7 +55,7 @@ export default function MatrixGlitchText({
       setDisplayText((prev) => {
         const newText = [...prev];
         // Replace with local completed tracking
-        let localCompleted = prev.map((char, i) => completedLetters[i]);
+        const localCompleted = prev.map((char, i) => completedLetters[i]);
 
         text.split("").forEach((targetChar, index) => {
           if (!localCompleted[index]) {

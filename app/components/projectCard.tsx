@@ -13,7 +13,7 @@ interface ProjectCardProps {
 
 export default function ProjectCard({
   title,
-  githubLink,
+  // githubLink,
   imgUrl,
   alt,
   description,

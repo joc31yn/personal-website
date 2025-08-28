@@ -99,7 +99,7 @@ export default function AnimateWord({
     handleResize();
 
     // Debounce resize events to prevent excessive re-renders
-    let timeoutId: any;
+    let timeoutId: ReturnType<typeof setTimeout>;
     const debouncedResize = () => {
       clearTimeout(timeoutId);
       timeoutId = setTimeout(handleResize, 100);
