@@ -45,6 +45,7 @@ const Contact = () => {
           confirmButtonColor: "#000000",
         });
       }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       console.log(err);
       Swal.fire({

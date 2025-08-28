@@ -1,6 +1,5 @@
 "use client";
 import AnimateWord from "../components/animateWord";
-import { useMediaQuery } from "../components/mobile";
 import Image from "next/image";
 import MatrixGlitchText from "../components/matrixGlitchText";
 import { useEffect } from "react";
@@ -10,8 +9,6 @@ import Carousel from "../components/carousel";
 import SectionWrapper from "../hoc/SectionWrapper";
 
 const About = () => {
-  const isMedium = useMediaQuery("(max-width: 1023px)");
-
   useEffect(() => {
     AOS.init({ duration: 750 });
   });
@@ -60,7 +57,8 @@ const About = () => {
             data-aos-anchor-placement="top-bottom"
           >
             <p className="leading-relaxed xl:mb-10 text-center md:text-left">
-              Hey, I'm Jocelyn :D and I'm currently in my 2nd year studying{" "}
+              Hey, I&apos;m Jocelyn :D and I&apos;m currently in my 2nd year
+              studying{" "}
               <span className="inline-flex items-center gap-1 whitespace-nowrap">
                 <span className="text-xl font-mono text-green-400 font-semibold text-glow-green">
                   {"{"}
@@ -88,7 +86,7 @@ const About = () => {
                   {"}"}
                 </span>
               </span>
-              . I'm currently on co-op working at{" "}
+              . I&apos;m currently on co-op working at{" "}
               <span className="inline-flex items-center gap-1 whitespace-nowrap">
                 <span className="text-xl font-mono text-[#0078C1] font-semibold text-glow-blue">
                   {"{"}

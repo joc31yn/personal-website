@@ -8,6 +8,7 @@ import ContactLogos from "./contactLogos";
 import { SiGithub } from "react-icons/si";
 import { SlSocialLinkedin } from "react-icons/sl";
 import { BiLogoGmail } from "react-icons/bi";
+import Link from "next/link";
 
 export default function Nav() {
   const navItems = ["About", "Experience", "Projects", "Contact"];
@@ -31,7 +32,7 @@ export default function Nav() {
     <>
       <div className="block md:hidden bg-white flex-row px-3 py-2 items-center justify-between relative z-10">
         <div className="md:hidden fixed top-0 left-0 w-full bg-white flex flex-row px-3 py-2 items-center justify-between z-20">
-          <a
+          <Link
             href="/"
             onClick={(e) => {
               e.preventDefault();
@@ -46,7 +47,7 @@ export default function Nav() {
               width={48}
               height={48}
             />
-          </a>
+          </Link>
           <button onClick={toggleMenu}>
             {menuOpen ? (
               <X className="w-6 h-6 sm:w-8 sm:h-8" />
@@ -98,7 +99,7 @@ export default function Nav() {
       </div>
       {/* Desktop View */}
       <div className="hidden bg-white md:flex flex-row px-5 py-2 items-center justify-between fixed top-0 left-0 w-full z-20">
-        <a
+        <Link
           href="/"
           onClick={(e) => {
             e.preventDefault();
@@ -113,7 +114,7 @@ export default function Nav() {
             width={48}
             height={48}
           />
-        </a>
+        </Link>
         <div className="flex flex-row gap-24 lg:gap-28">
           {navItems.map((e) => (
             <a
