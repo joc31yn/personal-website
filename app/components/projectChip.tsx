@@ -53,7 +53,7 @@ export default function ProjectChip({ text, border_bg }: ProjectChipProps) {
       />
 
       <span
-        className={`relative z-10 font-semibold`}
+        className={`relative font-semibold`}
         style={{ color: `#${border_bg}` }}
       >
         {text}

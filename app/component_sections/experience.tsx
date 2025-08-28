@@ -25,10 +25,10 @@ const languages = [
     name: "Racket",
     icon: "/languages/racket.svg",
   },
-  {
-    name: "SQL",
-    icon: "/languages/sql.svg",
-  },
+  // {
+  //   name: "SQL",
+  //   icon: "/languages/sql.svg",
+  // },
 ];
 
 const frameworksTools = [
@@ -45,6 +45,14 @@ const frameworksTools = [
     icon: "/frameworks-tools/tailwind.svg",
   },
   {
+    name: "Next.js",
+    icon: "/frameworks-tools/nextjs.png",
+  },
+  {
+    name: "Flask",
+    icon: "/frameworks-tools/flask.png",
+  },
+  {
     name: "Git",
     icon: "/frameworks-tools/git.svg",
   },
@@ -55,6 +63,10 @@ const frameworksTools = [
 ];
 
 const databases = [
+  {
+    name: "PostgreSQL",
+    icon: "/databases/postgresql.svg",
+  },
   {
     name: "Supabase",
     icon: "/databases/supabase.svg",

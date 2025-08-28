@@ -21,8 +21,16 @@ export default function ProjectCard({
   children,
 }: ProjectCardProps) {
   const CardContent = (
-    <div className="w-[400px] text-white border-2 border-white rounded-xl overflow-hidden transition-transform duration-200">
-      <Image src={imgUrl} alt={alt} height={400} width={400} />
+    <div className="w-[320px] sm:w-[380px] text-white border-2 border-white rounded-xl overflow-hidden transition-transform duration-200">
+      <div className="relative w-full h-48">
+        <Image
+          className="object-cover border-b-2 border-white"
+          src={imgUrl}
+          alt={alt}
+          fill
+          sizes="380px"
+        />
+      </div>
       <div className="px-3 py-2 w-full">
         <div className="text-wrap mb-3">
           <p className="text-2xl font-bold">{title}</p>

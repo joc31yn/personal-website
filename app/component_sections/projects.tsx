@@ -13,8 +13,7 @@ const Projects = () => {
       alt: "Resumix home page",
       description: `ML-powered resume builder that tailors resumes to specific job
           descriptions. By analyzing the semantic similarity between a user's
-          experiences and job postings, it automatically selects and rewrites
-          the most relevant bullet points, generating ATS-optimized PDFs.`,
+          experiences and job postings, it selects the most relevant bullet points, generating ATS-optimized PDFs.`,
       link: "",
       chips: [
         {
@@ -36,7 +35,7 @@ const Projects = () => {
       githubLink: "test",
       imgUrl: "/projects/battleship.png",
       alt: "Battleship game",
-      description: `An interactive Battleship implementation built using Java and Java Swing with dynamic GUI components, real-time game statistics, audio integration, and intelligent AI opponents through modular class architecture.`,
+      description: `An interactive Battleship implementation built with dynamic GUI components, real-time game statistics, audio integration, and AI opponents, through modular class architecture.`,
       link: "",
       chips: [
         {
@@ -66,7 +65,7 @@ const Projects = () => {
       githubLink: "test",
       imgUrl: "/projects/ecosim.png",
       alt: "Ecosim graph",
-      description: `An interactive ecological simulator to teach sustainability, biodiversity, and food chains by building different ecosystems and using algorithms to model interactions like hunting, hunger, and reproduction, to show how long the custom ecosystem survives.`,
+      description: `an interactive ecological simulator aimed to teach sustainability and biodiversity using algorithmic modeling (hunting, hunger, reproduction) with visual graphs to predict ecosystem survival timeline.`,
       link: "",
       chips: [
         {
@@ -80,6 +79,36 @@ const Projects = () => {
         {
           text: "Javascript",
           border_bg: "F2BF25",
+        },
+      ],
+    },
+    {
+      name: "Personal Website",
+      githubLink: "test",
+      imgUrl: "/projects/personal_website.png",
+      alt: "Ecosim graph",
+      description: `A responsive, component-based architecture portfolio featuring fluid animations, interactive 3D objects, and an end-to-end contact form using Axios and Mailgun API for client communication.`,
+      link: "",
+      chips: [
+        {
+          text: "Typescript",
+          border_bg: "007acc",
+        },
+        {
+          text: "React",
+          border_bg: "61DBFB",
+        },
+        {
+          text: "Next.js",
+          border_bg: "8B8B8B",
+        },
+        {
+          text: "Three.js",
+          border_bg: "A49DF2",
+        },
+        {
+          text: "Mailgun",
+          border_bg: "C22026",
         },
       ],
     },
@@ -104,7 +133,7 @@ const Projects = () => {
           strokeDuration={2.5}
         />
       </div>
-      <div className="flex flex-row flex-wrap gap-10 my-10">
+      <div className="flex flex-row flex-wrap gap-10 my-10 justify-center">
         {projects.map((project, i) => (
           <ProjectCard
             key={`${project.name}-${i}`}
