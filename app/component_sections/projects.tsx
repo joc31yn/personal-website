@@ -13,7 +13,7 @@ const Projects = () => {
       alt: "Resumix home page",
       description: `ML-powered resume builder that tailors resumes to specific job
           descriptions. By analyzing the semantic similarity between a user's
-          experiences and job postings, it selects the most relevant bullet points, generating ATS-optimized PDFs.`,
+          experiences and job postings, it selects the most relevant points, generating ATS-optimized resume PDFs.`,
       link: "",
       chips: [
         {

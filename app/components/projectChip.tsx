@@ -45,9 +45,9 @@ export default function ProjectChip({ text, border_bg }: ProjectChipProps) {
         initial={{ x: "-100%" }}
         animate={{ x: "200%" }}
         transition={{
-          duration: 2.5,
+          duration: 1.5,
           repeat: Infinity,
-          repeatDelay: 1,
+          repeatDelay: 2,
           ease: "easeInOut",
         }}
       />

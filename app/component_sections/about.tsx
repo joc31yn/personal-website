@@ -51,7 +51,7 @@ const About = () => {
             />
           </div>
           <div
-            className="flex flex-col gap-8 text-base sm:text-lg font-lato"
+            className="flex flex-col gap-8 text-lg sm:text-xl font-lato"
             data-aos="fade-up"
             data-aos-once="true"
             data-aos-anchor-placement="top-bottom"
@@ -103,7 +103,7 @@ const About = () => {
               {"\u{1F929}"}
             </p>
             <div>
-              <p className="mb-2 sm:mb-8">
+              <p className="mb-2 sm:mb-8 text-lg md:text-xl">
                 A couple snapshots of my interests&nbsp;&nbsp;📸
               </p>
               <Carousel />

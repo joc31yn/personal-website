@@ -79,7 +79,7 @@ const Contact = () => {
       </div>
       <form
         onSubmit={onSubmit}
-        className="w-[75%] min-w-64 max-w-[800px] text-white flex flex-col justify-center gap-5 relative"
+        className="w-[100%] min-w-64 max-w-[800px] text-white flex flex-col justify-center gap-5 relative"
       >
         <input
           type="text"

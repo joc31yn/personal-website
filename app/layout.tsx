@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Caveat, Open_Sans, Sora, Lato } from "next/font/google";
 import "../styles/globals.css";
 import Nav from "@/app/components/nav";
-import CanvasCursor from "@/cursors/canvasCursor";
 
 const caveat = Caveat({
   subsets: ["latin"],
@@ -47,7 +46,6 @@ export default function RootLayout({
         className={`${caveat.variable} ${opensans.variable} ${sora.variable} ${lato.variable} antialiased`}
       >
         <Nav />
-        <CanvasCursor />
         {children}
       </body>
     </html>
