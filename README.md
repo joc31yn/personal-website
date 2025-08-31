@@ -3,7 +3,6 @@
 Welcome to the source code for my personal website!  
 This site is built with [Next.js](https://nextjs.org/), [React](https://react.dev/), and [TypeScript](https://www.typescriptlang.org/), and showcases my projects, experience, and skills as an aspiring full stack developer and software engineer.
 
----
 
 ## Live Demo 💻
 Check out the live site here: [https://jocelynxu.vercel.app/](https://jocelynxu.vercel.app/)
@@ -16,7 +15,6 @@ Check out the live site here: [https://jocelynxu.vercel.app/](https://jocelynxu.
 - **Contact Form:** End-to-end contact form using Mailgun API for secure client communication.
 - **Custom Canvas Cursor 💞:** Canvas-based animated cursor for enhanced interactivity (desktop only).
 
----
 
 ## Tech Stack 🛠️
 
@@ -24,7 +22,6 @@ Check out the live site here: [https://jocelynxu.vercel.app/](https://jocelynxu.
 - **Backend:** Node.js, Mailgun API
 - **Other Tools:** SweetAlert2, React Icons
 
----
 
 ## Fun Challenges & Things I Learned ✨
  
@@ -36,6 +33,6 @@ Check out the live site here: [https://jocelynxu.vercel.app/](https://jocelynxu.
 👉 This project is **still ongoing**! I’m actively refining design/animations, optimizing performance, and adding new sections as I grow my portfolio.  
 
 ## Contact 📬
-- Fill out the [contact form on my website](https://jocelynxu.vercel.app/#contact)  
+- Fill out the [contact form on my website](https://jocelynxu.vercel.app/#Contact)  
 - Email me directly at **joce.xxt22@gmail.com**  
 - Or reach out on [LinkedIn](https://www.linkedin.com/in/jocelyn-xu-741106289/)
