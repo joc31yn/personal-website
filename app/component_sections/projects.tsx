@@ -112,6 +112,42 @@ const Projects = () => {
         },
       ],
     },
+    {
+      name: "TEDxUW",
+      githubLink: "test",
+      imgUrl: "/projects/tedxuw.png",
+      alt: "TEDxUW Website",
+      description: `Built website for TEDxUW 2025 Conference featuring event speakers, organizers, sponsors, past themes and timelines, and a ticket purchasing page.`,
+      link: "",
+      chips: [
+        {
+          text: "React",
+          border_bg: "61DBFB",
+        },
+        {
+          text: "Next.js",
+          border_bg: "8B8B8B",
+        },
+      ],
+    },
+    {
+      name: "UWDSC Website",
+      githubLink: "test",
+      imgUrl: "/projects/uwdsc_website.png",
+      alt: "UWDSC Website",
+      description: `temp`,
+      link: "",
+      chips: [
+        {
+          text: "React",
+          border_bg: "61DBFB",
+        },
+        {
+          text: "Next.js",
+          border_bg: "8B8B8B",
+        },
+      ],
+    },
   ];
 
   return (

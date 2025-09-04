@@ -41,7 +41,7 @@ export default function Landing() {
           word="Welcome"
           f_smallest="text-[4.2rem]"
           f_sm="text-8xl"
-          f_lg="text-[8rem]"
+          f_lg="text-8xl"
           border_col="#ffffff"
           fill_col="transparent"
           pixel={2.5}

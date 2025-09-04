@@ -19,6 +19,7 @@ export default {
         poppins: ["var(--font-opensans)", "sans-serif"],
         sora: ["var(--font-sora)", "sans-serif"],
         lato: ["var(--font-lato)", "sans-serif"],
+        cinzel: ["var(--font-cinzel)", "serif"],
       },
     },
   },

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Caveat, Open_Sans, Sora, Lato } from "next/font/google";
+import { Caveat, Open_Sans, Sora, Lato, Cinzel } from "next/font/google";
 import "../styles/globals.css";
 import Nav from "@/app/components/nav";
 
@@ -27,6 +27,12 @@ const lato = Lato({
   variable: "--font-lato",
 });
 
+const cinzel = Cinzel({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-cinzel",
+})
+
 export const metadata: Metadata = {
   title: "Jocelyn Xu",
   icons: {
@@ -43,7 +49,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${caveat.variable} ${opensans.variable} ${sora.variable} ${lato.variable} antialiased`}
+        className={`${caveat.variable} ${opensans.variable} ${sora.variable} ${lato.variable} ${cinzel.variable} antialiased`}
       >
         <Nav />
         {children}

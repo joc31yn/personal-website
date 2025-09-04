@@ -3,6 +3,7 @@ import AnimateWord from "../components/animateWord";
 import BallCavas from "@/app/components/canvas/BallCanvas";
 import SectionWrapper from "../hoc/SectionWrapper";
 import { useEffect, useRef, useState } from "react";
+import BigDipperTimeline from "../components/bigDipperTimeline";
 
 const languages = [
   {
@@ -81,6 +82,58 @@ const databases = [
   },
 ];
 
+const items = [
+  {
+    id: "1",
+    title: "Bank of Montreal Jr Software Developer",
+    displayTitle: "BMO Software Developer",
+    date: "May 2025 — Present",
+    summary: "Lexicon Design System: Built and optimized 10+ responsive, WCAG 2.2 AA accessible Web Components, expanding the use of the Lexicon Design System to 300+ developers, designers, and UX teams. By automating 250+ unit and E2E tests with Jest and Playwright and managing bi-weekly releases with semantic versioning, I boosted developer efficiency by 48% and improved accessibility, UI/UX, and consistency for 60,000+ clients.",
+  },
+  {
+    id: "2",
+    title: "First Project",
+    displayTitle: "test",
+    date: "2020",
+    summary: "Quiz app",
+  },
+  {
+    id: "3",
+    title: "Hackathon",
+    displayTitle: "testtest",
+    date: "2021",
+    summary: "Category win",
+  },
+  {
+    id: "4",
+    title: "Internship",
+    displayTitle: "testtest",
+    date: "2022",
+    summary: "Frontend intern",
+  },
+  {
+    id: "5",
+    title: "MERN App",
+    displayTitle: "testtest",
+    date: "2023",
+    summary: "Shipped",
+  },
+  {
+    id: "6",
+    title: "Datathon Lead",
+    displayTitle: "testest",
+    date: "2024",
+    summary: "Organized",
+  },
+  {
+    id: "7",
+    title: "Now",
+    displayTitle: "testsetestes",
+    date: "2025",
+    summary: "Building delightful UX",
+  },
+];
+
 const useIntersectionObserver = (
   options: IntersectionObserverInit = {}
 ): [React.RefObject<HTMLElement | null>, boolean] => {
@@ -152,6 +205,9 @@ const Experience = () => {
           delay={0}
           strokeDuration={2.5}
         />
+      </div>
+      <div className="w-full">
+        <BigDipperTimeline items={items} title="" subtitle="" />
       </div>
       {isInView && (
         <div>
