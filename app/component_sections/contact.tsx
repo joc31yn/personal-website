@@ -4,7 +4,6 @@ import AnimateWord from "../components/animateWord";
 import ContactLogos from "../components/contactLogos";
 import Swal from "sweetalert2";
 import { FormEvent, useState } from "react";
-import axios from "axios";
 import SectionWrapper from "../hoc/SectionWrapper";
 import { SiGithub } from "react-icons/si";
 import { SlSocialLinkedin } from "react-icons/sl";
@@ -14,15 +13,25 @@ const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = async (event: FormEvent) => {
     event.preventDefault();
+    setLoading(true);
     try {
-      const { data } = await axios.post("/api/sendEmail", {
-        name,
-        email,
-        message,
+      const res = await fetch("/api/sendEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, message }),
       });
+
+      if (!res.ok) {
+        throw new Error("Failed to send email");
+      }
+
+      const data = await res.json();
 
       if (data.submitted) {
         Swal.fire({
@@ -30,19 +39,11 @@ const Contact = () => {
           html: "Thank you for your message.",
           icon: "success",
           confirmButtonColor: "#000000",
+          allowOutsideClick: false,
         }).then(() => {
           setName("");
           setEmail("");
           setMessage("");
-        });
-      } else {
-        Swal.fire({
-          title: "Error",
-          html:
-            data.error ||
-            "Message failed to send. Please try a different method of contact.",
-          icon: "error",
-          confirmButtonColor: "#000000",
         });
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -50,12 +51,13 @@ const Contact = () => {
       console.log(err);
       Swal.fire({
         title: "Error",
-        html:
-          err.response?.data?.error ||
-          "Message failed to send. Please try a different method of contact.",
+        html: "Message failed to send. Please try a different method of contact.",
         icon: "error",
         confirmButtonColor: "#000000",
+        allowOutsideClick: false,
       });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -110,20 +112,28 @@ const Contact = () => {
           required
         ></textarea>
         <motion.button
-          className="absolute -bottom-[20%] right-[0%] text-black bg-white py-2 px-6 cursor-pointer outline-none rounded-lg"
-          whileHover="hover"
+          disabled={loading}
+          className={`absolute -bottom-[20%] right-[0%] py-2 px-6 rounded-lg outline-none transition-colors
+            ${
+              loading
+                ? "bg-gray-300 cursor-not-allowed text-gray-500"
+                : "bg-white text-black cursor-pointer"
+            }`}
+          whileHover={!loading ? "hover" : undefined}
           initial="initial"
         >
           <p className="relative text-base md:text-lg xl:text-xl">
-            <motion.span
-              className="absolute bottom-0 left-0 h-[2px] bg-black cursor-pointer"
-              variants={{
-                initial: { width: "0%" },
-                hover: { width: "100%" },
-              }}
-              transition={{ duration: 0.2 }}
-            ></motion.span>
-            Send →
+            {loading ? "Sending..." : "Send →"}
+            {!loading && (
+              <motion.span
+                className="absolute bottom-0 left-0 h-[2px] bg-black cursor-pointer"
+                variants={{
+                  initial: { width: "0%" },
+                  hover: { width: "100%" },
+                }}
+                transition={{ duration: 0.2 }}
+              ></motion.span>
+            )}
           </p>
         </motion.button>
       </form>
