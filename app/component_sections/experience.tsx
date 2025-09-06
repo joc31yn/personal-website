@@ -85,23 +85,23 @@ const databases = [
 const items = [
   {
     id: "1",
-    title: "Bank of Montreal Jr Software Developer",
+    title: "Bank of Montreal Software Developer",
     displayTitle: "BMO Software Developer",
     date: "May 2025 — Present",
-    summary: "Lexicon Design System: Built and optimized 10+ responsive, WCAG 2.2 AA accessible Web Components, expanding the use of the Lexicon Design System to 300+ developers, designers, and UX teams. By automating 250+ unit and E2E tests with Jest and Playwright and managing bi-weekly releases with semantic versioning, I boosted developer efficiency by 48% and improved accessibility, UI/UX, and consistency for 60,000+ clients.",
+    summary: "Lexicon Design System: Created 10+ responsive, WCAG 2.2 AA accessible Web Components, expanding the use of the Lexicon Design System to 300+ developers, designers, and UX teams. By automating 250+ unit and E2E tests with Jest and Playwright and managing bi-weekly releases with semantic versioning, I boosted developer efficiency by 48% and improved accessibility, UI/UX, and consistency for 60,000+ clients.",
   },
   {
     id: "2",
-    title: "First Project",
-    displayTitle: "test",
-    date: "2020",
-    summary: "Quiz app",
+    title: "UW Datascience Club VP",
+    displayTitle: "UW Datascience Club",
+    date: "Dec 2025 — Present",
+    summary: "CxC (datathon) Coordinator, Developer, Vice President of Development",
   },
   {
     id: "3",
-    title: "Hackathon",
-    displayTitle: "testtest",
-    date: "2021",
+    title: "TEDxUW SWE",
+    displayTitle: "TEDxUW SWE",
+    date: "May 2025 — Present",
     summary: "Category win",
   },
   {
@@ -206,7 +206,7 @@ const Experience = () => {
           strokeDuration={2.5}
         />
       </div>
-      <div className="w-full">
+      <div className="w-full mb-10">
         <BigDipperTimeline items={items} title="" subtitle="" />
       </div>
       {isInView && (

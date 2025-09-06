@@ -86,7 +86,7 @@ const SEGMENTS: [number, number][] = [
   [3, 4],
   [4, 5],
   [5, 6],
-  [0, 3], // might delete as makes timeline confusing
+  // [0, 3], // might delete as makes timeline confusing but essential for big dipper constellation
 ];
 
 const pct = (n: number) => Math.max(0, Math.min(100, n));
@@ -99,6 +99,7 @@ export default function BigDipperTimeline({
 }: BigDipperTimelineProps) {
   const [active, setActive] = useState<number | null>(null);
   const [openId, setOpenId] = useState<string | null>(null);
+  const [starHover, setStarHover] = useState(false);
 
   const points = useMemo(() => {
     if (direction === "rtl") {
@@ -120,7 +121,7 @@ export default function BigDipperTimeline({
         </p>
       </header>
       {/* bg-[radial-gradient(ellipse_at_top,rgba(20,28,48,1),#05070f)] shadow-[0_0_60px_rgba(60,120,255,0.15)_inset] */}
-      <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden bg-[radial-gradient(ellipse_at_top,rgba(20,28,48,1),#05070f)] shadow-[0_0_60px_rgba(60,120,255,0.15)_inset]">
+      <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden bg-[radial-gradient(ellipse_at_top,rgba(20,28,48,1),#05070f)] shadow-[0_0_60px_rgba(60,120,255,0.15)_inset]">
         <TwinkleField count={90} />
 
         <svg
@@ -136,8 +137,8 @@ export default function BigDipperTimeline({
               y2={`${pct(points[b].y)}%`}
               stroke="white"
               strokeWidth={1}
-              initial={{ opacity: 0.25 }}
-              animate={{ opacity: active === a || active === b ? 0.85 : 0.25 }}
+              initial={{ opacity: 0.2 }}
+              animate={{ opacity: active === a || active === b ? 0.85 : 0.2 }}
               transition={{ type: "spring", stiffness: 120, damping: 20 }}
               style={{ filter: "drop-shadow(0 0 6px rgba(255,255,255,0.45))" }}
             />
@@ -152,36 +153,34 @@ export default function BigDipperTimeline({
             y={points[idx].y}
             label={`${item.title} · ${item.date}`}
             onOpen={() => setOpenId(item.id ?? String(idx))}
-            onHover={(v) => setActive(v ? idx : null)}
+            onHover={(v) => {
+              setActive(v ? idx : null);
+              setStarHover(v ? true : false);
+            }}
+            isActive={active === idx}
           />
         ))}
-        {/* {satellites.map((item, i) => (
-          <StarButton
-            key={`sat-${i}`}
-            index={i + 100}
-            x={item.pos.x}
-            y={item.pos.y}
-            small
-            label={`${item.title} · ${item.date}`}
-            onOpen={() => setOpenId(item.id ?? `sat-${i}`)}
-            onHover={(v) => setActive(v ? i + 100 : null)}
-          />
-        ))} */}
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3 opacity-80 w-full">
-        {items.map((it, i) => (
+        {main.map((item, i) => (
           <motion.div
-            key={it.id ?? i}
-            className="rounded-2xl border border-white/15 bg-white/10 p-3 backdrop-blur"
+            key={item.id ?? i}
+            className={`flex flex-col gap-2 rounded-xl border border-white/15 bg-white/10 p-5 backdrop-blur transition-colors ${
+              active === i && !starHover ? "border-white/30 bg-white/15" : ""
+            }`}
             initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.04 }}
+            onMouseEnter={() => setActive(i)}
+            onMouseLeave={() => setActive(null)}
           >
-            <div className="text-sm text-white/70">{it.date}</div>
-            <div className="font-medium">{it.title}</div>
-            <div className="text-white/60 text-sm mt-1">{it.summary}</div>
+            <div className="text-sm text-white/70">{item.date}</div>
+            <div className="font-medium">{item.title}</div>
+            {/* <div className="text-white/60 text-sm mt-1 max-h-24 md:max-h-32 overflow-y-scroll">
+              {item.summary}
+            </div> */}
           </motion.div>
         ))}
       </div>
@@ -191,9 +190,9 @@ export default function BigDipperTimeline({
           <Modal onClose={() => setOpenId(null)}>
             {(() => {
               const found =
-                items.find((x) => (x.id ?? "") === openId) ||
-                items.find((_, i) => String(i) === openId) ||
-                items[0];
+                main.find((x) => (x.id ?? "") === openId) ||
+                main.find((_, i) => String(i) === openId) ||
+                main[0];
               return (
                 <div className="space-y-2">
                   <h3 className="text-xl font-semibold">{found.title}</h3>
@@ -219,6 +218,7 @@ interface StarButtonProps {
   onOpen: () => void;
   onHover: (v: boolean) => void;
   small?: boolean;
+  isActive: boolean;
 }
 
 function StarButton({
@@ -229,6 +229,7 @@ function StarButton({
   onOpen,
   onHover,
   small = false,
+  isActive = false,
 }: StarButtonProps) {
   const size = small ? "text-xl md:text-2xl" : "text-2xl md:text-3xl";
 
@@ -238,11 +239,11 @@ function StarButton({
         aria-label={label}
         className={`group absolute select-none ${size} leading-none text-white -translate-x-1/2 -translate-y-1/2`}
         style={{
-          left: `${pct(x) - 1.4}%`,
-          top: `${pct(y) - 2.5}%`,
+          left: `${pct(x) - 1.5}%`,
+          top: `${pct(y) - 2.7}%`,
         }}
         initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
+        animate={{ scale: isActive ? 1.2 : 1, opacity: 1 }}
         whileHover={{ scale: 1.2 }}
         whileTap={{ scale: 0.95 }}
         onClick={onOpen}
@@ -254,13 +255,19 @@ function StarButton({
         <motion.span
           className="drop-shadow-[0_0_10px_rgba(255,255,255,0.9)]"
           animate={{
-            filter: [
-              "drop-shadow(0 0 4px rgba(255,255,255,0.7))",
-              "drop-shadow(0 0 8px rgba(255,255,255,0.9))",
-              "drop-shadow(0 0 4px rgba(255,255,255,0.7))",
-            ],
+            filter: isActive
+              ? [
+                  "drop-shadow(0 0 6px rgba(255,255,255,1))",
+                  "drop-shadow(0 0 12px rgba(255,255,255,1))",
+                  "drop-shadow(0 0 6px rgba(255,255,255,1))",
+                ]
+              : [
+                  "drop-shadow(0 0 4px rgba(255,255,255,0.6))",
+                  "drop-shadow(0 0 8px rgba(255,255,255,0.8))",
+                  "drop-shadow(0 0 4px rgba(255,255,255,0.6))",
+                ],
           }}
-          transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 1.75, repeat: Infinity, ease: "easeInOut" }}
         >
           <div className="relative w-6 h-6 md:w-9 md:h-9">
             <Image src="/star.png" alt="star" fill className="object-contain" />
@@ -268,8 +275,12 @@ function StarButton({
         </motion.span>
 
         <span
-          className="absolute inset-0 -z-10 scale-110 rounded-full opacity-0 blur-lg transition-all duration-300 group-hover:opacity-70 group-focus:opacity-70"
-          style={{ boxShadow: "0 0 40px 8px rgba(255,255,255,0.6)" }}
+          className={`absolute inset-0 -z-10 scale-110 rounded-full blur-lg transition-all duration-300 ${
+            isActive
+              ? "opacity-75"
+              : "opacity-0 group-hover:opacity-75 group-focus:opacity-75"
+          }`}
+          style={{ boxShadow: "0 0 15px 8px rgba(255,255,255,1)" }}
         />
       </motion.button>
       <span
@@ -366,7 +377,7 @@ function TwinkleField({ count = 80 }: TwinkleFieldProps) {
             width: `${s.size}rem`,
             height: `${s.size}rem`,
           }}
-          animate={{ opacity: [0.2, 0.8, 0.3] }}
+          animate={{ opacity: [0, 0.8, 0.3] }}
           transition={{
             duration: s.duration,
             delay: s.delay,
