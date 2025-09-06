@@ -108,38 +108,6 @@ export default function BigDipperTimeline({
   }, [direction]);
 
   const main = items.slice(0, 7);
-  //   const extras = items.slice(7);
-
-  //   const satellites = useMemo(() => {
-  //     if (extras.length === 0) return [] as (TimelineItem & { pos: Point })[];
-  //     const pts = points.map((p) => [p.x, p.y] as [number, number]);
-  //     const segs = SEGMENTS.map(
-  //       ([a, b]) => [pts[a], pts[b]] as [[number, number], [number, number]]
-  //     );
-  //     const lengths = segs.map(([a, b]) => Math.hypot(b[0] - a[0], b[1] - a[1]));
-  //     const total = lengths.reduce((s, n) => s + n, 0);
-
-  //     const atT = (t: number): Point => {
-  //       let d = t * total;
-  //       for (let i = 0; i < segs.length; i++) {
-  //         const L = lengths[i];
-  //         if (d <= L) {
-  //           const [a, b] = segs[i];
-  //           const r = d / L;
-  //           return { x: a[0] + (b[0] - a[0]) * r, y: a[1] + (b[1] - a[1]) * r };
-  //         }
-  //         d -= L;
-  //       }
-  //       const [ax, ay] = segs[segs.length - 1][1];
-  //       return { x: ax, y: ay };
-  //     };
-
-  //     return extras.map((item, i) => {
-  //       const t = (i + 1) / (extras.length + 1);
-  //       const p = atT(t);
-  //       return { ...item, pos: p };
-  //     });
-  //   }, [extras, points]);
 
   return (
     <div className="w-full flex flex-col gap-4 items-center justify-center">
@@ -294,7 +262,9 @@ function StarButton({
           }}
           transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
         >
-          <Image src="/star.png" className="w-6 h-6 md:w-9 md:h-9" alt="star" />
+          <div className="relative w-6 h-6 md:w-9 md:h-9">
+            <Image src="/star.png" alt="star" fill className="object-contain" />
+          </div>
         </motion.span>
 
         <span
