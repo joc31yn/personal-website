@@ -7,6 +7,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Carousel from "../components/carousel";
 import SectionWrapper from "../hoc/SectionWrapper";
+import Link from "next/link";
 
 const About = () => {
   useEffect(() => {
@@ -96,11 +97,13 @@ const About = () => {
                   {"}"}
                 </span>
               </span>{" "}
-              as a Software Developer! But enough about career [find more in the
-              next sections ;)]... In my free time I LOVE playing ping pong and
-              badminton, or any sport at that. If you ever find me, invite me to
-              a game, I love the challenge and getting to meet new people{" "}
-              {"\u{1F929}"}
+              as a Software Developer! But enough about career [find more in the{" "}
+              <Link href="#Experience">
+                <span className="">next sections</span>
+              </Link>{" "}
+              ;)]... In my free time I LOVE playing ping pong and badminton, or
+              any sport at that. If you ever find me, invite me to a game, I
+              love the challenge and getting to meet new people {"\u{1F929}"}
             </p>
             <div>
               <p className="mb-2 sm:mb-8 text-lg md:text-xl">
