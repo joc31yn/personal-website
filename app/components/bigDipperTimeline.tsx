@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 interface TimelineItem {
   id?: string;
@@ -178,7 +179,6 @@ export default function BigDipperTimeline({
         {main.map((item, idx) => (
           <StarButton
             key={item.id ?? idx}
-            index={idx}
             item={item}
             x={points[idx].x}
             y={points[idx].y}
@@ -230,7 +230,9 @@ export default function BigDipperTimeline({
                 <div className="space-y-2">
                   <h3 className="text-xl font-semibold">{found.title}</h3>
                   <p className="text-white/70 text-sm">{found.date}</p>
-                  <p className="leading-relaxed text-sm">{found.summary ?? ""}</p>
+                  <p className="leading-relaxed text-sm">
+                    {found.summary ?? ""}
+                  </p>
                 </div>
               );
             })()}
@@ -244,7 +246,6 @@ export default function BigDipperTimeline({
 interface StarButtonProps {
   x: number;
   y: number;
-  index: number;
   item: TimelineItem;
   label: string;
   onOpen: () => void;
@@ -255,7 +256,6 @@ interface StarButtonProps {
 function StarButton({
   x,
   y,
-  index,
   item,
   label,
   onOpen,
@@ -294,7 +294,7 @@ function StarButton({
           }}
           transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
         >
-          <img src="/star.png" className="w-6 h-6 md:w-9 md:h-9" />
+          <Image src="/star.png" className="w-6 h-6 md:w-9 md:h-9" alt="star" />
         </motion.span>
 
         <span
@@ -358,8 +358,17 @@ interface TwinkleFieldProps {
   count?: number;
 }
 
+interface StarProps {
+  id: number;
+  left: number;
+  top: number;
+  size: number;
+  delay: number;
+  duration: number;
+}
+
 function TwinkleField({ count = 80 }: TwinkleFieldProps) {
-  const [stars, setStars] = useState<any[]>([]);
+  const [stars, setStars] = useState<StarProps[]>([]);
   useEffect(() => {
     setStars(
       Array.from({ length: count }).map((_, i) => ({
