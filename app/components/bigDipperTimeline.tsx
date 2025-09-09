@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import ExperienceModal from "./experienceModal";
 
 interface TimelineItem {
   id?: string;
@@ -18,51 +19,6 @@ interface BigDipperTimelineProps {
   subtitle?: string;
   direction?: "ltr" | "rtl";
 }
-
-const DEFAULT_ITEMS: TimelineItem[] = [
-  {
-    id: "1",
-    title: "",
-    displayTitle: "",
-    date: "",
-    summary: "",
-  },
-  {
-    id: "2",
-    title: "",
-    displayTitle: "",
-    date: "",
-    summary: "",
-  },
-  {
-    id: "3",
-    title: "",
-    displayTitle: "",
-    date: "",
-    summary: "",
-  },
-  {
-    id: "4",
-    title: "",
-    displayTitle: "",
-    date: "",
-    summary: "",
-  },
-  {
-    id: "5",
-    title: "",
-    displayTitle: "",
-    date: "",
-    summary: "",
-  },
-  {
-    id: "6",
-    title: "",
-    displayTitle: "",
-    date: "",
-    summary: "",
-  },
-];
 
 interface Point {
   x: number;
@@ -86,13 +42,14 @@ const SEGMENTS: [number, number][] = [
   [3, 4],
   [4, 5],
   [5, 6],
-  // [0, 3], // might delete as makes timeline confusing but essential for big dipper constellation
+  [0, 3],
+  // might delete as makes timeline confusing but essential for big dipper constellation
 ];
 
-const pct = (n: number) => Math.max(0, Math.min(100, n));
+const validate = (n: number) => Math.max(0, Math.min(100, n));
 
 export default function BigDipperTimeline({
-  items = DEFAULT_ITEMS,
+  items,
   title = "Experience Constellation",
   subtitle = "The Big Dipper as a timeline",
   direction = "ltr",
@@ -108,6 +65,10 @@ export default function BigDipperTimeline({
     return DIPPER_POINTS;
   }, [direction]);
 
+  if (!items || items.length < 1) {
+    return null;
+  }
+
   const main = items.slice(0, 7);
 
   return (
@@ -122,7 +83,7 @@ export default function BigDipperTimeline({
       </header>
       {/* bg-[radial-gradient(ellipse_at_top,rgba(20,28,48,1),#05070f)] shadow-[0_0_60px_rgba(60,120,255,0.15)_inset] */}
       <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden bg-[radial-gradient(ellipse_at_top,rgba(20,28,48,1),#05070f)] shadow-[0_0_60px_rgba(60,120,255,0.15)_inset]">
-        <TwinkleField count={90} />
+        <TwinkleField count={200} />
 
         <svg
           className="absolute inset-0 w-full h-full pointer-events-none"
@@ -131,10 +92,10 @@ export default function BigDipperTimeline({
           {SEGMENTS.map(([a, b], i) => (
             <motion.line
               key={i}
-              x1={`${pct(points[a].x)}%`}
-              y1={`${pct(points[a].y)}%`}
-              x2={`${pct(points[b].x)}%`}
-              y2={`${pct(points[b].y)}%`}
+              x1={`${validate(points[a].x)}%`}
+              y1={`${validate(points[a].y)}%`}
+              x2={`${validate(points[b].x)}%`}
+              y2={`${validate(points[b].y)}%`}
               stroke="white"
               strokeWidth={1}
               initial={{ opacity: 0.2 }}
@@ -162,32 +123,34 @@ export default function BigDipperTimeline({
         ))}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 opacity-80 w-full">
-        {main.map((item, i) => (
-          <motion.div
-            key={item.id ?? i}
-            className={`flex flex-col gap-2 rounded-xl border border-white/15 bg-white/10 p-5 backdrop-blur transition-colors ${
-              active === i && !starHover ? "border-white/30 bg-white/15" : ""
-            }`}
-            initial={{ opacity: 0, y: 8 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.04 }}
-            onMouseEnter={() => setActive(i)}
-            onMouseLeave={() => setActive(null)}
-          >
-            <div className="text-sm text-white/70">{item.date}</div>
-            <div className="font-medium">{item.title}</div>
-            {/* <div className="text-white/60 text-sm mt-1 max-h-24 md:max-h-32 overflow-y-scroll">
-              {item.summary}
-            </div> */}
-          </motion.div>
-        ))}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-3 opacity-80 w-full">
+        {main.toReversed().map((item, i) => {
+          const reversedIndex = main.length - i - 1;
+          return (
+            <motion.div
+              key={item.id ?? reversedIndex}
+              className={`flex flex-col gap-2 rounded-xl border border-white/15 bg-white/10 p-5 backdrop-blur transition-colors ${
+                active === reversedIndex && !starHover
+                  ? "border-white/30 bg-white/15"
+                  : ""
+              }`}
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: reversedIndex * 0.04 }}
+              onMouseEnter={() => setActive(reversedIndex)}
+              onMouseLeave={() => setActive(null)}
+            >
+              <div className="text-sm text-white/70">{item.date}</div>
+              <div className="font-medium">{item.title}</div>
+            </motion.div>
+          );
+        })}
       </div>
 
       <AnimatePresence>
         {openId && (
-          <Modal onClose={() => setOpenId(null)}>
+          <ExperienceModal onClose={() => setOpenId(null)}>
             {(() => {
               const found =
                 main.find((x) => (x.id ?? "") === openId) ||
@@ -203,7 +166,7 @@ export default function BigDipperTimeline({
                 </div>
               );
             })()}
-          </Modal>
+          </ExperienceModal>
         )}
       </AnimatePresence>
     </div>
@@ -239,8 +202,8 @@ function StarButton({
         aria-label={label}
         className={`group absolute select-none ${size} leading-none text-white -translate-x-1/2 -translate-y-1/2`}
         style={{
-          left: `${pct(x) - 1.5}%`,
-          top: `${pct(y) - 2.7}%`,
+          left: `${validate(x) - 1.5}%`,
+          top: `${validate(y) - 2.7}%`,
         }}
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: isActive ? 1.2 : 1, opacity: 1 }}
@@ -286,52 +249,13 @@ function StarButton({
       <span
         className={`absolute select-none leading-none text-white font-cinzel font-bold -translate-x-1/2 -translate-y-1/2 text-xs md:text-base text-center`}
         style={{
-          left: `${pct(x) + (item.display_x ?? 0)}%`,
-          top: `${pct(y) + (item.display_y ?? -5)}%`,
+          left: `${validate(x) + (item.display_x ?? 0)}%`,
+          top: `${validate(y) + (item.display_y ?? -5)}%`,
         }}
       >
         {item.displayTitle}
       </span>
     </>
-  );
-}
-
-interface ModalProps {
-  children: React.ReactNode;
-  onClose: () => void;
-}
-
-function Modal({ children, onClose }: ModalProps) {
-  return (
-    <motion.div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      aria-modal="true"
-      role="dialog"
-      onClick={(e) => {
-        if (e.target === e.currentTarget) onClose();
-      }}
-    >
-      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
-      <motion.div
-        className="relative z-10 w-full max-w-lg rounded-2xl border border-white/10 bg-[linear-gradient(180deg,rgba(23,28,45,0.95),rgba(12,15,25,0.95))] p-5 shadow-2xl text-white"
-        initial={{ y: 30, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        exit={{ y: 20, opacity: 0 }}
-        transition={{ type: "spring", stiffness: 260, damping: 24 }}
-      >
-        <button
-          onClick={onClose}
-          className="absolute right-3 top-3 rounded-full border border-white/10 bg-white/5 px-2 py-1 text-xs text-white/80 hover:text-white hover:bg-white/10"
-          aria-label="Close"
-        >
-          ✕
-        </button>
-        {children}
-      </motion.div>
-    </motion.div>
   );
 }
 
@@ -358,7 +282,7 @@ function TwinkleField({ count = 80 }: TwinkleFieldProps) {
         top: Math.random() * 100,
         size: Math.random() * 0.2 + 0.05,
         delay: Math.random() * 2,
-        duration: 2 + Math.random() * 2,
+        duration: Math.random() * 1.5 + 0.8,
       }))
     );
   }, [count]);
@@ -377,12 +301,13 @@ function TwinkleField({ count = 80 }: TwinkleFieldProps) {
             width: `${s.size}rem`,
             height: `${s.size}rem`,
           }}
-          animate={{ opacity: [0, 0.8, 0.3] }}
+          animate={{ scale: [0, 1, 0] }}
           transition={{
             duration: s.duration,
             delay: s.delay,
             repeat: Infinity,
             repeatType: "mirror",
+            ease: "easeInOut",
           }}
         />
       ))}

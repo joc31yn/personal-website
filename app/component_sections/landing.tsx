@@ -1,13 +1,13 @@
 "use client";
 import { motion } from "framer-motion";
-import { useMediaQuery } from "@/app/components/mobile";
+import { useIsMobile } from "@/hooks/mobile";
 import AnimateWord from "@/app/components/animateWord";
 import { ChevronDown } from "lucide-react";
 
 export default function Landing() {
   const words = ["Hi", "my", "name", "is", "Jocelyn Xu"];
-  const isSmall = useMediaQuery("(max-width: 767px)");
-  const isMedium = useMediaQuery("(max-width: 1023px)");
+  const isSmall = useIsMobile("(max-width: 767px)");
+  const isMedium = useIsMobile("(max-width: 1023px)");
 
   const pathCoordinates = isSmall
     ? [

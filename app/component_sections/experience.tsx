@@ -88,14 +88,16 @@ const items = [
     title: "Bank of Montreal Software Developer",
     displayTitle: "BMO Software Developer",
     date: "May 2025 — Present",
-    summary: "Lexicon Design System: Created 10+ responsive, WCAG 2.2 AA accessible Web Components, expanding the use of the Lexicon Design System to 300+ developers, designers, and UX teams. By automating 250+ unit and E2E tests with Jest and Playwright and managing bi-weekly releases with semantic versioning, I boosted developer efficiency by 48% and improved accessibility, UI/UX, and consistency for 60,000+ clients.",
+    summary:
+      "Lexicon Design System: Created 10+ responsive, WCAG 2.2 AA accessible Web Components, expanding the use of the Lexicon Design System to 300+ developers, designers, and UX teams. By automating 250+ unit and E2E tests with Jest and Playwright and managing bi-weekly releases with semantic versioning, I boosted developer efficiency by 48% for improved accessibility, UI/UX, and consistency across platforms for 60,000+ BMO clients.",
   },
   {
     id: "2",
     title: "UW Datascience Club VP",
     displayTitle: "UW Datascience Club",
     date: "Dec 2025 — Present",
-    summary: "CxC (datathon) Coordinator, Developer, Vice President of Development",
+    summary:
+      "CxC (datathon) Coordinator, Developer, Vice President of Development",
   },
   {
     id: "3",
