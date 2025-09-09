@@ -9,6 +9,10 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
+  }
+
   const { name, email, message } = req.body;
   const mailgun = new Mailgun(FormData);
   const client = mailgun.client({ username: "api", key: API_KEY });
