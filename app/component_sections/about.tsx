@@ -15,10 +15,7 @@ const About = () => {
   });
 
   return (
-    <section
-      id="About"
-      className="w-full min-h-screen h-full flex flex-col items-center"
-    >
+    <section id="About" className="w-full h-full flex flex-col items-center">
       <div className="mt-24">
         <AnimateWord
           word="About"
@@ -33,7 +30,7 @@ const About = () => {
         />
       </div>
 
-      <div className="w-full flex justify-center text-white md:mt-16">
+      <div className="w-full flex justify-center text-white md:mt-16 xl:my-24 max-w-[1440px]">
         <div className="flex items-center flex-col md:flex-row justify-center gap-8 md:gap-16 lg:gap-24 w-full h-full">
           <div
             data-aos="fade-up"
@@ -52,7 +49,7 @@ const About = () => {
             />
           </div>
           <div
-            className="flex flex-col gap-8 text-lg sm:text-xl font-lato"
+            className="flex flex-col text-lg sm:text-[22px] font-lato"
             data-aos="fade-up"
             data-aos-once="true"
             data-aos-anchor-placement="top-bottom"
@@ -106,7 +103,7 @@ const About = () => {
               love the challenge and getting to meet new people {"\u{1F929}"}
             </p>
             <div>
-              <p className="mb-2 sm:mb-8 text-lg md:text-xl">
+              <p className="mb-2 sm:mb-8 text-lg md:text-[22px]">
                 A couple snapshots of my interests&nbsp;&nbsp;📸
               </p>
               <Carousel />

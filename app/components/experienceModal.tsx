@@ -5,10 +5,7 @@ interface ModalProps {
   onClose: () => void;
 }
 
-export default function ExperienceModal({
-  children,
-  onClose,
-}: ModalProps) {
+export default function ExperienceModal({ children, onClose }: ModalProps) {
   return (
     <motion.div
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
@@ -21,7 +18,7 @@ export default function ExperienceModal({
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
       <motion.div
         className="relative z-10 w-full max-w-lg rounded-2xl border border-white/10 bg-[linear-gradient(180deg,rgba(23,28,45,0.95),rgba(12,15,25,0.95))] shadow-2xl text-white overflow-hidden p-5"
         initial={{ y: 30, opacity: 0 }}

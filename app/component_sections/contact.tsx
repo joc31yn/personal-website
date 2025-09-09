@@ -51,7 +51,7 @@ const Contact = () => {
       console.log(err);
       Swal.fire({
         title: "Error",
-        html: "Message failed to send. Please try a different method of contact.",
+        html: "Message failed to send. Please try again or a different method of contact.",
         icon: "error",
         confirmButtonColor: "#000000",
         allowOutsideClick: false,

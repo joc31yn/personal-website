@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import ExperienceModal from "./experienceModal";
+import { useIsMobile } from "@/hooks/mobile";
 
 interface TimelineItem {
   id?: string;
@@ -17,7 +18,6 @@ interface BigDipperTimelineProps {
   items?: TimelineItem[];
   title?: string;
   subtitle?: string;
-  direction?: "ltr" | "rtl";
 }
 
 interface Point {
@@ -35,6 +35,16 @@ const DIPPER_POINTS: Point[] = [
   { x: 5, y: 45 },
 ];
 
+const DIPPER_MOBILE_POINTS: Point[] = [
+  { x: 45, y: 10 },
+  { x: 80, y: 18 },
+  { x: 70, y: 45 },
+  { x: 50, y: 50 },
+  { x: 33, y: 52 },
+  { x: 95, y: 85 },
+  { x: 10, y: 92 },
+];
+
 const SEGMENTS: [number, number][] = [
   [0, 1],
   [1, 2],
@@ -43,7 +53,16 @@ const SEGMENTS: [number, number][] = [
   [4, 5],
   [5, 6],
   [0, 3],
-  // might delete as makes timeline confusing but essential for big dipper constellation
+];
+
+const MOBILE_SEGMENTS: [number, number][] = [
+  [0, 1],
+  [1, 2],
+  [2, 3],
+  [3, 4],
+  [2, 5],
+  [5, 6],
+  [4, 6],
 ];
 
 const validate = (n: number) => Math.max(0, Math.min(100, n));
@@ -52,18 +71,24 @@ export default function BigDipperTimeline({
   items,
   title = "Experience Constellation",
   subtitle = "The Big Dipper as a timeline",
-  direction = "ltr",
 }: BigDipperTimelineProps) {
   const [active, setActive] = useState<number | null>(null);
   const [openId, setOpenId] = useState<string | null>(null);
   const [starHover, setStarHover] = useState(false);
+  const isMobile = useIsMobile("(max-width: 767px)");
 
-  const points = useMemo(() => {
-    if (direction === "rtl") {
-      return DIPPER_POINTS.map((p) => ({ x: 100 - p.x, y: p.y }));
+  useEffect(() => {
+    if (openId) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
     }
-    return DIPPER_POINTS;
-  }, [direction]);
+
+    return () => document.body.classList.remove("overflow-hidden");
+  }, [openId]);
+
+  const points = isMobile ? DIPPER_MOBILE_POINTS : DIPPER_POINTS;
+  const segments = isMobile ? MOBILE_SEGMENTS : SEGMENTS;
 
   if (!items || items.length < 1) {
     return null;
@@ -81,15 +106,18 @@ export default function BigDipperTimeline({
           {subtitle}
         </p>
       </header>
-      {/* bg-[radial-gradient(ellipse_at_top,rgba(20,28,48,1),#05070f)] shadow-[0_0_60px_rgba(60,120,255,0.15)_inset] */}
-      <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden bg-[radial-gradient(ellipse_at_top,rgba(20,28,48,1),#05070f)] shadow-[0_0_60px_rgba(60,120,255,0.15)_inset]">
-        <TwinkleField count={200} />
+      <div
+        className={`${
+          isMobile ? "min-h-screen max-w-md" : "aspect-[16/9]"
+        } relative w-full rounded-xl bg-[radial-gradient(ellipse_at_top,rgba(20,28,48,1),#05070f)] shadow-[0_0_60px_rgba(60,120,255,0.15)_inset] overflow-hidden`}
+      >
+        <TwinkleField count={isMobile ? 125 : 200} />
 
         <svg
           className="absolute inset-0 w-full h-full pointer-events-none"
           aria-hidden
         >
-          {SEGMENTS.map(([a, b], i) => (
+          {segments.map(([a, b], i) => (
             <motion.line
               key={i}
               x1={`${validate(points[a].x)}%`}
@@ -123,30 +151,32 @@ export default function BigDipperTimeline({
         ))}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-3 opacity-80 w-full">
-        {main.toReversed().map((item, i) => {
-          const reversedIndex = main.length - i - 1;
-          return (
-            <motion.div
-              key={item.id ?? reversedIndex}
-              className={`flex flex-col gap-2 rounded-xl border border-white/15 bg-white/10 p-5 backdrop-blur transition-colors ${
-                active === reversedIndex && !starHover
-                  ? "border-white/30 bg-white/15"
-                  : ""
-              }`}
-              initial={{ opacity: 0, y: 8 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: reversedIndex * 0.04 }}
-              onMouseEnter={() => setActive(reversedIndex)}
-              onMouseLeave={() => setActive(null)}
-            >
-              <div className="text-sm text-white/70">{item.date}</div>
-              <div className="font-medium">{item.title}</div>
-            </motion.div>
-          );
-        })}
-      </div>
+      {!isMobile && (
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-3 opacity-80 w-full">
+          {main.toReversed().map((item, i) => {
+            const reversedIndex = main.length - i - 1;
+            return (
+              <motion.div
+                key={item.id ?? reversedIndex}
+                className={`flex flex-col gap-2 rounded-xl border border-white/15 bg-white/10 p-5 backdrop-blur transition-colors ${
+                  active === reversedIndex && !starHover
+                    ? "border-white/30 bg-white/15"
+                    : ""
+                }`}
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: reversedIndex * 0.04 }}
+                onMouseEnter={() => setActive(reversedIndex)}
+                onMouseLeave={() => setActive(null)}
+              >
+                <div className="text-sm text-white/70">{item.date}</div>
+                <div className="font-medium">{item.title}</div>
+              </motion.div>
+            );
+          })}
+        </div>
+      )}
 
       <AnimatePresence>
         {openId && (
@@ -200,10 +230,10 @@ function StarButton({
     <>
       <motion.button
         aria-label={label}
-        className={`group absolute select-none ${size} leading-none text-white -translate-x-1/2 -translate-y-1/2`}
+        className={`z-30 group absolute select-none ${size} leading-none text-white !-translate-x-1/2 !-translate-y-1/2`}
         style={{
-          left: `${validate(x) - 1.5}%`,
-          top: `${validate(y) - 2.7}%`,
+          left: `${validate(x)}%`,
+          top: `${validate(y)}%`,
         }}
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: isActive ? 1.2 : 1, opacity: 1 }}
@@ -232,7 +262,7 @@ function StarButton({
           }}
           transition={{ duration: 1.75, repeat: Infinity, ease: "easeInOut" }}
         >
-          <div className="relative w-6 h-6 md:w-9 md:h-9">
+          <div className="relative w-9 h-9">
             <Image src="/star.png" alt="star" fill className="object-contain" />
           </div>
         </motion.span>
@@ -247,7 +277,7 @@ function StarButton({
         />
       </motion.button>
       <span
-        className={`absolute select-none leading-none text-white font-cinzel font-bold -translate-x-1/2 -translate-y-1/2 text-xs md:text-base text-center`}
+        className={`absolute select-none leading-none text-white font-cinzel font-bold -translate-x-1/2 -translate-y-1/2 text-sm lg:text-base text-center max-w-12 md:max-w-24 xl:max-w-none`}
         style={{
           left: `${validate(x) + (item.display_x ?? 0)}%`,
           top: `${validate(y) + (item.display_y ?? -5)}%`,
@@ -274,13 +304,14 @@ interface StarProps {
 
 function TwinkleField({ count = 80 }: TwinkleFieldProps) {
   const [stars, setStars] = useState<StarProps[]>([]);
+  const isMobile = useIsMobile("(max-width: 767px)");
   useEffect(() => {
     setStars(
       Array.from({ length: count }).map((_, i) => ({
         id: i,
         left: Math.random() * 100,
         top: Math.random() * 100,
-        size: Math.random() * 0.2 + 0.05,
+        size: Math.random() * (isMobile ? 0.12 : 0.18) + 0.05,
         delay: Math.random() * 2,
         duration: Math.random() * 1.5 + 0.8,
       }))

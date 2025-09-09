@@ -2,8 +2,9 @@
 import AnimateWord from "../components/animateWord";
 import BallCavas from "@/app/components/canvas/BallCanvas";
 import SectionWrapper from "../hoc/SectionWrapper";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import BigDipperTimeline from "../components/bigDipperTimeline";
+import { useIsMobile } from "@/hooks/mobile";
 
 const languages = [
   {
@@ -82,7 +83,7 @@ const databases = [
   },
 ];
 
-const items = [
+let items = [
   {
     id: "1",
     title: "Bank of Montreal Software Developer",
@@ -94,10 +95,10 @@ const items = [
   {
     id: "2",
     title: "UW Datascience Club VP",
-    displayTitle: "UW Datascience Club",
+    displayTitle: "UW Datascience Club VP",
     date: "Dec 2025 — Present",
     summary:
-      "CxC (datathon) Coordinator, Developer, Vice President of Development",
+      "CxC (datathon) Coordinator: Organized Canada's largest student-run datathon. Developer: maintained and added new features for uwdsc website, events, and student resources. Vice President of Development: lead a team of 8 members to create revamp the uwdsc website and create the CxC application portal",
   },
   {
     id: "3",
@@ -108,31 +109,33 @@ const items = [
   },
   {
     id: "4",
-    title: "Internship",
-    displayTitle: "testtest",
-    date: "2022",
-    summary: "Frontend intern",
+    title: "Graduated Highschool",
+    displayTitle: "Graduated Highschool",
+    date: "June 2024",
+    summary:
+      "YRDSB Director's Achievement Award (Highest Gr9-12 Average: 98.3), YRDSB Academic Accomplishment Award (Second Highest Gr12 Top 6 Average: 99.2, Departmental Subject Award for Mathematics, Departmental Subject Award for Health and Physical Education",
   },
   {
     id: "5",
-    title: "MERN App",
-    displayTitle: "testtest",
-    date: "2023",
-    summary: "Shipped",
+    title: "KatyYouthHacks Winner",
+    displayTitle: "Hackathon Win",
+    date: "Aug 2023",
+    summary:
+      "First hackathon with a team of 4 building a ecological simulator that teaches middle-school students about sustainability, biodiversity, and food chains through interactive play. Built with HTML, CSS, and JavaScript, it models realistic ecosystem dynamics where animals hunt, eat, and reproduce. The project won 1st place at KatyYouthHacks (2023) for its creativity and potential to inspire the next generation of environmentalists :)",
   },
   {
     id: "6",
-    title: "Datathon Lead",
-    displayTitle: "testest",
-    date: "2024",
-    summary: "Organized",
+    title: "MERN App",
+    displayTitle: "testtest",
+    date: "2023",
+    summary: "test",
   },
   {
     id: "7",
-    title: "Now",
-    displayTitle: "testsetestes",
-    date: "2025",
-    summary: "Building delightful UX",
+    title: "Testtest",
+    displayTitle: "Testtest",
+    date: "2022-2024",
+    summary: "test",
   },
 ];
 
@@ -147,7 +150,7 @@ const useIntersectionObserver = (
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsIntersecting(true);
-          observer.disconnect(); // only once
+          observer.disconnect();
         }
       },
       {
@@ -172,6 +175,19 @@ const Experience = () => {
     threshold: 0.1,
     rootMargin: "-50px",
   });
+  const isMobile = useIsMobile("(max-width: 767px)");
+  const displace_x = [0, 0, 0, 0, 0, 0, 1];
+  const displace_x_mobile = [0, -5, 0, 5, -15, -15, 10];
+  const displace_y = [-5, 5, 5, -5, 5, -5, 5];
+  const displace_y_mobile = [-4, 5, -4, 4, -1, -2, 3];
+
+  const updatedItems = useMemo(() => {
+    return items.map((item, i) => ({
+      ...item,
+      display_x: isMobile ? displace_x_mobile[i] : displace_x[i],
+      display_y: isMobile ? displace_y_mobile[i] : displace_y[i],
+    }));
+  }, [isMobile]);
 
   const renderBallCanvases = (
     title: string,
@@ -209,7 +225,7 @@ const Experience = () => {
         />
       </div>
       <div className="w-full mb-10">
-        <BigDipperTimeline items={items} title="" subtitle="" />
+        <BigDipperTimeline items={updatedItems} title="" subtitle="" />
       </div>
       {isInView && (
         <div>
