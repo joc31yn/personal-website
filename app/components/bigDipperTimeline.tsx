@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import ExperienceModal from "./experienceModal";
@@ -312,7 +312,7 @@ function TwinkleField({ count = 80 }: TwinkleFieldProps) {
         duration: Math.random() * 1.5 + 0.8,
       }))
     );
-  }, [count]);
+  }, [count, isMobile]);
 
   if (stars.length === 0) return null;
 

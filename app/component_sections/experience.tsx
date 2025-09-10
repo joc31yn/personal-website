@@ -2,7 +2,7 @@
 import AnimateWord from "../components/animateWord";
 import BallCavas from "@/app/components/canvas/BallCanvas";
 import SectionWrapper from "../hoc/SectionWrapper";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import BigDipperTimeline from "../components/bigDipperTimeline";
 import { useIsMobile } from "@/hooks/mobile";
 
@@ -83,7 +83,7 @@ const databases = [
   },
 ];
 
-let items = [
+const items = [
   {
     id: "1",
     title: "Bank of Montreal Software Developer",
@@ -125,21 +125,27 @@ let items = [
   },
   {
     id: "6",
-    title: "Math/CS Peer Tutor",
-    displayTitle: "Math/CS Peer Tutor",
-    date: "Jan 2022 — Jan 2024",
-    summary:
-      "Supporting students through one-on-one tutoring to strengthen learning habits and academic performance, improving grades by 7+%. I collaborated with students and teachers to complete assignments, address weaknesses, and provided guidance for test and exam preparation.",
-  },
-  {
-    id: "7",
     title: "Varsity Table Tennis",
     displayTitle: "Varsity Table Tennis",
     date: "Mar 2023 — Present",
     summary:
       "I have been a member of the Women's Table Tennis Team in high school and university, where I managed training schedules, mentored new players, and analyzed match recordings to optimize strategies. These efforts contributed to earning 2nd place in Grade 11 and winning a regional championship in Grade 12.",
   },
+  {
+    id: "7",
+    title: "Math/CS Peer Tutor",
+    displayTitle: "Math/CS Peer Tutor",
+    date: "Jan 2022 — Jan 2024",
+    summary:
+      "Supporting students through one-on-one tutoring to strengthen learning habits and academic performance, improving grades by 7+%. I collaborated with students and teachers to complete assignments, address weaknesses, and provided guidance for test and exam preparation.",
+  },
 ];
+
+const displace_x = [0, 0, 0, 0, 0, 0, 5];
+const displace_x_mobile = [0, -5, 0, 5, -15, -15, 10];
+
+const displace_y = [-7, 7, 7, -7, 7, -7, 7];
+const displace_y_mobile = [-4, 5, -4, 4, -1, -2, 3];
 
 const useIntersectionObserver = (
   options: IntersectionObserverInit = {}
@@ -178,18 +184,12 @@ const Experience = () => {
     rootMargin: "-50px",
   });
   const isMobile = useIsMobile("(max-width: 767px)");
-  const displace_x = [0, 0, 0, 0, 0, 0, 5];
-  const displace_x_mobile = [0, -5, 0, 5, -15, -15, 10];
-  const displace_y = [-7, 7, 7, -7, 7, -7, 7];
-  const displace_y_mobile = [-4, 5, -4, 4, -1, -2, 3];
 
-  const updatedItems = useMemo(() => {
-    return items.map((item, i) => ({
-      ...item,
-      display_x: isMobile ? displace_x_mobile[i] : displace_x[i],
-      display_y: isMobile ? displace_y_mobile[i] : displace_y[i],
-    }));
-  }, [isMobile]);
+  const updatedItems = items.map((item, i) => ({
+    ...item,
+    display_x: isMobile ? displace_x_mobile[i] : displace_x[i],
+    display_y: isMobile ? displace_y_mobile[i] : displace_y[i],
+  }));
 
   const renderBallCanvases = (
     title: string,
