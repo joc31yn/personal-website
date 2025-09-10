@@ -156,23 +156,19 @@ export default function BigDipperTimeline({
           {main.toReversed().map((item, i) => {
             const reversedIndex = main.length - i - 1;
             return (
-              <motion.div
+              <div
                 key={item.id ?? reversedIndex}
                 className={`flex flex-col gap-2 rounded-xl border border-white/15 bg-white/10 p-5 backdrop-blur transition-colors ${
                   active === reversedIndex && !starHover
                     ? "border-white/30 bg-white/15"
                     : ""
                 }`}
-                initial={{ opacity: 0, y: 8 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: reversedIndex * 0.04 }}
                 onMouseEnter={() => setActive(reversedIndex)}
                 onMouseLeave={() => setActive(null)}
               >
                 <div className="text-sm text-white/70">{item.date}</div>
                 <div className="font-medium">{item.title}</div>
-              </motion.div>
+              </div>
             );
           })}
         </div>
@@ -230,7 +226,7 @@ function StarButton({
     <>
       <motion.button
         aria-label={label}
-        className={`z-30 group absolute select-none ${size} leading-none text-white !-translate-x-1/2 !-translate-y-1/2`}
+        className={`z-10 group absolute select-none ${size} leading-none text-white !-translate-x-1/2 !-translate-y-1/2`}
         style={{
           left: `${validate(x)}%`,
           top: `${validate(y)}%`,
@@ -277,7 +273,7 @@ function StarButton({
         />
       </motion.button>
       <span
-        className={`absolute select-none leading-none text-white font-cinzel font-bold -translate-x-1/2 -translate-y-1/2 text-sm lg:text-base text-center max-w-12 md:max-w-24 xl:max-w-none`}
+        className={`absolute select-none !leading-tight text-white font-cinzel font-bold -translate-x-1/2 -translate-y-1/2 text-sm lg:text-base text-center max-w-12 md:max-w-24 xl:max-w-none`}
         style={{
           left: `${validate(x) + (item.display_x ?? 0)}%`,
           top: `${validate(y) + (item.display_y ?? -5)}%`,

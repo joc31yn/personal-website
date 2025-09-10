@@ -98,7 +98,7 @@ let items = [
     displayTitle: "UW Datascience Club VP",
     date: "Dec 2025 — Present",
     summary:
-      "CxC (datathon) Coordinator: Organized Canada's largest student-run datathon. Developer: maintained and added new features for uwdsc website, events, and student resources. Vice President of Development: lead a team of 8 members to create revamp the uwdsc website and create the CxC application portal",
+      "CxC (datathon) Coordinator: Organized Canada's largest student-run datathon. Developer: maintained and added new features for uwdsc website, events, and student resources. Vice President of Development: led a team of 8 members to revamp the uwdsc website and create the CxC application portal",
   },
   {
     id: "3",
@@ -125,17 +125,19 @@ let items = [
   },
   {
     id: "6",
-    title: "MERN App",
-    displayTitle: "testtest",
-    date: "2023",
-    summary: "test",
+    title: "Math/CS Peer Tutor",
+    displayTitle: "Math/CS Peer Tutor",
+    date: "Jan 2022 — Jan 2024",
+    summary:
+      "Supporting students through one-on-one tutoring to strengthen learning habits and academic performance, improving grades by 7+%. I collaborated with students and teachers to complete assignments, address weaknesses, and provided guidance for test and exam preparation.",
   },
   {
     id: "7",
-    title: "Testtest",
-    displayTitle: "Testtest",
-    date: "2022-2024",
-    summary: "test",
+    title: "Varsity Table Tennis",
+    displayTitle: "Varsity Table Tennis",
+    date: "Mar 2023 — Present",
+    summary:
+      "I have been a member of the Women's Table Tennis Team in high school and university, where I managed training schedules, mentored new players, and analyzed match recordings to optimize strategies. These efforts contributed to earning 2nd place in Grade 11 and winning a regional championship in Grade 12.",
   },
 ];
 
@@ -176,9 +178,9 @@ const Experience = () => {
     rootMargin: "-50px",
   });
   const isMobile = useIsMobile("(max-width: 767px)");
-  const displace_x = [0, 0, 0, 0, 0, 0, 1];
+  const displace_x = [0, 0, 0, 0, 0, 0, 5];
   const displace_x_mobile = [0, -5, 0, 5, -15, -15, 10];
-  const displace_y = [-5, 5, 5, -5, 5, -5, 5];
+  const displace_y = [-7, 7, 7, -7, 7, -7, 7];
   const displace_y_mobile = [-4, 5, -4, 4, -1, -2, 3];
 
   const updatedItems = useMemo(() => {
