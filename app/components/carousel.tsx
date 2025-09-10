@@ -13,6 +13,7 @@ const images = [
   "/carousel/biking.jpg",
   "/carousel/minion.jpg",
   "/carousel/bear.jpg",
+  "/carousel/whale.jpg",
 ];
 
 export default function Carousel() {

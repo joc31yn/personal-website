@@ -3,6 +3,8 @@ import AnimateWord from "../components/animateWord";
 import BallCavas from "@/app/components/canvas/BallCanvas";
 import SectionWrapper from "../hoc/SectionWrapper";
 import { useEffect, useRef, useState } from "react";
+import BigDipperTimeline from "../components/bigDipperTimeline";
+import { useIsMobile } from "@/hooks/mobile";
 
 const languages = [
   {
@@ -81,6 +83,70 @@ const databases = [
   },
 ];
 
+const items = [
+  {
+    id: "1",
+    title: "Bank of Montreal Software Developer",
+    displayTitle: "BMO Software Developer",
+    date: "May 2025 — Present",
+    summary:
+      "Lexicon Design System: Created 10+ responsive, WCAG 2.2 AA accessible Web Components, expanding the use of the Lexicon Design System to 300+ developers, designers, and UX teams. By automating 250+ unit and E2E tests with Jest and Playwright and managing bi-weekly releases with semantic versioning, I boosted developer efficiency by 48% for improved accessibility, UI/UX, and consistency across platforms for 60,000+ BMO clients.",
+  },
+  {
+    id: "2",
+    title: "UW Datascience Club VP",
+    displayTitle: "UW Datascience Club VP",
+    date: "Dec 2025 — Present",
+    summary:
+      "CxC (datathon) Coordinator: Organized Canada's largest student-run datathon. Developer: maintained and added new features for uwdsc website, events, and student resources. Vice President of Development: led a team of 8 members to revamp the uwdsc website and create the CxC application portal",
+  },
+  {
+    id: "3",
+    title: "TEDxUW SWE",
+    displayTitle: "TEDxUW SWE",
+    date: "May 2025 — Present",
+    summary: "Category win",
+  },
+  {
+    id: "4",
+    title: "Graduated Highschool",
+    displayTitle: "Graduated Highschool",
+    date: "June 2024",
+    summary:
+      "YRDSB Director's Achievement Award (Highest Gr9-12 Average: 98.3), YRDSB Academic Accomplishment Award (Second Highest Gr12 Top 6 Average: 99.2, Departmental Subject Award for Mathematics, Departmental Subject Award for Health and Physical Education",
+  },
+  {
+    id: "5",
+    title: "KatyYouthHacks Winner",
+    displayTitle: "Hackathon Win",
+    date: "Aug 2023",
+    summary:
+      "First hackathon with a team of 4 building a ecological simulator that teaches middle-school students about sustainability, biodiversity, and food chains through interactive play. Built with HTML, CSS, and JavaScript, it models realistic ecosystem dynamics where animals hunt, eat, and reproduce. The project won 1st place at KatyYouthHacks (2023) for its creativity and potential to inspire the next generation of environmentalists :)",
+  },
+  {
+    id: "6",
+    title: "Varsity Table Tennis",
+    displayTitle: "Varsity Table Tennis",
+    date: "Mar 2023 — Present",
+    summary:
+      "I have been a member of the Women's Table Tennis Team in high school and university, where I managed training schedules, mentored new players, and analyzed match recordings to optimize strategies. These efforts contributed to earning 2nd place in Grade 11 and winning a regional championship in Grade 12.",
+  },
+  {
+    id: "7",
+    title: "Math/CS Peer Tutor",
+    displayTitle: "Math/CS Peer Tutor",
+    date: "Jan 2022 — Jan 2024",
+    summary:
+      "Supporting students through one-on-one tutoring to strengthen learning habits and academic performance, improving grades by 7+%. I collaborated with students and teachers to complete assignments, address weaknesses, and provided guidance for test and exam preparation.",
+  },
+];
+
+const displace_x = [0, 0, 0, 0, 0, 0, 5];
+const displace_x_mobile = [0, -5, 0, 5, -15, -15, 10];
+
+const displace_y = [-7, 7, 7, -7, 7, -7, 7];
+const displace_y_mobile = [-4, 5, -4, 4, -1, -2, 3];
+
 const useIntersectionObserver = (
   options: IntersectionObserverInit = {}
 ): [React.RefObject<HTMLElement | null>, boolean] => {
@@ -92,7 +158,7 @@ const useIntersectionObserver = (
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsIntersecting(true);
-          observer.disconnect(); // only once
+          observer.disconnect();
         }
       },
       {
@@ -117,6 +183,13 @@ const Experience = () => {
     threshold: 0.1,
     rootMargin: "-50px",
   });
+  const isMobile = useIsMobile("(max-width: 767px)");
+
+  const updatedItems = items.map((item, i) => ({
+    ...item,
+    display_x: isMobile ? displace_x_mobile[i] : displace_x[i],
+    display_y: isMobile ? displace_y_mobile[i] : displace_y[i],
+  }));
 
   const renderBallCanvases = (
     title: string,
@@ -152,6 +225,9 @@ const Experience = () => {
           delay={0}
           strokeDuration={2.5}
         />
+      </div>
+      <div className="w-full mb-10">
+        <BigDipperTimeline items={updatedItems} title="" subtitle="" />
       </div>
       {isInView && (
         <div>

@@ -10,7 +10,7 @@ interface ProjectChipProps {
 export default function ProjectChip({ text, border_bg }: ProjectChipProps) {
   return (
     <motion.div
-      className={`relative w-fit px-3 py-1.5 rounded-lg text-xs font-medium text-white overflow-hidden`}
+      className={`relative w-fit px-2.5 py-1 rounded-md text-xs font-medium text-white overflow-hidden`}
       style={{ border: `1px solid #${border_bg}` }}
       initial={{ opacity: 0, y: 10 }}
       animate={{
@@ -32,7 +32,7 @@ export default function ProjectChip({ text, border_bg }: ProjectChipProps) {
       }}
       whileHover={{
         scale: 1.05,
-        boxShadow: `0 0 15px 4px #${border_bg}60`,
+        boxShadow: `0 0 20px 4px #${border_bg}55`,
         transition: { duration: 0.2 },
       }}
     >

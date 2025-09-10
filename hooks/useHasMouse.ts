@@ -9,7 +9,6 @@ export default function useHasMouse() {
 
     const mq = window.matchMedia("(pointer: fine)");
     setHasMouse(mq.matches);
-    console.log(mq);
 
     const handler = (e: MediaQueryListEvent) => setHasMouse(e.matches);
     mq.addEventListener?.("change", handler);

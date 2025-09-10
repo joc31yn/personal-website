@@ -2,7 +2,7 @@
 const SectionWrapper = (Component: any) =>
   function HOC() {
     return (
-      <div className="px-8 sm:px-16 md:px-10 xl:px-36">
+      <div className="px-8 sm:px-16 md:px-10 xl:px-32">
         <Component />
       </div>
     );

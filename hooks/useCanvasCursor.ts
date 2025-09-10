@@ -115,8 +115,10 @@ const useCanvasCursor = () => {
       ctx.strokeStyle = "hsla(" + Math.round(f.update()) + ",50%,50%,0.2)";
       ctx.lineWidth = 1;
       for (var e, t = 0; t < E.trails; t++) {
-        (e = lines[t]).update();
-        e.draw();
+        if (lines[t]) {
+          (e = lines[t]).update();
+          e.draw();
+        }
       }
       ctx.frame++;
       window.requestAnimationFrame(render);
