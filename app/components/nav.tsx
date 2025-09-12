@@ -30,7 +30,7 @@ export default function Nav() {
 
   return (
     <>
-      <div className="block md:hidden bg-white flex-row px-3 py-2 items-center justify-between relative z-10">
+      <div className="block md:hidden bg-white flex-row px-3 py-2 items-center justify-between relative z-20">
         <div className="md:hidden fixed top-0 left-0 w-full bg-white flex flex-row px-3 py-2 items-center justify-between z-20">
           <Link
             href="/"

@@ -213,7 +213,7 @@ const Experience = () => {
       id="Experience"
       className="w-full min-h-screen h-full flex flex-col items-center text-white"
     >
-      <div className="mt-24 mb-10">
+      <div className="mt-24 sm:mb-10">
         <AnimateWord
           word="Experience"
           f_smallest="text-[2.5rem]"
