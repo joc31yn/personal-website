@@ -27,7 +27,7 @@ export default function MatrixGlitchText({
     new Array(textLen).fill(false)
   );
 
-  const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.5 });
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.5 });
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {

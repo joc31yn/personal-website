@@ -30,7 +30,7 @@ const About = () => {
         />
       </div>
 
-      <div className="w-full flex justify-center text-white md:mt-16 xl:my-24 max-w-[1440px]">
+      <div className="w-full flex justify-center text-white md:mt-16 xl:my-20 max-w-[1440px]">
         <div className="flex items-center flex-col md:flex-row justify-center gap-8 md:gap-16 lg:gap-24 w-full h-full">
           <div
             data-aos="fade-up"

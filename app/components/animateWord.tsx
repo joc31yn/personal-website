@@ -25,7 +25,7 @@ export default function AnimateWord({
   fill_col,
   pixel,
   delay,
-  once = false,
+  once = true,
   strokeDuration,
   whenInView = true,
 }: AnimateWordProps) {
