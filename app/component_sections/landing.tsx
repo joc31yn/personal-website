@@ -39,14 +39,13 @@ export default function Landing() {
       <div className="absolute top-[27%] left-1/2 -translate-x-1/2 -translate-y-1/2">
         <AnimateWord
           word="Welcome"
-          f_smallest="text-[4.2rem]"
+          f_smallest="text-6xl"
           f_sm="text-8xl"
           f_lg="text-8xl"
           border_col="#ffffff"
           fill_col="transparent"
           pixel={2.5}
           delay={2}
-          once={true}
           whenInView={false}
           strokeDuration={3.5}
         />

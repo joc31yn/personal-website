@@ -89,55 +89,70 @@ const items = [
     title: "Bank of Montreal Software Developer",
     displayTitle: "BMO Software Developer",
     date: "May 2025 — Present",
-    summary:
-      "Lexicon Design System: Created 10+ responsive, WCAG 2.2 AA accessible Web Components, expanding the use of the Lexicon Design System to 300+ developers, designers, and UX teams. By automating 250+ unit and E2E tests with Jest and Playwright and managing bi-weekly releases with semantic versioning, I boosted developer efficiency by 48% for improved accessibility, UI/UX, and consistency across platforms for 60,000+ BMO clients.",
+    summary: [
+      "AI Chatbot: Engineered a serverless chatbot platform powered by AWS Lambda, S3, and Bedrock Knowledge Base, with automated ingestion pipelines for transcripts (PDFs) and web-scraped banking content to enhance customer query coverage and reduce manual support needs.",
+      "Lexicon Design System: Created 10+ responsive, WCAG 2.2 AA accessible Web Components, expanding the use of the Lexicon Design System to 300+ developers, designers, and UX teams. Automated 250+ unit and E2E tests with Jest and Playwright and managed bi-weekly releases with semantic versioning to streamline developer efficiency by 48%.",
+    ],
   },
   {
     id: "2",
     title: "UW Datascience Club VP",
     displayTitle: "UW Datascience Club VP",
     date: "Dec 2025 — Present",
-    summary:
-      "CxC (datathon) Coordinator: Organized Canada's largest student-run datathon. Developer: maintained and added new features for uwdsc website, events, and student resources. Vice President of Development: led a team of 8 members to revamp the uwdsc website and create the CxC application portal",
+    summary: [
+      "CxC (Data Hackathon) Coordinator: Organized Canada's largest student-run data hackathon.",
+      "Developer: maintained and added new features for uwdsc website, events, and student resources.",
+      "Vice President of Development: led a team of 8 members to revamp the uwdsc website and create the CxC application portal",
+    ],
   },
   {
     id: "3",
     title: "TEDxUW SWE",
     displayTitle: "TEDxUW SWE",
     date: "May 2025 — Present",
-    summary: "Category win",
+    summary: [
+      "Built an interactive website for TEDxUW 2025 conference featuring event speakers, organizers, and past themes and timelines, while also providing a ticket purchasing page and engaging user experience to showcase the mission of TEDxUW.",
+    ],
   },
   {
     id: "4",
     title: "Graduated Highschool",
     displayTitle: "Graduated Highschool",
     date: "June 2024",
-    summary:
-      "YRDSB Director's Achievement Award (Highest Gr9-12 Average: 98.3), YRDSB Academic Accomplishment Award (Second Highest Gr12 Top 6 Average: 99.2, Departmental Subject Award for Mathematics, Departmental Subject Award for Health and Physical Education",
+    summary: [
+      "YRDSB Director's Achievement Award (Highest Gr9-12 Average: 98.3), YRDSB Academic Accomplishment Award (Second Highest Gr12 Top 6 Average: 99.2)",
+      "Departmental Subject Award for Mathematics, Departmental Subject Award for Health and Physical Education",
+    ],
   },
   {
     id: "5",
-    title: "KatyYouthHacks Winner",
-    displayTitle: "Hackathon Win",
-    date: "Aug 2023",
-    summary:
-      "First hackathon with a team of 4 building a ecological simulator that teaches middle-school students about sustainability, biodiversity, and food chains through interactive play. Built with HTML, CSS, and JavaScript, it models realistic ecosystem dynamics where animals hunt, eat, and reproduce. The project won 1st place at KatyYouthHacks (2023) for its creativity and potential to inspire the next generation of environmentalists :)",
-  },
-  {
-    id: "6",
     title: "Varsity Table Tennis",
     displayTitle: "Varsity Table Tennis",
     date: "Mar 2023 — Present",
-    summary:
-      "I have been a member of the Women's Table Tennis Team in high school and university, where I managed training schedules, mentored new players, and analyzed match recordings to optimize strategies. These efforts contributed to earning 2nd place in Grade 11 and winning a regional championship in Grade 12.",
+    summary: [
+      "Member of the Women's Table Tennis Team in high school and university, where I managed training schedules, mentored new players, and analyzed match recordings to optimize strategies.",
+      "Earned YRAA 2nd place in Grade 11 followed by winning the regional championship in Grade 12.",
+    ],
+  },
+  {
+    id: "6",
+    title: "KatyYouthHacks Winner",
+    displayTitle: "Hackathon Win",
+    date: "Aug 2023",
+    summary: [
+      "First hackathon with a team of 4 building an ecological simulator that teaches middle-school students about sustainability, biodiversity, and food chains through modelling realistic ecosystem dynamics where animals hunt, eat, and reproduce.",
+      "The project won 1st place at KatyYouthHacks (2023) for its creativity and potential to inspire the next generation of environmentalists :)",
+    ],
   },
   {
     id: "7",
     title: "Math/CS Peer Tutor",
     displayTitle: "Math/CS Peer Tutor",
     date: "Jan 2022 — Jan 2024",
-    summary:
-      "Supporting students through one-on-one tutoring to strengthen learning habits and academic performance, improving grades by 7+%. I collaborated with students and teachers to complete assignments, address weaknesses, and provided guidance for test and exam preparation.",
+    summary: [
+      "Supporting students through one-on-one tutoring to strengthen learning habits and academic performance, improving grades by 7%+.",
+      "Collaborated with students and teachers to clarify complex concepts, complete assignments, and target areas of weakness for test and exam preparation.",
+    ],
   },
 ];
 

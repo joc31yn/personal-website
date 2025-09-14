@@ -4,14 +4,14 @@ import Image from "next/image";
 import ExperienceModal from "./experienceModal";
 import { useIsMobile } from "@/hooks/mobile";
 
-interface TimelineItem {
+export interface TimelineItem {
   id?: string;
   title: string;
   displayTitle: string;
   display_x?: number;
   display_y?: number;
   date: string;
-  summary: string;
+  summary: string[];
 }
 
 interface BigDipperTimelineProps {
@@ -52,7 +52,7 @@ const SEGMENTS: [number, number][] = [
   [3, 4],
   [4, 5],
   [5, 6],
-  [0, 3],
+  // [0, 3],
 ];
 
 const MOBILE_SEGMENTS: [number, number][] = [
@@ -72,10 +72,15 @@ export default function BigDipperTimeline({
   title = "Experience Constellation",
   subtitle = "The Big Dipper as a timeline",
 }: BigDipperTimelineProps) {
+  const [mounted, setMounted] = useState(false);
   const [active, setActive] = useState<number | null>(null);
   const [openId, setOpenId] = useState<string | null>(null);
   const [starHover, setStarHover] = useState(false);
   const isMobile = useIsMobile("(max-width: 767px)");
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (openId) {
@@ -90,7 +95,7 @@ export default function BigDipperTimeline({
   const points = isMobile ? DIPPER_MOBILE_POINTS : DIPPER_POINTS;
   const segments = isMobile ? MOBILE_SEGMENTS : SEGMENTS;
 
-  if (!items || items.length < 1) {
+  if (!items || items.length < 1 || !mounted) {
     return null;
   }
 
@@ -176,23 +181,14 @@ export default function BigDipperTimeline({
 
       <AnimatePresence>
         {openId && (
-          <ExperienceModal onClose={() => setOpenId(null)}>
-            {(() => {
-              const found =
-                main.find((x) => (x.id ?? "") === openId) ||
-                main.find((_, i) => String(i) === openId) ||
-                main[0];
-              return (
-                <div className="space-y-2">
-                  <h3 className="text-xl font-semibold">{found.title}</h3>
-                  <p className="text-white/70 text-sm">{found.date}</p>
-                  <p className="leading-relaxed text-sm">
-                    {found.summary ?? ""}
-                  </p>
-                </div>
-              );
-            })()}
-          </ExperienceModal>
+          <ExperienceModal
+            item={
+              main.find((x) => (x.id ?? "") === openId) ||
+              main.find((_, i) => String(i) === openId) ||
+              main[0]
+            }
+            onClose={() => setOpenId(null)}
+          />
         )}
       </AnimatePresence>
     </div>
@@ -273,7 +269,7 @@ function StarButton({
         />
       </motion.button>
       <span
-        className={`absolute select-none !leading-tight text-white font-cinzel font-bold -translate-x-1/2 -translate-y-1/2 text-sm lg:text-base text-center max-w-12 md:max-w-24 xl:max-w-none`}
+        className={`absolute select-none !leading-tight text-white font-cinzel font-bold -translate-x-1/2 -translate-y-1/2 text-sm lg:text-base text-center max-w-16 md:max-w-24 xl:max-w-none`}
         style={{
           left: `${validate(x) + (item.display_x ?? 0)}%`,
           top: `${validate(y) + (item.display_y ?? -5)}%`,
