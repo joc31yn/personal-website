@@ -228,10 +228,10 @@ const Experience = () => {
       id="Experience"
       className="w-full min-h-screen h-full flex flex-col items-center text-white"
     >
-      <div className="mt-24 sm:mb-10">
+      <div className="mt-12 sm:mb-10">
         <AnimateWord
           word="Experience"
-          f_smallest="text-[2.5rem]"
+          f_smallest="text-5xl"
           f_sm="text-5xl"
           f_lg="text-6xl"
           border_col="#ffffff"

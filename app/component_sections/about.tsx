@@ -16,10 +16,10 @@ const About = () => {
 
   return (
     <section id="About" className="w-full h-full flex flex-col items-center">
-      <div className="mt-24">
+      <div className="mt-12">
         <AnimateWord
           word="About"
-          f_smallest="text-[2.5rem]"
+          f_smallest="text-5xl"
           f_sm="text-5xl"
           f_lg="text-6xl"
           border_col="#ffffff"

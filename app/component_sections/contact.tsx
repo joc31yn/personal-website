@@ -66,10 +66,10 @@ const Contact = () => {
       id="Contact"
       className="relative w-full min-h-screen h-full flex flex-col items-center justify-between"
     >
-      <div className="mt-24">
+      <div className="mt-12">
         <AnimateWord
           word="Contact"
-          f_smallest="text-[2.5rem]"
+          f_smallest="text-5xl"
           f_sm="text-5xl"
           f_lg="text-6xl"
           border_col="#ffffff"
