@@ -15,7 +15,14 @@ const About = () => {
   });
 
   return (
-    <section id="About" className="w-full h-full flex flex-col items-center">
+    <section
+      id="About"
+      className="w-full h-full flex flex-col items-center"
+      aria-labelledby="about-heading"
+    >
+      <h2 id="about-heading" className="sr-only">
+        About Me
+      </h2>
       <div className="mt-12">
         <AnimateWord
           word="About"
@@ -41,7 +48,7 @@ const About = () => {
             <Image
               className="md:-rotate-[8deg]"
               src="/headshot.png"
-              alt="headshot"
+              alt="Portrait of Jocelyn Xu"
               fill
               style={{ objectFit: "contain" }}
               sizes="(max-width: 640px) 12rem, (max-width: 768px) 14rem, (max-width: 1024px) 18rem, 24rem"
@@ -65,7 +72,7 @@ const About = () => {
                   className="sm:text-xl"
                   text="Computer Science"
                   solveChance={0.15}
-                  glitchSpeed={100}
+                  glitchSpeed={150}
                   startDelay={100}
                 />
                 <span className="text-xl font-mono text-green-400 font-semibold text-glow-green">

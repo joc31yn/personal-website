@@ -37,7 +37,11 @@ export default function Carousel() {
   ];
 
   return (
-    <div className="relative w-full flex items-center justify-center">
+    <div
+      className="relative w-full flex items-center justify-center"
+      role="region"
+      aria-label="Image carousel showing Jocelyn's interests"
+    >
       <div className="relative w-full h-44 flex items-center justify-center overflow-hidden">
         {visibleSlides.map(({ index, offset }) => (
           <motion.div
@@ -72,12 +76,14 @@ export default function Carousel() {
       <button
         onClick={prevSlide}
         className="absolute -left-5 xl:-left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white hover:scale-125 font-caveat font-semibold duration-200"
+        aria-label="Previous slide"
       >
         <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" strokeWidth={2.5} />
       </button>
       <button
         onClick={nextSlide}
         className="absolute -right-5 xl:-right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white hover:scale-125 font-caveat font-semibold duration-200"
+        aria-label="Next slide"
       >
         <ChevronRight className="w-6 h-6 md:w-8 md:h-8" strokeWidth={2.5} />
       </button>

@@ -151,7 +151,7 @@ export default function BigDipperTimeline({
               ></div>
               <div
                 className="absolute top-1/2 right-0 w-[2.5px] h-[2.5px] bg-yellow-100 rounded-full opacity-60 animate-ping"
-                style={{ animationDuration: "2s", animationDelay: "2s" }}
+                style={{ animationDuration: "2s", animationDelay: "1.5s" }}
               ></div>
               <div
                 className="absolute top-0 left-1/3 w-[1.5px] h-[1.5px] bg-yellow-100 rounded-full opacity-60 animate-ping"

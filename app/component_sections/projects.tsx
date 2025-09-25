@@ -185,7 +185,11 @@ const Projects = () => {
     <section
       id="Projects"
       className="w-full min-h-screen h-full flex flex-col items-center"
+      aria-labelledby="projects-heading"
     >
+      <h2 id="projects-heading" className="sr-only">
+        Projects
+      </h2>
       <div className="mt-12">
         <AnimateWord
           word="Projects"
@@ -199,26 +203,27 @@ const Projects = () => {
           strokeDuration={2.5}
         />
       </div>
-      <div className="flex flex-row flex-wrap gap-10 my-10 justify-center">
+      <ul className="flex flex-row flex-wrap gap-10 my-10 justify-center">
         {projects.map((project, i) => (
-          <ProjectCard
-            key={`${project.name}-${i}`}
-            title={project.name}
-            githubLink={project.githubLink}
-            imgUrl={project.imgUrl}
-            alt={project.alt}
-            description={project.description}
-          >
-            {project.chips.map((chip, i) => (
-              <ProjectChip
-                key={`${chip.text}-${i}`}
-                text={chip.text}
-                border_bg={chip.border_bg}
-              />
-            ))}
-          </ProjectCard>
+          <li key={`${project.name}-${i}`}>
+            <ProjectCard
+              title={project.name}
+              githubLink={project.githubLink}
+              imgUrl={project.imgUrl}
+              alt={project.alt}
+              description={project.description}
+            >
+              {project.chips.map((chip, i) => (
+                <ProjectChip
+                  key={`${chip.text}-${i}`}
+                  text={chip.text}
+                  border_bg={chip.border_bg}
+                />
+              ))}
+            </ProjectCard>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 };

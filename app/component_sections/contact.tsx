@@ -65,7 +65,11 @@ const Contact = () => {
     <section
       id="Contact"
       className="relative w-full min-h-screen h-full flex flex-col items-center justify-between"
+      aria-labelledby="contact-heading"
     >
+      <h2 id="contact-heading" className="sr-only">
+        Contact Me
+      </h2>
       <div className="mt-12">
         <AnimateWord
           word="Contact"
@@ -82,8 +86,13 @@ const Contact = () => {
       <form
         onSubmit={onSubmit}
         className="w-[100%] min-w-64 max-w-[800px] text-white flex flex-col justify-center gap-5 relative"
+        aria-describedby="contact-instructions"
       >
+        <label htmlFor="name" className="sr-only">
+          Full Name
+        </label>
         <input
+          id="name"
           type="text"
           name="name"
           autoComplete="name"
@@ -93,7 +102,11 @@ const Contact = () => {
           placeholder="Full Name"
           required
         />
+        <label htmlFor="email" className="sr-only">
+          Email
+        </label>
         <input
+          id="email"
           type="email"
           name="email"
           autoComplete="email"
@@ -103,7 +116,11 @@ const Contact = () => {
           className="w-full p-3 bg-transparent border-[1px] rounded-xl border-gray-200 placeholder:text-gray-400 outline-none focus:border-gray-200 focus:outline focus:outline-2 focus:outline-white focus:outline-offset-4 transition-shadow"
           placeholder="Email"
         />
+        <label htmlFor="message" className="sr-only">
+          Message
+        </label>
         <textarea
+          id="message"
           name="message"
           className="w-full h-32 sm:h-40 resize-none my-2 py-4 px-3 bg-transparent border-[1px] rounded-xl border-gray-200 placeholder:text-gray-400 outline-none focus:border-gray-200 focus:outline focus:outline-2 focus:outline-white focus:outline-offset-4 transition-shadow"
           placeholder="Enter your message!"
@@ -112,6 +129,7 @@ const Contact = () => {
           required
         ></textarea>
         <motion.button
+          type="submit"
           disabled={loading}
           className={`absolute -bottom-[20%] right-[0%] py-2 px-6 rounded-lg outline-none transition-colors
             ${
@@ -138,7 +156,10 @@ const Contact = () => {
         </motion.button>
       </form>
       <div className="flex flex-col gap-6 items-center justify-center text-gray-300 p-5">
-        <div className="flex flex-row gap-10 items-center justify-center">
+        <div
+          className="flex flex-row gap-10 items-center justify-center"
+          aria-label="Other ways to contact Jocelyn"
+        >
           <ContactLogos link="https://www.linkedin.com/in/jocelyn-xu-741106289/">
             <SlSocialLinkedin className="text-black w-6 h-6" />
           </ContactLogos>
