@@ -69,7 +69,7 @@ const About = () => {
                   {"{"}
                 </span>
                 <MatrixGlitchText
-                  className="sm:text-xl"
+                  className="sm:text-xl font-mono tracking-wide"
                   text="Computer Science"
                   solveChance={0.15}
                   glitchSpeed={150}
@@ -84,7 +84,7 @@ const About = () => {
                 <span className="text-xl font-mono text-waterlooYellow font-semibold text-glow-yellow">
                   {"{"}
                 </span>{" "}
-                <span className="sm:text-xl font-mono">
+                <span className="sm:text-xl font-mono tracking-wide">
                   University of Waterloo
                 </span>{" "}
                 <span className="text-xl font-mono text-waterlooYellow font-semibold text-glow-yellow">
@@ -96,14 +96,16 @@ const About = () => {
                 <span className="text-xl font-mono text-[#0078C1] font-semibold text-glow-blue">
                   {"{"}
                 </span>{" "}
-                <span className="sm:text-xl font-mono">BMO</span>{" "}
+                <span className="sm:text-xl font-mono tracking-widest">
+                  BMO
+                </span>
                 <span className="text-xl font-mono text-[#0078C1] font-semibold text-glow-blue">
                   {"}"}
                 </span>
               </span>{" "}
               as a Software Developer! But enough about career [find more in the{" "}
               <Link href="#Experience">
-                <span className="">next sections</span>
+                <span>next sections</span>
               </Link>{" "}
               ;)]... In my free time I LOVE playing ping pong and badminton, or
               any sport at that. If you ever find me, invite me to a game, I
