@@ -36,6 +36,9 @@ export default function Landing() {
     <div
       className={`relative w-full h-full min-h-screen font-caveat text-white flex flex-col items-start justify-center`}
     >
+      <div aria-label="Hi my name is Jocelyn Xu" className="sr-only">
+        Hi my name is Jocelyn Xu
+      </div>
       <div className="absolute top-[27%] left-1/2 -translate-x-1/2 -translate-y-1/2">
         <AnimateWord
           word="Welcome"
@@ -55,6 +58,7 @@ export default function Landing() {
         className="absolute top-0 left-0 w-full h-full"
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
+        aria-hidden="true"
       >
         <motion.path
           d={
@@ -127,6 +131,7 @@ export default function Landing() {
         className={`absolute ${
           isSmall ? "bottom-5" : "bottom-0"
         } left-1/2 transform -translate-x-1/2 flex flex-col justify-center items-center cursor-pointer hover:scale-110 duration-100`}
+        aria-label="Scroll to About section"
       >
         <span className="text-2xl md:text-[2rem] -mb-2">About</span>
         <ChevronDown className="w-10 h-10 md:w-12 md:h-12 stroke-[1.5]" />

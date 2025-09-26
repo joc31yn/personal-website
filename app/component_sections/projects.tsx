@@ -42,7 +42,7 @@ const Projects = () => {
       githubLink: "https://github.com/uw-datasci/uwdsc-website-v2",
       imgUrl: "/projects/uwdsc_website.png",
       alt: "UWDSC Website",
-      description: `A full-stack club website featuring membereship check-ins, role-based authentication, CRUD operations for events and executive applications, real-time updates, CSV exports, and dynamic data validation.`,
+      description: `A full-stack club website featuring membereship check-ins, role-based authentication, MVC architecture and CRUD operations for events and executive applications, real-time updates, CSV exports, and dynamic data validation.`,
       chips: [
         {
           text: "React",
@@ -185,11 +185,15 @@ const Projects = () => {
     <section
       id="Projects"
       className="w-full min-h-screen h-full flex flex-col items-center"
+      aria-labelledby="projects-heading"
     >
-      <div className="mt-24">
+      <h2 id="projects-heading" className="sr-only">
+        Projects
+      </h2>
+      <div className="mt-12">
         <AnimateWord
           word="Projects"
-          f_smallest="text-[2.5rem]"
+          f_smallest="text-5xl"
           f_sm="text-5xl"
           f_lg="text-6xl"
           border_col="#ffffff"

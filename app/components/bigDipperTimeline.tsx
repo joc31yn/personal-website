@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import ExperienceModal from "./experienceModal";
 import { useIsMobile } from "@/hooks/mobile";
+import { IoPlanetOutline } from "react-icons/io5";
 
 export interface TimelineItem {
   id?: string;
@@ -26,17 +27,17 @@ interface Point {
 }
 
 const DIPPER_POINTS: Point[] = [
-  { x: 88, y: 40 },
-  { x: 87, y: 70 },
-  { x: 63, y: 75 },
-  { x: 58, y: 50 },
-  { x: 40, y: 40 },
-  { x: 26, y: 31 },
-  { x: 5, y: 45 },
+  { x: 88, y: 45 },
+  { x: 87, y: 75 },
+  { x: 63, y: 80 },
+  { x: 58, y: 55 },
+  { x: 40, y: 45 },
+  { x: 26, y: 36 },
+  { x: 5, y: 50 },
 ];
 
 const DIPPER_MOBILE_POINTS: Point[] = [
-  { x: 45, y: 10 },
+  { x: 45, y: 8 },
   { x: 80, y: 18 },
   { x: 70, y: 45 },
   { x: 50, y: 50 },
@@ -117,6 +118,66 @@ export default function BigDipperTimeline({
         } relative w-full rounded-xl bg-[radial-gradient(ellipse_at_top,rgba(20,28,48,1),#05070f)] shadow-[0_0_60px_rgba(60,120,255,0.15)_inset] overflow-hidden`}
       >
         <TwinkleField count={isMobile ? 125 : 200} />
+        <a
+          href="/resume_test.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex flex-col items-center justify-center group"
+        >
+          <div className="absolute top-[17%] left-[5%] md:left-auto md:top-[5%] md:right-[7%] flex flex-col items-center justify-center group-hover:scale-110 duration-200">
+            <div className="relative">
+              {/* Warm atmospheric glow */}
+              <div
+                className="absolute inset-0 bg-amber-400 rounded-full blur-2xl opacity-25 animate-pulse"
+                style={{ animationDuration: "4s" }}
+              ></div>
+              {/* Soft golden planet glow */}
+              <div className="absolute inset-0 bg-yellow-200 rounded-full blur-lg opacity-30"></div>
+              <IoPlanetOutline
+                className="relative w-10 h-10 md:w-8 md:h-8 lg:w-10 lg:h-10 text-amber-100"
+                style={{
+                  filter:
+                    "drop-shadow(0 0 6px rgba(251,191,36,0.6)) drop-shadow(0 0 12px rgba(245,158,11,0.4))",
+                }}
+              />
+              {/* warm circle glimmers */}
+              <div
+                className="absolute top-2 right-1 w-[1.5px] h-[1.5px] bg-yellow-200 rounded-full opacity-80 animate-ping"
+                style={{ animationDuration: "2s", animationDelay: "0s" }}
+              ></div>
+              <div
+                className="absolute bottom-3 left-0 w-1 h-1 bg-amber-300 rounded-full opacity-70 animate-ping"
+                style={{ animationDuration: "2s", animationDelay: "1s" }}
+              ></div>
+              <div
+                className="absolute top-1/2 right-0 w-[2.5px] h-[2.5px] bg-yellow-100 rounded-full opacity-60 animate-ping"
+                style={{ animationDuration: "2s", animationDelay: "1.5s" }}
+              ></div>
+              <div
+                className="absolute top-0 left-1/3 w-[1.5px] h-[1.5px] bg-yellow-100 rounded-full opacity-60 animate-ping"
+                style={{ animationDuration: "2s", animationDelay: "2.5s" }}
+              ></div>
+
+              {/* Golden shimmer */}
+              <div
+                className="absolute inset-0 w-16 h-16 md:w-20 md:h-20 xl:w-10 xl:h-10 rounded-full opacity-0 animate-pulse"
+                style={{
+                  background:
+                    "linear-gradient(45deg, transparent 30%, rgba(251,191,36,0.15) 50%, transparent 70%)",
+                  animationDuration: "6s",
+                }}
+              ></div>
+            </div>
+            <p
+              className="text-amber-100 font-light tracking-wider"
+              style={{
+                filter: "drop-shadow(0 0 4px rgba(251,191,36,0.5))",
+              }}
+            >
+              RESUME
+            </p>
+          </div>
+        </a>
 
         <svg
           className="absolute inset-0 w-full h-full pointer-events-none"

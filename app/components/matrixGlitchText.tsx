@@ -94,7 +94,7 @@ export default function MatrixGlitchText({
   // Placeholder before animation starts
   if (!isAnimating && displayText.every((c) => c === "")) {
     return (
-      <span ref={ref} className={`font-mono ${className}`}>
+      <span ref={ref} className={`${className}`}>
         <span className="text-green-400">{"█".repeat(textLen)}</span>
       </span>
     );
@@ -103,7 +103,7 @@ export default function MatrixGlitchText({
   return (
     <span ref={ref}>
       <span className="p-0.5 w-fit rounded-lg">
-        <span className={`inline-block font-mono ${className}`}>
+        <span className={`inline-block ${className}`}>
           {displayText.map((char, index) => (
             <motion.span
               key={`${text}-${index}`}
