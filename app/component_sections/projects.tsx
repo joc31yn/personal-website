@@ -203,27 +203,26 @@ const Projects = () => {
           strokeDuration={2.5}
         />
       </div>
-      <ul className="flex flex-row flex-wrap gap-10 my-10 justify-center">
+      <div className="flex flex-row flex-wrap gap-10 my-10 justify-center">
         {projects.map((project, i) => (
-          <li key={`${project.name}-${i}`}>
-            <ProjectCard
-              title={project.name}
-              githubLink={project.githubLink}
-              imgUrl={project.imgUrl}
-              alt={project.alt}
-              description={project.description}
-            >
-              {project.chips.map((chip, i) => (
-                <ProjectChip
-                  key={`${chip.text}-${i}`}
-                  text={chip.text}
-                  border_bg={chip.border_bg}
-                />
-              ))}
-            </ProjectCard>
-          </li>
+          <ProjectCard
+            key={`${project.name}-${i}`}
+            title={project.name}
+            githubLink={project.githubLink}
+            imgUrl={project.imgUrl}
+            alt={project.alt}
+            description={project.description}
+          >
+            {project.chips.map((chip, i) => (
+              <ProjectChip
+                key={`${chip.text}-${i}`}
+                text={chip.text}
+                border_bg={chip.border_bg}
+              />
+            ))}
+          </ProjectCard>
         ))}
-      </ul>
+      </div>
     </section>
   );
 };

@@ -27,10 +27,10 @@ const languages = [
     name: "Racket",
     icon: "/languages/racket.svg",
   },
-  // {
-  //   name: "SQL",
-  //   icon: "/languages/sql.svg",
-  // },
+  {
+    name: "SQL",
+    icon: "/languages/sql.svg",
+  },
 ];
 
 const frameworksTools = [
@@ -77,10 +77,10 @@ const databases = [
     name: "MongoDB",
     icon: "/databases/mongo.svg",
   },
-  {
-    name: "Neon",
-    icon: "/databases/neon.svg",
-  },
+  // {
+  //   name: "Neon",
+  //   icon: "/databases/neon.svg",
+  // },
 ];
 
 const items = [
@@ -212,7 +212,11 @@ const Experience = () => {
   ) => (
     <>
       <p className="text-5xl font-caveat font-bold text-center">{title}</p>
-      <div className="flex flex-row gap-16 flex-wrap justify-center my-10" aria-label={`${title} I use`} role="group">
+      <div
+        className="flex flex-row gap-16 flex-wrap justify-center my-10"
+        aria-label={`${title} I use`}
+        role="group"
+      >
         {data.map((tech) => (
           <div className="w-20 h-20 sm:w-24 sm:h-24" key={tech.name}>
             <BallCavas icon={tech.icon} />
@@ -229,7 +233,9 @@ const Experience = () => {
       className="w-full min-h-screen h-full flex flex-col items-center text-white"
       aria-labelledby="experience-heading"
     >
-      <h2 id="experience-heading" className="sr-only">Experience</h2>
+      <h2 id="experience-heading" className="sr-only">
+        Experience
+      </h2>
       <div className="mt-12 sm:mb-10">
         <AnimateWord
           word="Experience"

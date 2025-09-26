@@ -8,6 +8,7 @@ import "aos/dist/aos.css";
 import Carousel from "../components/carousel";
 import SectionWrapper from "../hoc/SectionWrapper";
 import Link from "next/link";
+import { GraduationCap, SquareTerminal, BriefcaseBusiness } from "lucide-react";
 
 const About = () => {
   useEffect(() => {
@@ -37,7 +38,7 @@ const About = () => {
         />
       </div>
 
-      <div className="w-full flex justify-center text-white md:mt-16 xl:my-20 max-w-[1440px]">
+      <div className="w-full flex justify-center text-white md:mt-16 xl:my-16 max-w-[1440px]">
         <div className="flex items-center flex-col md:flex-row justify-center gap-8 md:gap-16 lg:gap-24 w-full h-full">
           <div
             data-aos="fade-up"
@@ -56,18 +57,19 @@ const About = () => {
             />
           </div>
           <div
-            className="flex flex-col text-lg sm:text-[22px] font-lato"
+            className="flex flex-col text-base sm:text-[22px] md:text-xl lg:text-[22px] font-lato"
             data-aos="fade-up"
             data-aos-once="true"
             data-aos-anchor-placement="top-bottom"
           >
-            <p className="leading-relaxed xl:mb-10 text-center md:text-left">
+            <div className="leading-relaxed xl:mb-10 text-center md:text-left">
               Hey, I&apos;m Jocelyn :D and I&apos;m currently in my 2nd year
               studying{" "}
               <span className="inline-flex items-center gap-1 whitespace-nowrap">
                 <span className="text-xl font-mono text-green-400 font-semibold text-glow-green">
                   {"{"}
                 </span>
+                <SquareTerminal className="w-5 h-5 text-green-400" />
                 <MatrixGlitchText
                   className="sm:text-xl font-mono tracking-wide"
                   text="Computer Science"
@@ -84,9 +86,13 @@ const About = () => {
                 <span className="text-xl font-mono text-waterlooYellow font-semibold text-glow-yellow">
                   {"{"}
                 </span>{" "}
-                <span className="sm:text-xl font-mono tracking-wide">
-                  University of Waterloo
-                </span>{" "}
+                <div className="sm:text-xl font-mono tracking-wide flex-row inline-flex items-center">
+                  <GraduationCap
+                    className="w-6 h-6 text-waterlooYellow"
+                    strokeWidth={1.75}
+                  />
+                  &nbsp;University of Waterloo
+                </div>{" "}
                 <span className="text-xl font-mono text-waterlooYellow font-semibold text-glow-yellow">
                   {"}"}
                 </span>
@@ -96,23 +102,28 @@ const About = () => {
                 <span className="text-xl font-mono text-[#0078C1] font-semibold text-glow-blue">
                   {"{"}
                 </span>{" "}
-                <span className="sm:text-xl font-mono tracking-widest">
-                  BMO
-                </span>
+                <div className="sm:text-xl font-mono tracking-widest inline-flex flex-row items-center">
+                  <BriefcaseBusiness className="w-5 h-5 text-[#0078C1]" />
+                  &nbsp;BMO
+                </div>
                 <span className="text-xl font-mono text-[#0078C1] font-semibold text-glow-blue">
                   {"}"}
                 </span>
               </span>{" "}
-              as a Software Developer! But enough about career [find more in the{" "}
-              <Link href="#Experience">
-                <span>next sections</span>
-              </Link>{" "}
-              ;)]... In my free time I LOVE playing ping pong and badminton, or
-              any sport at that. If you ever find me, invite me to a game, I
-              love the challenge and getting to meet new people {"\u{1F929}"}
-            </p>
+              as a Software Developer! But enough about career{" "}
+              <span className="font-mono text-sm md:text-base">
+                [find more in the{" "}
+                <Link href="#Experience">
+                  <span>next sections</span>
+                </Link>{" "}
+                ;)]
+              </span>
+              ... In my free time I LOVE playing ping pong and badminton, or any
+              sport at that. If you ever find me, invite me to a game, I love
+              the challenge and getting to meet new people {"\u{1F929}"}
+            </div>
             <div>
-              <p className="mb-2 sm:mb-8 text-lg md:text-[22px]">
+              <p className="mb-3 mt-8 sm:mb-8 sm:mt-0 pt-5 text-base md:text-[22px] font-bold">
                 A couple snapshots of my interests&nbsp;&nbsp;📸
               </p>
               <Carousel />

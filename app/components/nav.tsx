@@ -9,6 +9,7 @@ import { SiGithub } from "react-icons/si";
 import { SlSocialLinkedin } from "react-icons/sl";
 import { BiLogoGmail } from "react-icons/bi";
 import Link from "next/link";
+import { IoPlanetOutline } from "react-icons/io5";
 
 export default function Nav() {
   const navItems = ["About", "Experience", "Projects", "Contact"];
@@ -95,7 +96,7 @@ export default function Nav() {
               ease: [0.22, 1, 0.36, 1], // easeOutCubic
             }}
           >
-            <div className="flex flex-col items-center justify-center gap-5 my-5 h-full overflow-y-auto">
+            <div className="relative flex flex-col items-center justify-center gap-5 my-5 h-full overflow-y-auto">
               {navItems.map((e) => (
                 <div key={e} className="text-center p-3">
                   <a
@@ -107,6 +108,17 @@ export default function Nav() {
                   </a>
                 </div>
               ))}
+              <a
+                href="/resume_test.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute bottom-12 flex flex-row gap-3 items-center justify-center group duration-200"
+              >
+                <IoPlanetOutline className="w-10 h-10 md:w-8 md:h-8 lg:w-10 lg:h-10 text-black group-hover:text-waterlooYellow" />
+                <p className="text-black font-light tracking-wider group-hover:text-waterlooYellow">
+                  RESUME
+                </p>
+              </a>
             </div>
             <div className="flex flex-row gap-10 items-center justify-center mb-10">
               <ContactLogos link="https://www.linkedin.com/in/jocelyn-xu-741106289/">

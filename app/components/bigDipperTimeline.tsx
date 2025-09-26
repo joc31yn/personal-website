@@ -140,7 +140,7 @@ export default function BigDipperTimeline({
                     "drop-shadow(0 0 6px rgba(251,191,36,0.6)) drop-shadow(0 0 12px rgba(245,158,11,0.4))",
                 }}
               />
-              {/* Tiny warm glimmers */}
+              {/* warm circle glimmers */}
               <div
                 className="absolute top-2 right-1 w-[1.5px] h-[1.5px] bg-yellow-200 rounded-full opacity-80 animate-ping"
                 style={{ animationDuration: "2s", animationDelay: "0s" }}
@@ -158,7 +158,7 @@ export default function BigDipperTimeline({
                 style={{ animationDuration: "2s", animationDelay: "2.5s" }}
               ></div>
 
-              {/* Golden shimmer sweep */}
+              {/* Golden shimmer */}
               <div
                 className="absolute inset-0 w-16 h-16 md:w-20 md:h-20 xl:w-10 xl:h-10 rounded-full opacity-0 animate-pulse"
                 style={{
