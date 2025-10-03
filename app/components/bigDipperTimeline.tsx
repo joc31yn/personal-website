@@ -121,7 +121,7 @@ export default function BigDipperTimeline({
       >
         <TwinkleField count={isMobile ? 125 : 200} />
         <a
-          href="/resume_test.pdf"
+          href="/Jocelyn_Xu_Resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="flex flex-col items-center justify-center group"
@@ -192,7 +192,7 @@ export default function BigDipperTimeline({
               strokeWidth={1}
               initial={{ opacity: 0, pathLength: 0 }}
               animate={{
-                opacity: active === a || active === b ? 0.85 : 0.2,
+                opacity: active === a || active === b ? 0.7 : 0.2,
                 pathLength: hasAnimated ? 1 : 0,
               }}
               transition={{
@@ -224,7 +224,7 @@ export default function BigDipperTimeline({
               setStarHover(v ? true : false);
             }}
             isActive={active === idx}
-            animationDelay={idx * 0.27}
+            animationDelay={idx * 0.26}
             hasAnimated={hasAnimated}
           />
         ))}

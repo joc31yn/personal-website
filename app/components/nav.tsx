@@ -109,7 +109,7 @@ export default function Nav() {
                 </div>
               ))}
               <a
-                href="/resume_test.pdf"
+                href="/Jocelyn_Xu_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="absolute bottom-12 flex flex-row gap-3 items-center justify-center group duration-200"
