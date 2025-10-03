@@ -53,7 +53,6 @@ const SEGMENTS: [number, number][] = [
   [3, 4],
   [4, 5],
   [5, 6],
-  // [0, 3],
 ];
 
 const MOBILE_SEGMENTS: [number, number][] = [
@@ -77,10 +76,13 @@ export default function BigDipperTimeline({
   const [active, setActive] = useState<number | null>(null);
   const [openId, setOpenId] = useState<string | null>(null);
   const [starHover, setStarHover] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
   const isMobile = useIsMobile("(max-width: 767px)");
 
   useEffect(() => {
     setMounted(true);
+    const timer = setTimeout(() => setHasAnimated(true), 200);
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -119,19 +121,17 @@ export default function BigDipperTimeline({
       >
         <TwinkleField count={isMobile ? 125 : 200} />
         <a
-          href="/resume_test.pdf"
+          href="/Jocelyn_Xu_Resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="flex flex-col items-center justify-center group"
         >
           <div className="absolute top-[17%] left-[5%] md:left-auto md:top-[5%] md:right-[7%] flex flex-col items-center justify-center group-hover:scale-110 duration-200">
             <div className="relative">
-              {/* Warm atmospheric glow */}
               <div
                 className="absolute inset-0 bg-amber-400 rounded-full blur-2xl opacity-25 animate-pulse"
                 style={{ animationDuration: "4s" }}
               ></div>
-              {/* Soft golden planet glow */}
               <div className="absolute inset-0 bg-yellow-200 rounded-full blur-lg opacity-30"></div>
               <IoPlanetOutline
                 className="relative w-10 h-10 md:w-8 md:h-8 lg:w-10 lg:h-10 text-amber-100"
@@ -140,7 +140,6 @@ export default function BigDipperTimeline({
                     "drop-shadow(0 0 6px rgba(251,191,36,0.6)) drop-shadow(0 0 12px rgba(245,158,11,0.4))",
                 }}
               />
-              {/* warm circle glimmers */}
               <div
                 className="absolute top-2 right-1 w-[1.5px] h-[1.5px] bg-yellow-200 rounded-full opacity-80 animate-ping"
                 style={{ animationDuration: "2s", animationDelay: "0s" }}
@@ -158,7 +157,6 @@ export default function BigDipperTimeline({
                 style={{ animationDuration: "2s", animationDelay: "2.5s" }}
               ></div>
 
-              {/* Golden shimmer */}
               <div
                 className="absolute inset-0 w-16 h-16 md:w-20 md:h-20 xl:w-10 xl:h-10 rounded-full opacity-0 animate-pulse"
                 style={{
@@ -192,9 +190,22 @@ export default function BigDipperTimeline({
               y2={`${validate(points[b].y)}%`}
               stroke="white"
               strokeWidth={1}
-              initial={{ opacity: 0.2 }}
-              animate={{ opacity: active === a || active === b ? 0.85 : 0.2 }}
-              transition={{ type: "spring", stiffness: 120, damping: 20 }}
+              initial={{ opacity: 0, pathLength: 0 }}
+              animate={{
+                opacity: active === a || active === b ? 0.7 : 0.2,
+                pathLength: hasAnimated ? 1 : 0,
+              }}
+              transition={{
+                opacity: {
+                  duration: 0.25,
+                  ease: "easeInOut",
+                },
+                pathLength: {
+                  duration: 0.3,
+                  delay: i * 0.3,
+                  ease: "linear",
+                },
+              }}
               style={{ filter: "drop-shadow(0 0 6px rgba(255,255,255,0.45))" }}
             />
           ))}
@@ -213,6 +224,8 @@ export default function BigDipperTimeline({
               setStarHover(v ? true : false);
             }}
             isActive={active === idx}
+            animationDelay={idx * 0.26}
+            hasAnimated={hasAnimated}
           />
         ))}
       </div>
@@ -265,6 +278,8 @@ interface StarButtonProps {
   onHover: (v: boolean) => void;
   small?: boolean;
   isActive: boolean;
+  animationDelay?: number;
+  hasAnimated?: boolean;
 }
 
 function StarButton({
@@ -276,8 +291,22 @@ function StarButton({
   onHover,
   small = false,
   isActive = false,
+  animationDelay = 0,
+  hasAnimated = false,
 }: StarButtonProps) {
   const size = small ? "text-xl md:text-2xl" : "text-2xl md:text-3xl";
+  const [showInitialGlow, setShowInitialGlow] = useState(false);
+
+  useEffect(() => {
+    if (hasAnimated) {
+      const timer = setTimeout(() => {
+        setShowInitialGlow(true);
+        const glowTimer = setTimeout(() => setShowInitialGlow(false), 500);
+        return () => clearTimeout(glowTimer);
+      }, animationDelay * 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [hasAnimated, animationDelay]);
 
   return (
     <>
@@ -288,8 +317,15 @@ function StarButton({
           left: `${validate(x)}%`,
           top: `${validate(y)}%`,
         }}
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: isActive ? 1.2 : 1, opacity: 1 }}
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{
+          scale: isActive || showInitialGlow ? 1.2 : 1,
+          opacity: 1,
+        }}
+        transition={{
+          scale: { duration: 0.4, ease: "easeOut" },
+          opacity: { duration: 0.6, delay: animationDelay, ease: "easeOut" },
+        }}
         whileHover={{ scale: 1.2 }}
         whileTap={{ scale: 0.95 }}
         onClick={onOpen}
@@ -301,17 +337,18 @@ function StarButton({
         <motion.span
           className="drop-shadow-[0_0_10px_rgba(255,255,255,0.9)]"
           animate={{
-            filter: isActive
-              ? [
-                  "drop-shadow(0 0 6px rgba(255,255,255,1))",
-                  "drop-shadow(0 0 12px rgba(255,255,255,1))",
-                  "drop-shadow(0 0 6px rgba(255,255,255,1))",
-                ]
-              : [
-                  "drop-shadow(0 0 4px rgba(255,255,255,0.6))",
-                  "drop-shadow(0 0 8px rgba(255,255,255,0.8))",
-                  "drop-shadow(0 0 4px rgba(255,255,255,0.6))",
-                ],
+            filter:
+              isActive || showInitialGlow
+                ? [
+                    "drop-shadow(0 0 6px rgba(255,255,255,1))",
+                    "drop-shadow(0 0 12px rgba(255,255,255,1))",
+                    "drop-shadow(0 0 6px rgba(255,255,255,1))",
+                  ]
+                : [
+                    "drop-shadow(0 0 4px rgba(255,255,255,0.6))",
+                    "drop-shadow(0 0 8px rgba(255,255,255,0.8))",
+                    "drop-shadow(0 0 4px rgba(255,255,255,0.6))",
+                  ],
           }}
           transition={{ duration: 1.75, repeat: Infinity, ease: "easeInOut" }}
         >
@@ -322,7 +359,7 @@ function StarButton({
 
         <span
           className={`absolute inset-0 -z-10 scale-110 rounded-full blur-lg transition-all duration-300 ${
-            isActive
+            isActive || showInitialGlow
               ? "opacity-75"
               : "opacity-0 group-hover:opacity-75 group-focus:opacity-75"
           }`}

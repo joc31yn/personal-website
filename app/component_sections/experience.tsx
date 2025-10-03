@@ -164,9 +164,9 @@ const displace_y_mobile = [-4, 5, -4, 4, -1, -2, 3];
 
 const useIntersectionObserver = (
   options: IntersectionObserverInit = {}
-): [React.RefObject<HTMLElement | null>, boolean] => {
+): [React.RefObject<HTMLDivElement | null>, boolean] => {
   const [isIntersecting, setIsIntersecting] = useState(false);
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -228,7 +228,6 @@ const Experience = () => {
   return (
     // need to chagne to animate on scroll
     <section
-      ref={sectionRef}
       id="Experience"
       className="w-full min-h-screen h-full flex flex-col items-center text-white"
       aria-labelledby="experience-heading"
@@ -252,13 +251,15 @@ const Experience = () => {
       <div className="w-full mb-10">
         <BigDipperTimeline items={updatedItems} title="" subtitle="" />
       </div>
-      {isInView && (
-        <div>
-          {renderBallCanvases("Languages", languages)}
-          {renderBallCanvases("Framework & Tools", frameworksTools)}
-          {renderBallCanvases("Databases", databases)}
-        </div>
-      )}
+      <div ref={sectionRef}>
+        {isInView && (
+          <div>
+            {renderBallCanvases("Languages", languages)}
+            {renderBallCanvases("Framework & Tools", frameworksTools)}
+            {renderBallCanvases("Databases", databases)}
+          </div>
+        )}
+      </div>
     </section>
   );
 };
