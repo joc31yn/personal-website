@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import ExperienceModal from "./experienceModal";
@@ -77,13 +77,34 @@ export default function BigDipperTimeline({
   const [openId, setOpenId] = useState<string | null>(null);
   const [starHover, setStarHover] = useState(false);
   const [hasAnimated, setHasAnimated] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile("(max-width: 767px)");
 
   useEffect(() => {
     setMounted(true);
-    const timer = setTimeout(() => setHasAnimated(true), 200);
-    return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    if (!mounted || !containerRef.current) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated) {
+            setIsInView(true);
+            const timer = setTimeout(() => setHasAnimated(true), 200);
+            return () => clearTimeout(timer);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(containerRef.current);
+
+    return () => observer.disconnect();
+  }, [mounted, hasAnimated]);
 
   useEffect(() => {
     if (openId) {
@@ -115,6 +136,7 @@ export default function BigDipperTimeline({
         </p>
       </header>
       <div
+        ref={containerRef}
         className={`${
           isMobile ? "min-h-screen max-w-md" : "aspect-[16/9]"
         } relative w-full rounded-xl bg-[radial-gradient(ellipse_at_top,rgba(20,28,48,1),#05070f)] shadow-[0_0_60px_rgba(60,120,255,0.15)_inset] overflow-hidden`}
@@ -193,7 +215,7 @@ export default function BigDipperTimeline({
               initial={{ opacity: 0, pathLength: 0 }}
               animate={{
                 opacity: active === a || active === b ? 0.7 : 0.2,
-                pathLength: hasAnimated ? 1 : 0,
+                pathLength: isInView && hasAnimated ? 1 : 0,
               }}
               transition={{
                 opacity: {
@@ -226,6 +248,7 @@ export default function BigDipperTimeline({
             isActive={active === idx}
             animationDelay={idx * 0.26}
             hasAnimated={hasAnimated}
+            isInView={isInView}
           />
         ))}
       </div>
@@ -280,6 +303,7 @@ interface StarButtonProps {
   isActive: boolean;
   animationDelay?: number;
   hasAnimated?: boolean;
+  isInView?: boolean;
 }
 
 function StarButton({
@@ -293,12 +317,13 @@ function StarButton({
   isActive = false,
   animationDelay = 0,
   hasAnimated = false,
+  isInView = false,
 }: StarButtonProps) {
   const size = small ? "text-xl md:text-2xl" : "text-2xl md:text-3xl";
   const [showInitialGlow, setShowInitialGlow] = useState(false);
 
   useEffect(() => {
-    if (hasAnimated) {
+    if (hasAnimated && isInView) {
       const timer = setTimeout(() => {
         setShowInitialGlow(true);
         const glowTimer = setTimeout(() => setShowInitialGlow(false), 500);
@@ -306,7 +331,7 @@ function StarButton({
       }, animationDelay * 1000);
       return () => clearTimeout(timer);
     }
-  }, [hasAnimated, animationDelay]);
+  }, [hasAnimated, animationDelay, isInView]);
 
   return (
     <>
@@ -320,7 +345,7 @@ function StarButton({
         initial={{ scale: 0, opacity: 0 }}
         animate={{
           scale: isActive || showInitialGlow ? 1.2 : 1,
-          opacity: 1,
+          opacity: isInView ? 1 : 0,
         }}
         transition={{
           scale: { duration: 0.4, ease: "easeOut" },
