@@ -1,10 +1,13 @@
 "use client";
+import { useEffect, useState } from "react";
 import AnimateWord from "../components/animateWord";
 import ProjectCard from "../components/projectCard";
 import ProjectChip from "../components/projectChip";
 import SectionWrapper from "../hoc/SectionWrapper";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 const Projects = () => {
+  const [seeMore, setSeeMore] = useState(false);
   const projects = [
     {
       name: "Resumix",
@@ -71,27 +74,35 @@ const Projects = () => {
       ],
     },
     {
-      name: "TEDxUW",
-      githubLink: "https://github.com/TEDxUW25/website",
-      imgUrl: "/projects/tedxuw.png",
-      alt: "TEDxUW Website",
-      description: `Built website for TEDxUW 2025 Conference featuring event speakers, organizers, sponsors, past themes and timelines, and a ticket purchasing page.`,
+      name: "Fashionkilla",
+      githubLink: "https://github.com/claireleu/Fashionkilla",
+      imgUrl: "/projects/fashionkilla.png",
+      alt: "Fashionkilla",
+      description: `A digital wardrobe and outfit recommender that helps users organize their clothes and generate personalized, stylish outfit suggestions. Powered by semantic search and image analysis, it combines computer vision and NLP to make fashion management fun, efficient, and sustainable.`,
       chips: [
         {
-          text: "React",
-          border_bg: "61DBFB",
+          text: "Python",
+          border_bg: "4B8BBE",
         },
         {
           text: "Typescript",
           border_bg: "007acc",
         },
         {
-          text: "Next.js",
-          border_bg: "8B8B8B",
+          text: "FastAPI",
+          border_bg: "099386",
         },
         {
-          text: "SQL",
-          border_bg: "DF6A21",
+          text: "MongoDB",
+          border_bg: "15A44D",
+        },
+        {
+          text: "Gemini",
+          border_bg: "808FFE",
+        },
+        {
+          text: "Sentence Transformers",
+          border_bg: "FFBC29",
         },
       ],
     },
@@ -125,6 +136,31 @@ const Projects = () => {
         {
           text: "Mailgun",
           border_bg: "C22026",
+        },
+      ],
+    },
+    {
+      name: "TEDxUW",
+      githubLink: "https://github.com/TEDxUW25/website",
+      imgUrl: "/projects/tedxuw.png",
+      alt: "TEDxUW Website",
+      description: `Built website for TEDxUW 2025 Conference featuring event speakers, organizers, sponsors, past themes and timelines, and a ticket purchasing page.`,
+      chips: [
+        {
+          text: "React",
+          border_bg: "61DBFB",
+        },
+        {
+          text: "Typescript",
+          border_bg: "007acc",
+        },
+        {
+          text: "Next.js",
+          border_bg: "8B8B8B",
+        },
+        {
+          text: "SQL",
+          border_bg: "DF6A21",
         },
       ],
     },
@@ -180,6 +216,13 @@ const Projects = () => {
     },
   ];
 
+  useEffect(() => {
+    if (!seeMore) {
+      const projectSection = document.getElementById("Projects");
+      projectSection?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [seeMore]);
+
   return (
     // need to change to animate on scroll
     <section
@@ -204,7 +247,7 @@ const Projects = () => {
         />
       </div>
       <div className="flex flex-row flex-wrap gap-10 my-10 justify-center">
-        {projects.map((project, i) => (
+        {projects.slice(0, seeMore ? projects.length : 3).map((project, i) => (
           <ProjectCard
             key={`${project.name}-${i}`}
             title={project.name}
@@ -223,6 +266,24 @@ const Projects = () => {
           </ProjectCard>
         ))}
       </div>
+      <button
+        className="font-caveat text-white text-3xl flex flex-col items-center justify-center hover:scale-110 duration-200"
+        onClick={() => {
+          setSeeMore((prev) => !prev);
+        }}
+      >
+        {seeMore ? (
+          <>
+            <ChevronUp className="w-8 h-8 md:w-10 md:h-10 stroke-[1.5] -mb-2" />
+            See less
+          </>
+        ) : (
+          <>
+            See more
+            <ChevronDown className="w-8 h-8 md:w-10 md:h-10 stroke-[1.5] -mt-2" />
+          </>
+        )}
+      </button>
     </section>
   );
 };
