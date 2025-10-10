@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AnimateWord from "../components/animateWord";
 import ProjectCard from "../components/projectCard";
 import ProjectChip from "../components/projectChip";
@@ -216,12 +216,13 @@ const Projects = () => {
     },
   ];
 
-  useEffect(() => {
-    if (!seeMore) {
+  const handleToggle = () => {
+    if (seeMore) {
       const projectSection = document.getElementById("Projects");
       projectSection?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-  }, [seeMore]);
+    setSeeMore((prev) => !prev);
+  };
 
   return (
     // need to change to animate on scroll
@@ -268,9 +269,7 @@ const Projects = () => {
       </div>
       <button
         className="font-caveat text-white text-3xl flex flex-col items-center justify-center hover:scale-110 duration-200"
-        onClick={() => {
-          setSeeMore((prev) => !prev);
-        }}
+        onClick={handleToggle}
       >
         {seeMore ? (
           <>
