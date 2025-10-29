@@ -156,10 +156,7 @@ const Contact = () => {
         </motion.button>
       </form>
       <div className="flex flex-col gap-6 items-center justify-center text-gray-300 p-5">
-        <div
-          className="flex flex-row gap-10 items-center justify-center"
-          aria-label="Other ways to contact Jocelyn"
-        >
+        <div className="flex flex-row gap-10 items-center justify-center">
           <ContactLogos link="https://www.linkedin.com/in/jocelyn-xu-741106289/">
             <SlSocialLinkedin className="text-black w-6 h-6" />
           </ContactLogos>

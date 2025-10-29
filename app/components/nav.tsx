@@ -73,7 +73,7 @@ export default function Nav() {
               height={48}
             />
           </Link>
-          <button onClick={toggleMenu}>
+          <button onClick={toggleMenu} aria-label="menu">
             {menuOpen ? (
               <X className="w-6 h-6 sm:w-8 sm:h-8" />
             ) : (
@@ -103,6 +103,7 @@ export default function Nav() {
                     className="text-2xl sm:text-3xl font-semibold font-caveat hover:text-waterlooYellow"
                     onClick={toggleMenu}
                     href={`#${e}`}
+                    aria-label={e}
                   >
                     {e}
                   </a>
@@ -113,6 +114,7 @@ export default function Nav() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="absolute bottom-12 flex flex-row gap-3 items-center justify-center group duration-200"
+                aria-label="resume"
               >
                 <IoPlanetOutline className="w-10 h-10 md:w-8 md:h-8 lg:w-10 lg:h-10 text-black group-hover:text-waterlooYellow" />
                 <p className="text-black font-light tracking-wider group-hover:text-waterlooYellow">
@@ -163,6 +165,7 @@ export default function Nav() {
               key={e}
               className="md:text-xl lg:text-2xl hover:text-waterlooYellow font-medium duration-150 font-caveat"
               href={`#${e}`}
+              aria-label={e}
             >
               {e}
             </a>
