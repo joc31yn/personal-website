@@ -147,6 +147,7 @@ export default function BigDipperTimeline({
           target="_blank"
           rel="noopener noreferrer"
           className="flex flex-col items-center justify-center group"
+          aria-label="resume"
         >
           <div className="absolute top-[17%] left-[5%] md:left-auto md:top-[5%] md:right-[7%] flex flex-col items-center justify-center group-hover:scale-110 duration-200">
             <div className="relative">
@@ -378,7 +379,13 @@ function StarButton({
           transition={{ duration: 1.75, repeat: Infinity, ease: "easeInOut" }}
         >
           <div className="relative w-9 h-9">
-            <Image src="/star.png" alt="star" fill className="object-contain" />
+            <Image
+              src="/star.png"
+              alt="star"
+              fill
+              className="object-contain"
+              sizes="36px"
+            />
           </div>
         </motion.span>
 

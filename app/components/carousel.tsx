@@ -5,15 +5,30 @@ import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const images = [
-  { src: "/carousel/matcha.jpg", caption: "matchaaa" },
-  { src: "/carousel/pingpong.jpg", caption: "ping pong :D" },
-  { src: "/carousel/kayak.jpg", caption: "kayak" },
-  { src: "/carousel/half_marathon.jpg", caption: "half marathon!" },
-  { src: "/carousel/ice.jpg", caption: "yum" },
-  { src: "/carousel/biking.jpg", caption: "bike rides" },
-  { src: "/carousel/minion.jpg", caption: "minion" },
-  { src: "/carousel/bear.jpg", caption: "ice bear" },
-  { src: "/carousel/whale.jpg", caption: "wally" },
+  { src: "/carousel/matcha.jpg", caption: "matchaaa", width: 448, height: 336 },
+  {
+    src: "/carousel/pingpong.jpg",
+    caption: "ping pong :D",
+    width: 512,
+    height: 288,
+  },
+  { src: "/carousel/kayak.jpg", caption: "kayak", width: 448, height: 336 },
+  {
+    src: "/carousel/half_marathon.jpg",
+    caption: "half marathon!",
+    width: 448,
+    height: 336,
+  },
+  { src: "/carousel/ice.jpg", caption: "yum", width: 448, height: 336 },
+  {
+    src: "/carousel/biking.jpg",
+    caption: "bike rides",
+    width: 448,
+    height: 336,
+  },
+  { src: "/carousel/minion.jpg", caption: "minion", width: 448, height: 336 },
+  { src: "/carousel/bear.jpg", caption: "ice bear", width: 448, height: 336 },
+  { src: "/carousel/whale.jpg", caption: "wally", width: 448, height: 397 },
 ];
 
 export default function Carousel() {
@@ -97,13 +112,14 @@ export default function Carousel() {
             >
               {/* Hanging clip */}
               <div className="absolute -top-7 sm:-top-5 left-1/2 transform -translate-x-1/2 z-20">
-                <div className="h-8 w-2">
+                <div className="relative h-8 w-2">
                   <Image
                     src="/pin.png"
                     alt="clothing pin"
-                    className="object-cover"
                     fill
-                    priority
+                    sizes="8px"
+                    quality={75}
+                    loading={offset === 0 ? "eager" : "lazy"}
                   />
                 </div>
               </div>
@@ -113,10 +129,13 @@ export default function Carousel() {
                 <div className="relative w-52 h-32 sm:w-56 sm:h-36 overflow-hidden">
                   <Image
                     src={images[index].src}
-                    alt={`carousel-${index}`}
+                    alt={images[index].caption}
                     fill
+                    sizes="(max-width: 640px) 208px, 224px"
+                    quality={offset === 0 ? 75 : 60}
+                    priority={index === 0}
+                    loading={index === 0 ? "eager" : "lazy"}
                     className="object-cover"
-                    priority
                   />
                   {offset !== 0 && (
                     <div className="absolute inset-0 bg-black/25 pointer-events-none" />

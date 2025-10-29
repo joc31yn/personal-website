@@ -47,12 +47,12 @@ const About = () => {
             className="relative mt-5 md:mt-0 w-48 h-48 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-96 lg:h-96 flex-shrink-0"
           >
             <Image
-              className="md:-rotate-[8deg]"
+              className="md:-rotate-[8deg] object-contain"
               src="/headshot.png"
               alt="Portrait of Jocelyn Xu"
               fill
-              style={{ objectFit: "contain" }}
               sizes="(max-width: 640px) 12rem, (max-width: 768px) 14rem, (max-width: 1024px) 18rem, 24rem"
+              quality={80}
               priority
             />
           </div>

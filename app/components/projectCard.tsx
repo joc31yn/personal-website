@@ -34,7 +34,7 @@ export default function ProjectCard({
         <div className="text-wrap mb-3">
           <div className="flex flex-row gap-2 items-center mb-1">
             <p className="text-2xl font-semibold">{title}</p>
-            <a href={githubLink} target="_blank">
+            <a href={githubLink} target="_blank" aria-label={title}>
               <SiGithub className="text-white w-[22px] h-[22px]" />
             </a>
           </div>
