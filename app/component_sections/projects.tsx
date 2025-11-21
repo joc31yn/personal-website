@@ -107,6 +107,64 @@ const Projects = () => {
       ],
     },
     {
+      name: "TEDxUW",
+      githubLink: "https://github.com/TEDxUW25/website",
+      imgUrl: "/projects/tedxuw.png",
+      alt: "TEDxUW Website",
+      description: `Built website for TEDxUW 2025 Conference featuring event speakers, organizers, sponsors, past themes and timelines, and a secure Stripe ticket purchasing page.`,
+      chips: [
+        {
+          text: "React",
+          border_bg: "61DBFB",
+        },
+        {
+          text: "Typescript",
+          border_bg: "007acc",
+        },
+        {
+          text: "Next.js",
+          border_bg: "8B8B8B",
+        },
+        {
+          text: "SQL",
+          border_bg: "DF6A21",
+        },
+        {
+          text: "Stripe",
+          border_bg: "6059F7",
+        },
+      ],
+    },
+    {
+      name: "Battleship",
+      githubLink: "https://github.com/joc31yn/Battleship",
+      imgUrl: "/projects/battleship.png",
+      alt: "Battleship game",
+      description: `An interactive Battleship implementation built with dynamic GUI components, real-time game statistics, audio integration, and AI opponents, through modular class architecture.`,
+      chips: [
+        {
+          text: "Java",
+          border_bg: "ED8B00",
+        },
+        {
+          text: "Java Swing",
+          border_bg: "5382a1",
+        },
+        {
+          text: "OOP",
+          border_bg: "9370DB",
+        },
+        {
+          text: "Algorithm Design",
+          border_bg: "DC143C",
+        },
+        {
+          text: "Game Development",
+          border_bg: "39FF14",
+        },
+      ],
+    },
+    {
       name: "Personal Website",
       githubLink: "https://github.com/joc31yn/personal-website",
       imgUrl: "/projects/personal_website.png",
@@ -140,31 +198,6 @@ const Projects = () => {
       ],
     },
     {
-      name: "TEDxUW",
-      githubLink: "https://github.com/TEDxUW25/website",
-      imgUrl: "/projects/tedxuw.png",
-      alt: "TEDxUW Website",
-      description: `Built website for TEDxUW 2025 Conference featuring event speakers, organizers, sponsors, past themes and timelines, and a ticket purchasing page.`,
-      chips: [
-        {
-          text: "React",
-          border_bg: "61DBFB",
-        },
-        {
-          text: "Typescript",
-          border_bg: "007acc",
-        },
-        {
-          text: "Next.js",
-          border_bg: "8B8B8B",
-        },
-        {
-          text: "SQL",
-          border_bg: "DF6A21",
-        },
-      ],
-    },
-    {
       name: "Ecosim",
       githubLink: "https://github.com/candle08/EcoSim",
       imgUrl: "/projects/ecosim.png",
@@ -182,35 +215,6 @@ const Projects = () => {
         {
           text: "Javascript",
           border_bg: "F2BF25",
-        },
-      ],
-    },
-    {
-      name: "Battleship",
-      githubLink: "https://github.com/joc31yn/Battleship",
-      imgUrl: "/projects/battleship.png",
-      alt: "Battleship game",
-      description: `An interactive Battleship implementation built with dynamic GUI components, real-time game statistics, audio integration, and AI opponents, through modular class architecture.`,
-      chips: [
-        {
-          text: "Java",
-          border_bg: "ED8B00",
-        },
-        {
-          text: "Java Swing",
-          border_bg: "5382a1",
-        },
-        {
-          text: "OOP",
-          border_bg: "9370DB",
-        },
-        {
-          text: "Algorithm Design",
-          border_bg: "DC143C",
-        },
-        {
-          text: "Game Development",
-          border_bg: "39FF14",
         },
       ],
     },

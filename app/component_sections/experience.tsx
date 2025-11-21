@@ -109,9 +109,9 @@ const items = [
     id: "3",
     title: "TEDxUW SWE",
     displayTitle: "TEDxUW SWE",
-    date: "May 2025 — Present",
+    date: "May 2025 — Nov 2025",
     summary: [
-      "Built an interactive website for TEDxUW 2025 conference featuring event speakers, organizers, and past themes and timelines, while also providing a ticket purchasing page and engaging user experience to showcase the mission of TEDxUW.",
+      "Built the 2025 TEDxUW conference site with dynamic speaker/organizer profiles, themes + timeline visualization, and a secure Stripe ticket purchasing flow.",
     ],
   },
   {
