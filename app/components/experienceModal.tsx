@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
+import { X } from "lucide-react";
 import { TimelineItem } from "./bigDipperTimeline";
 
 interface ModalProps {
@@ -36,7 +36,7 @@ export default function ExperienceModal({ item, onClose }: ModalProps) {
               className="rounded-full p-2 text-white hover:text-white hover:bg-white/10"
               aria-label="Close"
             >
-              <Sparkles className="w-5 h-5" />
+              <X className="w-5 h-5" />
             </button>
           </div>
 
