@@ -98,7 +98,7 @@ const items = [
     id: "2",
     title: "UW Datascience Club VP",
     displayTitle: "UW Datascience Club VP",
-    date: "Dec 2025 — Present",
+    date: "Dec 2024 — Present",
     summary: [
       "CxC (Data Hackathon) Coordinator: Organized Canada's largest student-run data hackathon.",
       "Developer: maintained and added new features for uwdsc website, events, and student resources.",
