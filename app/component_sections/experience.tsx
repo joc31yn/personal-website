@@ -5,6 +5,7 @@ import SectionWrapper from "../hoc/SectionWrapper";
 import { useEffect, useRef, useState } from "react";
 import BigDipperTimeline from "../components/bigDipperTimeline";
 import { useIsMobile } from "@/hooks/mobile";
+import ConstellationHintText from "../components/ConstellationHintText";
 
 const languages = [
   {
@@ -248,8 +249,9 @@ const Experience = () => {
           strokeDuration={2.5}
         />
       </div>
+      <ConstellationHintText />
       <div className="w-full mb-10">
-        <BigDipperTimeline items={updatedItems} title="" subtitle="" />
+        <BigDipperTimeline items={updatedItems} />
       </div>
       <div ref={sectionRef}>
         {isInView && (
