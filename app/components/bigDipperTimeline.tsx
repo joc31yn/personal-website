@@ -136,7 +136,7 @@ export default function BigDipperTimeline({ items }: BigDipperTimelineProps) {
           aria-label="resume"
         >
           <div className="absolute top-[17%] left-[5%] md:left-auto md:top-[5%] md:right-[7%] flex flex-col items-center justify-center group-hover:scale-110 duration-200">
-            {/* Desktop */}
+            {/* Mobile */}
             <p
               className="text-amber-100 font-light tracking-wider text-xs py-2 block sm:hidden"
               style={{
@@ -145,7 +145,8 @@ export default function BigDipperTimeline({ items }: BigDipperTimelineProps) {
             >
               My red giant :)
             </p>
-            {/* Mobile */}
+
+            {/* Desktop */}
             <p
               className="text-amber-100 font-light tracking-wider text-xs py-2 hidden sm:block"
               style={{
