@@ -46,7 +46,7 @@ const useCanvasCursor = () => {
       t.vx += (pos.x - t.x) * e;
       t.vy += (pos.y - t.y) * e;
       for (var n, i = 0, a = this.nodes.length; i < a; i++)
-        (t = this.nodes[i]),
+        ((t = this.nodes[i]),
           0 < i &&
             ((n = this.nodes[i - 1]),
             (t.vx += (n.x - t.x) * e),
@@ -57,7 +57,7 @@ const useCanvasCursor = () => {
           (t.vy *= this.friction),
           (t.x += t.vx),
           (t.y += t.vy),
-          (e *= E.tension);
+          (e *= E.tension));
     },
     draw: function () {
       var e,
@@ -88,23 +88,23 @@ const useCanvasCursor = () => {
         lines.push(new Line({ spring: 0.4 + (e / E.trails) * 0.025 }));
     }
     function c(e) {
-      e.touches
+      (e.touches
         ? ((pos.x = e.touches[0].pageX), (pos.y = e.touches[0].pageY))
         : ((pos.x = e.clientX), (pos.y = e.clientY)),
-        e.preventDefault();
+        e.preventDefault());
     }
     function l(e) {
       1 == e.touches.length &&
         ((pos.x = e.touches[0].pageX), (pos.y = e.touches[0].pageY));
     }
-    document.removeEventListener("mousemove", onMousemove),
+    (document.removeEventListener("mousemove", onMousemove),
       document.removeEventListener("touchstart", onMousemove),
       document.addEventListener("mousemove", c),
       document.addEventListener("touchmove", c),
       document.addEventListener("touchstart", l),
       c(e),
       o(),
-      render();
+      render());
   }
 
   function render() {

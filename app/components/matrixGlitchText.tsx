@@ -24,7 +24,7 @@ export default function MatrixGlitchText({
   const textLen = text.length;
   const [displayText, setDisplayText] = useState(Array(textLen).fill(""));
   const [completedLetters, setCompletedLetters] = useState(
-    new Array(textLen).fill(false)
+    new Array(textLen).fill(false),
   );
 
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.5 });

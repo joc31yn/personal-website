@@ -150,7 +150,7 @@ export default function AnimateWord({
         <text
           ref={measureRef}
           className={`font-sora font-bold ${getFontSizeClass(
-            dimensions.width
+            dimensions.width,
           )}`}
           style={{
             strokeWidth: pixel,

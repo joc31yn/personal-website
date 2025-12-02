@@ -17,8 +17,6 @@ export interface TimelineItem {
 
 interface BigDipperTimelineProps {
   items?: TimelineItem[];
-  title?: string;
-  subtitle?: string;
 }
 
 interface Point {
@@ -67,11 +65,7 @@ const MOBILE_SEGMENTS: [number, number][] = [
 
 const validate = (n: number) => Math.max(0, Math.min(100, n));
 
-export default function BigDipperTimeline({
-  items,
-  title = "Experience Constellation",
-  subtitle = "The Big Dipper as a timeline",
-}: BigDipperTimelineProps) {
+export default function BigDipperTimeline({ items }: BigDipperTimelineProps) {
   const [mounted, setMounted] = useState(false);
   const [active, setActive] = useState<number | null>(null);
   const [openId, setOpenId] = useState<string | null>(null);
@@ -98,7 +92,7 @@ export default function BigDipperTimeline({
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
 
     observer.observe(containerRef.current);
@@ -127,14 +121,6 @@ export default function BigDipperTimeline({
 
   return (
     <div className="w-full flex flex-col gap-4 items-center justify-center">
-      <header className="text-center">
-        <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
-          {title}
-        </h2>
-        <p className="text-sm md:text-base text-muted-foreground/80">
-          {subtitle}
-        </p>
-      </header>
       <div
         ref={containerRef}
         className={`${
@@ -150,6 +136,24 @@ export default function BigDipperTimeline({
           aria-label="resume"
         >
           <div className="absolute top-[17%] left-[5%] md:left-auto md:top-[5%] md:right-[7%] flex flex-col items-center justify-center group-hover:scale-110 duration-200">
+            {/* Desktop */}
+            <p
+              className="text-amber-100 font-light tracking-wider text-xs py-2 block sm:hidden"
+              style={{
+                filter: "drop-shadow(0 0 4px rgba(251,191,36,0.5))",
+              }}
+            >
+              My red giant :)
+            </p>
+            {/* Mobile */}
+            <p
+              className="text-amber-100 font-light tracking-wider text-xs py-2 hidden sm:block"
+              style={{
+                filter: "drop-shadow(0 0 4px rgba(251,191,36,0.5))",
+              }}
+            >
+              My north star :)
+            </p>
             <div className="relative">
               <div
                 className="absolute inset-0 bg-amber-400 rounded-full blur-2xl opacity-25 animate-pulse"
@@ -436,7 +440,7 @@ function TwinkleField({ count = 80 }: TwinkleFieldProps) {
         size: Math.random() * (isMobile ? 0.12 : 0.18) + 0.05,
         delay: Math.random() * 2,
         duration: Math.random() * 1.5 + 0.8,
-      }))
+      })),
     );
   }, [count, isMobile]);
 

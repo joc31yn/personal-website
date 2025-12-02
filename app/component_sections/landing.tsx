@@ -18,20 +18,20 @@ export default function Landing() {
         { x: 51, y: 70 },
       ]
     : isMedium
-    ? [
-        { x: 2, y: 13 },
-        { x: 11, y: 28 },
-        { x: 23, y: 43 },
-        { x: 42, y: 58 },
-        { x: 52, y: 70 },
-      ]
-    : [
-        { x: 3, y: 11 },
-        { x: 12, y: 27 },
-        { x: 24, y: 42 },
-        { x: 43, y: 57 },
-        { x: 53, y: 65 },
-      ];
+      ? [
+          { x: 2, y: 13 },
+          { x: 11, y: 28 },
+          { x: 23, y: 43 },
+          { x: 42, y: 58 },
+          { x: 52, y: 70 },
+        ]
+      : [
+          { x: 3, y: 11 },
+          { x: 12, y: 27 },
+          { x: 24, y: 42 },
+          { x: 43, y: 57 },
+          { x: 53, y: 65 },
+        ];
   return (
     <div
       className={`relative w-full h-full min-h-screen font-caveat text-white flex flex-col items-start justify-center`}
@@ -87,12 +87,12 @@ export default function Landing() {
                   ? "3.1rem"
                   : "2.5rem"
                 : isMedium
-                ? i === words.length - 1
-                  ? "6rem"
-                  : "3.75rem"
-                : i === words.length - 1
-                ? "8.25rem"
-                : "5rem",
+                  ? i === words.length - 1
+                    ? "6rem"
+                    : "3.75rem"
+                  : i === words.length - 1
+                    ? "8.25rem"
+                    : "5rem",
               left: `${pathCoordinates[i]?.x}%`,
               top: `${pathCoordinates[i]?.y}%`,
               fontWeight: 600,
