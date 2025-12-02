@@ -49,7 +49,7 @@ export default function ConstellationHintText() {
                   "drop-shadow(0 0 6px rgba(255,255,255,0.6)) drop-shadow(0 0 12px rgba(255,255,255,0.3))",
               }}
             >
-              Orion's Belt
+              Orion&apos;s Belt
             </motion.p>
           </>
         )}

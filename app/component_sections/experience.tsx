@@ -164,7 +164,7 @@ const displace_y = [-7, 7, 7, -7, 7, -7, 7];
 const displace_y_mobile = [-4, 5, -4, 4, -1, -2, 3];
 
 const useIntersectionObserver = (
-  options: IntersectionObserverInit = {}
+  options: IntersectionObserverInit = {},
 ): [React.RefObject<HTMLDivElement | null>, boolean] => {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -181,7 +181,7 @@ const useIntersectionObserver = (
         threshold: 0.1,
         rootMargin: "-100px",
         ...options,
-      }
+      },
     );
 
     if (ref.current) {
@@ -209,7 +209,7 @@ const Experience = () => {
 
   const renderBallCanvases = (
     title: string,
-    data: { name: string; icon: string }[]
+    data: { name: string; icon: string }[],
   ) => (
     <>
       <p className="text-5xl font-caveat font-bold text-center">{title}</p>

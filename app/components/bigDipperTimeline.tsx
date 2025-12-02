@@ -92,7 +92,7 @@ export default function BigDipperTimeline({ items }: BigDipperTimelineProps) {
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
 
     observer.observe(containerRef.current);
@@ -440,7 +440,7 @@ function TwinkleField({ count = 80 }: TwinkleFieldProps) {
         size: Math.random() * (isMobile ? 0.12 : 0.18) + 0.05,
         delay: Math.random() * 2,
         duration: Math.random() * 1.5 + 0.8,
-      }))
+      })),
     );
   }, [count, isMobile]);
 

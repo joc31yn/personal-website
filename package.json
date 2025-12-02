@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "dependencies": {
     "@react-three/drei": "^10.7.3",
@@ -37,6 +38,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.1.8",
     "postcss": "^8",
+    "prettier": "^3.7.3",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
