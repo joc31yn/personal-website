@@ -260,6 +260,7 @@ const Projects = () => {
             imgUrl={project.imgUrl}
             alt={project.alt}
             description={project.description}
+            index={i}
           >
             {project.chips.map((chip, i) => (
               <ProjectChip

@@ -43,7 +43,6 @@ const About = () => {
           <div
             data-aos="fade-up"
             data-aos-anchor-placement="top-bottom"
-            data-aos-once="true"
             className="relative mt-5 md:mt-0 w-48 h-48 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-96 lg:h-96 flex-shrink-0"
           >
             <Image
@@ -59,7 +58,6 @@ const About = () => {
           <div
             className="flex flex-col text-base sm:text-[22px] md:text-xl lg:text-[22px] font-lato"
             data-aos="fade-up"
-            data-aos-once="true"
             data-aos-anchor-placement="top-bottom"
           >
             <div className="leading-relaxed xl:mb-10 text-center md:text-left">
