@@ -1,13 +1,13 @@
 "use client";
 import { motion } from "framer-motion";
-import AnimateWord from "../components/animateWord";
-import ContactLogos from "../components/contactLogos";
 import Swal from "sweetalert2";
 import { FormEvent, useState } from "react";
-import SectionWrapper from "../hoc/SectionWrapper";
+import SectionWrapper from "../../app/hoc/SectionWrapper";
 import { SiGithub } from "react-icons/si";
 import { SlSocialLinkedin } from "react-icons/sl";
 import { BiLogoGmail } from "react-icons/bi";
+import AnimateWord from "@/components/animateWord";
+import ContactLogos from "@/components/contactLogos";
 
 const Contact = () => {
   const [name, setName] = useState("");

@@ -1,9 +1,9 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import ExperienceModal from "./experienceModal";
 import { useIsMobile } from "@/hooks/mobile";
 import { IoPlanetOutline } from "react-icons/io5";
+import ExperienceModal from "./experienceModal";
 
 export interface TimelineItem {
   id?: string;

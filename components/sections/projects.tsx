@@ -1,10 +1,10 @@
 "use client";
 import { useState } from "react";
-import AnimateWord from "../components/animateWord";
-import ProjectCard from "../components/projectCard";
-import ProjectChip from "../components/projectChip";
-import SectionWrapper from "../hoc/SectionWrapper";
+import SectionWrapper from "../../app/hoc/SectionWrapper";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import AnimateWord from "@/components/animateWord";
+import ProjectCard from "@/components/projectCard";
+import ProjectChip from "@/components/projectChip";
 
 const Projects = () => {
   const [seeMore, setSeeMore] = useState(false);

@@ -1,11 +1,11 @@
 "use client";
-import AnimateWord from "../components/animateWord";
-import BallCavas from "@/app/components/canvas/BallCanvas";
-import SectionWrapper from "../hoc/SectionWrapper";
+import BallCavas from "@/components/canvas/BallCanvas";
+import SectionWrapper from "../../app/hoc/SectionWrapper";
 import { useEffect, useRef, useState } from "react";
-import BigDipperTimeline from "../components/bigDipperTimeline";
 import { useIsMobile } from "@/hooks/mobile";
-import ConstellationHintText from "../components/ConstellationHintText";
+import AnimateWord from "@/components/animateWord";
+import BigDipperTimeline from "@/components/bigDipperTimeline";
+import ConstellationHintText from "@/components/ConstellationHintText";
 
 const languages = [
   {
