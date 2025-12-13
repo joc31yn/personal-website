@@ -3,6 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Lens } from "./ui/lens";
 
 const images = [
   { src: "/carousel/matcha.jpg", caption: "matchaaa", width: 448, height: 336 },
@@ -126,21 +127,24 @@ export default function Carousel() {
 
               {/* Polaroid photos */}
               <div className="relative bg-white p-2 pb-3 shadow-lg transform">
-                <div className="relative w-52 h-32 sm:w-56 sm:h-36 overflow-hidden">
-                  <Image
-                    src={images[index].src}
-                    alt={images[index].caption}
-                    fill
-                    sizes="(max-width: 640px) 208px, 224px"
-                    quality={offset === 0 ? 75 : 60}
-                    priority={index === 0}
-                    loading={index === 0 ? "eager" : "lazy"}
-                    className="object-cover"
-                  />
-                  {offset !== 0 && (
-                    <div className="absolute inset-0 bg-black/25 pointer-events-none" />
-                  )}
-                </div>
+                <Lens lensSize={100} zoomFactor={1.5}>
+                  <div className="relative w-52 h-32 sm:w-56 sm:h-36 overflow-hidden">
+                    <Image
+                      src={images[index].src}
+                      alt={images[index].caption}
+                      fill
+                      sizes="(max-width: 640px) 208px, 224px"
+                      quality={offset === 0 ? 75 : 60}
+                      priority={index === 0}
+                      loading={index === 0 ? "eager" : "lazy"}
+                      className="object-cover"
+                    />
+
+                    {offset !== 0 && (
+                      <div className="absolute inset-0 bg-black/25 pointer-events-none" />
+                    )}
+                  </div>
+                </Lens>
                 <div className="bg-white flex items-center justify-center mt-1">
                   <p className="text-black text-lg font-caveat text-center tracking-wide">
                     {images[index].caption}
