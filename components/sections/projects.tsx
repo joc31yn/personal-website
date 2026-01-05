@@ -10,6 +10,43 @@ const Projects = () => {
   const [seeMore, setSeeMore] = useState(false);
   const projects = [
     {
+      name: "CXC Website",
+      githubLink: "https://github.com/uw-datasci/uwdsc-website-v3",
+      imgUrl: "/projects/cxc.png",
+      alt: "CXC Website",
+      description: `Hackathon website powering Waterloo's largest studnet-run AI Hackathon. A full-stack monorepo with fluid designs, hacker onboardings, admin marking, and event operations with QR code and NFC tag based systems`,
+      chips: [
+        {
+          text: "React",
+          border_bg: "61DBFB",
+        },
+        {
+          text: "Next.js",
+          border_bg: "8B8B8B",
+        },
+        {
+          text: "Typescript",
+          border_bg: "007acc",
+        },
+        {
+          text: "Shadcn/ui",
+          border_bg: "FFFFFF",
+        },
+        {
+          text: "Supabase",
+          border_bg: "3ECF8E",
+        },
+        {
+          text: "Postgres.js",
+          border_bg: "316192",
+        },
+        {
+          text: "Three.js",
+          border_bg: "A49DF2",
+        },
+      ],
+    },
+    {
       name: "Resumix",
       githubLink: "https://github.com/demonking-mw/ResuMix",
       imgUrl: "/projects/resumix_home.png",

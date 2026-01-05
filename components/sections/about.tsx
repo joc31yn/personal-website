@@ -95,7 +95,8 @@ const About = () => {
                   {"}"}
                 </span>
               </span>
-              . I&apos;m currently on co-op working at{" "}
+              . I am back on study, just wrapping up my previous internship at
+              &nbsp;
               <span className="inline-flex items-center gap-1 whitespace-nowrap">
                 <span className="text-xl font-mono text-[#0078C1] font-semibold text-glow-blue">
                   {"{"}

@@ -89,7 +89,7 @@ const items = [
     id: "1",
     title: "Bank of Montreal Software Developer",
     displayTitle: "BMO Software Developer",
-    date: "May 2025 — Present",
+    date: "May 2025 — Dec 2025",
     summary: [
       "AI Chatbot: Engineered a serverless chatbot platform powered by AWS Lambda, S3, and Bedrock Knowledge Base, with automated ingestion pipelines for transcripts (PDFs) and web-scraped banking content to enhance customer query coverage and reduce manual support needs.",
       "Lexicon Design System: Created 10+ responsive, WCAG 2.2 AA accessible Web Components, expanding the use of the Lexicon Design System to 300+ developers, designers, and UX teams. Automated 250+ unit and E2E tests with Jest and Playwright and managed bi-weekly releases with semantic versioning to streamline developer efficiency by 48%.",
