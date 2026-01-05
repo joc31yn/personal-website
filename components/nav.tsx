@@ -54,7 +54,7 @@ export default function Nav() {
       <motion.div
         animate={{ y: showNav ? 0 : -100 }}
         transition={{ duration: 0.35 }}
-        className="block md:hidden bg-white flex-row px-3 py-2 items-center justify-between fixed top-0 left-0 w-full z-30"
+        className="block md:hidden bg-white text-black flex-row px-3 py-2 items-center justify-between fixed top-0 left-0 w-full z-30"
       >
         <div className="flex flex-row items-center justify-between">
           <Link
@@ -87,7 +87,7 @@ export default function Nav() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="fixed inset-0 bg-white flex flex-col overflow-hidden z-20"
+            className="fixed inset-0 bg-white text-black flex flex-col overflow-hidden z-20"
             initial={{ clipPath: "circle(0% at 100% 0%)" }}
             animate={{ clipPath: "circle(150% at 100% 0%)" }}
             exit={{ clipPath: "circle(0% at 100% 0%)" }}
@@ -141,7 +141,7 @@ export default function Nav() {
       <motion.div
         animate={{ y: showNav ? 0 : -100 }}
         transition={{ duration: 0.35 }}
-        className="hidden bg-white md:flex flex-row px-5 py-2 items-center justify-between fixed top-0 left-0 w-full z-20"
+        className="hidden bg-white text-black md:flex flex-row px-5 py-2 items-center justify-between fixed top-0 left-0 w-full z-20"
       >
         <Link
           href="/"

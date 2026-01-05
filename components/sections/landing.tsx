@@ -1,8 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
 import { useIsMobile } from "@/hooks/mobile";
-import AnimateWord from "@/app/components/animateWord";
 import { ChevronDown } from "lucide-react";
+import AnimateWord from "../animateWord";
 
 export default function Landing() {
   const words = ["Hi", "my", "name", "is", "Jocelyn Xu"];
@@ -39,7 +39,7 @@ export default function Landing() {
       <div aria-label="Hi my name is Jocelyn Xu" className="sr-only">
         Hi my name is Jocelyn Xu
       </div>
-      <div className="absolute top-[27%] left-1/2 -translate-x-1/2 -translate-y-1/2">
+      <div className="absolute top-[27%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
         <AnimateWord
           word="Welcome"
           f_smallest="text-6xl"
@@ -55,7 +55,7 @@ export default function Landing() {
       </div>
       {/* Animated stair path */}
       <svg
-        className="absolute top-0 left-0 w-full h-full"
+        className="absolute top-0 left-0 w-full h-full z-10"
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
         aria-hidden="true"
@@ -76,7 +76,7 @@ export default function Landing() {
       </svg>
 
       {/* Words */}
-      <div className="w-auto h-auto">
+      <div className="w-auto h-auto z-10">
         {words.map((word, i) => (
           <motion.span
             key={i}
@@ -108,20 +108,7 @@ export default function Landing() {
             {i !== words.length - 1 ? (
               word
             ) : (
-              <span
-                className="text-white"
-                // style={{
-                //   textShadow: `
-                //   0 0 2px white,
-                //   0 0 4px white,
-                //   0 0 6px white,
-                //   0 0 8px white,
-                //   0 0 10px white
-                //   `,
-                // }}
-              >
-                {word}
-              </span>
+              <span className="text-white">{word}</span>
             )}
           </motion.span>
         ))}
@@ -130,7 +117,7 @@ export default function Landing() {
         href="#About"
         className={`absolute ${
           isSmall ? "bottom-5" : "bottom-0"
-        } left-1/2 transform -translate-x-1/2 flex flex-col justify-center items-center cursor-pointer hover:scale-110 duration-100`}
+        } left-1/2 transform -translate-x-1/2 flex flex-col justify-center items-center cursor-pointer hover:scale-110 duration-100 z-10`}
         aria-label="Scroll to About section"
       >
         <span className="text-2xl md:text-[2rem] -mb-2">About</span>

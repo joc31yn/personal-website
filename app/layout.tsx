@@ -7,7 +7,7 @@ import {
   Cinzel_Decorative,
 } from "next/font/google";
 import "../styles/globals.css";
-import Nav from "@/app/components/nav";
+import Nav from "@/components/nav";
 
 const caveat = Caveat({
   subsets: ["latin"],

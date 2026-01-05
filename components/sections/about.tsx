@@ -1,14 +1,14 @@
 "use client";
-import AnimateWord from "../components/animateWord";
 import Image from "next/image";
-import MatrixGlitchText from "../components/matrixGlitchText";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Carousel from "../components/carousel";
-import SectionWrapper from "../hoc/SectionWrapper";
+import SectionWrapper from "../../app/hoc/SectionWrapper";
 import Link from "next/link";
 import { GraduationCap, SquareTerminal, BriefcaseBusiness } from "lucide-react";
+import AnimateWord from "@/components/animateWord";
+import Carousel from "@/components/carousel";
+import MatrixGlitchText from "@/components/matrixGlitchText";
 
 const About = () => {
   useEffect(() => {
@@ -95,7 +95,8 @@ const About = () => {
                   {"}"}
                 </span>
               </span>
-              . I&apos;m currently on co-op working at{" "}
+              . I am back on study, just wrapping up my previous internship at
+              &nbsp;
               <span className="inline-flex items-center gap-1 whitespace-nowrap">
                 <span className="text-xl font-mono text-[#0078C1] font-semibold text-glow-blue">
                   {"{"}
