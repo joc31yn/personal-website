@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { useIsMobile } from "@/hooks/mobile";
 import { ChevronDown } from "lucide-react";
 import AnimateWord from "../animateWord";
-import { Meteors } from "../ui/meteors";
 
 export default function Landing() {
   const words = ["Hi", "my", "name", "is", "Jocelyn Xu"];
@@ -37,17 +36,6 @@ export default function Landing() {
     <div
       className={`relative w-full h-full min-h-screen font-caveat text-white flex flex-col items-start justify-center`}
     >
-      <div className="h-full w-full">
-        <Meteors
-          number={30}
-          angle={50}
-          minDuration={1.5}
-          maxDuration={3}
-          minDelay={3}
-          maxDelay={6}
-        />
-      </div>
-
       <div aria-label="Hi my name is Jocelyn Xu" className="sr-only">
         Hi my name is Jocelyn Xu
       </div>
