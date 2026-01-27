@@ -168,7 +168,7 @@ const Contact = () => {
           </ContactLogos>
         </div>
         <p className="text-xs md:text-sm">
-          &copy; 2025 Jocelyn Xu. All rights reserved.
+          &copy; 2026 Jocelyn Xu. All rights reserved.
         </p>
       </div>
     </section>
