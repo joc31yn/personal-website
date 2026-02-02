@@ -5,8 +5,6 @@ import { useInView } from "react-intersection-observer";
 interface MatrixGlitchTextProps {
   text: string;
   className?: string;
-  glitchSpeed?: number;
-  solveChance?: number;
   startDelay?: number;
   glowColour?: string;
 }
@@ -14,20 +12,17 @@ interface MatrixGlitchTextProps {
 export default function MatrixGlitchText({
   text,
   className = "",
-  glitchSpeed = 80,
-  solveChance = 0.03,
-  startDelay = 500,
+  startDelay = 300,
   glowColour = "#22c55e",
 }: MatrixGlitchTextProps) {
-  const matrixChars =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*()_?アイウエオカキクケコサシスセソタチツテト";
+  const alphabet = "abcdefghijklmnopqrstuvwxyz";
   const textLen = text.length;
   const [displayText, setDisplayText] = useState(Array(textLen).fill(""));
   const [completedLetters, setCompletedLetters] = useState(
     new Array(textLen).fill(false),
   );
 
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.5 });
+  const { ref, inView } = useInView({ threshold: 0.5 });
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
@@ -47,58 +42,83 @@ export default function MatrixGlitchText({
     }
   }, [inView, text, startDelay, textLen]);
 
-  // Glitch animation
+  // Alphabet flipping animation
   useEffect(() => {
     if (!isAnimating) return;
 
-    const interval = setInterval(() => {
-      setDisplayText((prev) => {
-        const newText = [...prev];
-        // Replace with local completed tracking
-        const localCompleted = prev.map((char, i) => completedLetters[i]);
+    const timers: NodeJS.Timeout[] = [];
 
-        text.split("").forEach((targetChar, index) => {
-          if (!localCompleted[index]) {
-            if (targetChar === " ") {
-              newText[index] = "\u00A0";
-              localCompleted[index] = true;
-              return;
-            }
+    text.split("").forEach((targetChar, index) => {
+      // Each letter starts 150ms after the previous one
+      const letterStartDelay = index * 100;
 
-            const randomChar =
-              matrixChars[Math.floor(Math.random() * matrixChars.length)];
-            newText[index] = randomChar;
+      if (targetChar === " ") {
+        const timer = setTimeout(() => {
+          setDisplayText((prev) => {
+            const newText = [...prev];
+            newText[index] = "\u00A0";
+            return newText;
+          });
+          setCompletedLetters((prev) => {
+            const newCompleted = [...prev];
+            newCompleted[index] = true;
+            return newCompleted;
+          });
+        }, letterStartDelay);
+        timers.push(timer);
+        return;
+      }
 
-            if (Math.random() < solveChance + index * 0.01) {
-              newText[index] = targetChar;
-              localCompleted[index] = true;
-            }
+      const targetLower = targetChar.toLowerCase();
+      const targetIndex = alphabet.indexOf(targetLower);
+      
+      // If the target character is not in the alphabet, just display it
+      if (targetIndex === -1) {
+        const timer = setTimeout(() => {
+          setDisplayText((prev) => {
+            const newText = [...prev];
+            newText[index] = targetChar;
+            return newText;
+          });
+          setCompletedLetters((prev) => {
+            const newCompleted = [...prev];
+            newCompleted[index] = true;
+            return newCompleted;
+          });
+        }, letterStartDelay);
+        timers.push(timer);
+        return;
+      }
+
+      // Flip through the alphabet until we reach the target letter
+      for (let i = 0; i <= targetIndex; i++) {
+        const timer = setTimeout(() => {
+          setDisplayText((prev) => {
+            const newText = [...prev];
+            // Match the case of the original character
+            newText[index] = targetChar === targetChar.toUpperCase() 
+              ? alphabet[i].toUpperCase() 
+              : alphabet[i];
+            return newText;
+          });
+
+          // Mark as completed when we reach the target letter
+          if (i === targetIndex) {
+            setCompletedLetters((prev) => {
+              const newCompleted = [...prev];
+              newCompleted[index] = true;
+              return newCompleted;
+            });
           }
-        });
+        }, letterStartDelay + i * 55);
+        timers.push(timer);
+      }
+    });
 
-        setCompletedLetters(localCompleted); // update state
-        return newText;
-      });
-    }, glitchSpeed);
-
-    return () => clearInterval(interval);
-  }, [
-    isAnimating,
-    completedLetters,
-    text,
-    glitchSpeed,
-    solveChance,
-    matrixChars,
-  ]);
-
-  // Placeholder before animation starts
-  if (!isAnimating && displayText.every((c) => c === "")) {
-    return (
-      <span ref={ref} className={`${className}`}>
-        <span className="text-green-400">{"█".repeat(textLen)}</span>
-      </span>
-    );
-  }
+    return () => {
+      timers.forEach(timer => clearTimeout(timer));
+    };
+  }, [isAnimating, text, alphabet]);
 
   return (
     <span ref={ref}>
@@ -109,31 +129,31 @@ export default function MatrixGlitchText({
               key={`${text}-${index}`}
               className={`inline-block ${
                 completedLetters[index] || text[index] === " "
-                  ? "text-current"
+                  ? "text-white"
                   : "text-green-400"
               }`}
               style={{
-                textShadow:
-                  completedLetters[index] || text[index] === " "
-                    ? "none"
-                    : `0 0 8px ${glowColour}, 0 0 12px ${glowColour}`,
-                filter:
-                  completedLetters[index] || text[index] === " "
-                    ? "none"
-                    : "brightness(1.2)",
+                textShadow: completedLetters[index] || text[index] === " "
+                  ? "none"
+                  : `0 0 8px ${glowColour}, 0 0 12px ${glowColour}`,
+                filter: completedLetters[index] || text[index] === " "
+                  ? "none"
+                  : "brightness(1.2)",
               }}
               animate={
                 !completedLetters[index] && text[index] !== " "
-                  ? { scale: [1, 1.05, 1], opacity: [1, 0.8, 1] }
-                  : { scale: 1, opacity: 1 }
+                  ? { 
+                      rotateX: [0, 180, 360],
+                      scale: [1, 1.1, 1]
+                    }
+                  : { rotateX: 0, scale: 1 }
               }
               transition={{
-                duration: 0.1,
-                repeat: completedLetters[index] ? 0 : Infinity,
+                duration: 0.05,
                 ease: "easeInOut",
               }}
             >
-              {char || text[index]}
+              {text[index] === " " ? "\u00A0" : (char || "#")}
             </motion.span>
           ))}
         </span>

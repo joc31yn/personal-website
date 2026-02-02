@@ -71,9 +71,6 @@ const About = () => {
                 <MatrixGlitchText
                   className="sm:text-xl font-mono tracking-wide"
                   text="Computer Science"
-                  solveChance={0.15}
-                  glitchSpeed={150}
-                  startDelay={100}
                 />
                 <span className="text-xl font-mono text-green-400 font-semibold text-glow-green">
                   {"}"}
@@ -109,14 +106,7 @@ const About = () => {
                   {"}"}
                 </span>
               </span>{" "}
-              as a Software Developer! But enough about career{" "}
-              <span className="font-mono text-sm md:text-base">
-                [find more in the{" "}
-                <Link href="#Experience">
-                  <span>next sections</span>
-                </Link>{" "}
-                ;)]
-              </span>
+              as a Software Developer! But enough about career
               ... In my free time I LOVE playing ping pong and badminton, or any
               sport at that. If you ever find me, invite me to a game, I love
               the challenge and getting to meet new people {"\u{1F929}"}
