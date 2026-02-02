@@ -71,7 +71,7 @@ export default function MatrixGlitchText({
 
       const targetLower = targetChar.toLowerCase();
       const targetIndex = alphabet.indexOf(targetLower);
-      
+
       // If the target character is not in the alphabet, just display it
       if (targetIndex === -1) {
         const timer = setTimeout(() => {
@@ -92,31 +92,35 @@ export default function MatrixGlitchText({
 
       // Flip through the alphabet until we reach the target letter
       for (let i = 0; i <= targetIndex; i++) {
-        const timer = setTimeout(() => {
-          setDisplayText((prev) => {
-            const newText = [...prev];
-            // Match the case of the original character
-            newText[index] = targetChar === targetChar.toUpperCase() 
-              ? alphabet[i].toUpperCase() 
-              : alphabet[i];
-            return newText;
-          });
-
-          // Mark as completed when we reach the target letter
-          if (i === targetIndex) {
-            setCompletedLetters((prev) => {
-              const newCompleted = [...prev];
-              newCompleted[index] = true;
-              return newCompleted;
+        const timer = setTimeout(
+          () => {
+            setDisplayText((prev) => {
+              const newText = [...prev];
+              // Match the case of the original character
+              newText[index] =
+                targetChar === targetChar.toUpperCase()
+                  ? alphabet[i].toUpperCase()
+                  : alphabet[i];
+              return newText;
             });
-          }
-        }, letterStartDelay + i * 55);
+
+            // Mark as completed when we reach the target letter
+            if (i === targetIndex) {
+              setCompletedLetters((prev) => {
+                const newCompleted = [...prev];
+                newCompleted[index] = true;
+                return newCompleted;
+              });
+            }
+          },
+          letterStartDelay + i * 55,
+        );
         timers.push(timer);
       }
     });
 
     return () => {
-      timers.forEach(timer => clearTimeout(timer));
+      timers.forEach((timer) => clearTimeout(timer));
     };
   }, [isAnimating, text, alphabet]);
 
@@ -133,18 +137,20 @@ export default function MatrixGlitchText({
                   : "text-green-400"
               }`}
               style={{
-                textShadow: completedLetters[index] || text[index] === " "
-                  ? "none"
-                  : `0 0 8px ${glowColour}, 0 0 12px ${glowColour}`,
-                filter: completedLetters[index] || text[index] === " "
-                  ? "none"
-                  : "brightness(1.2)",
+                textShadow:
+                  completedLetters[index] || text[index] === " "
+                    ? "none"
+                    : `0 0 8px ${glowColour}, 0 0 12px ${glowColour}`,
+                filter:
+                  completedLetters[index] || text[index] === " "
+                    ? "none"
+                    : "brightness(1.2)",
               }}
               animate={
                 !completedLetters[index] && text[index] !== " "
-                  ? { 
+                  ? {
                       rotateX: [0, 180, 360],
-                      scale: [1, 1.1, 1]
+                      scale: [1, 1.1, 1],
                     }
                   : { rotateX: 0, scale: 1 }
               }
@@ -153,7 +159,7 @@ export default function MatrixGlitchText({
                 ease: "easeInOut",
               }}
             >
-              {text[index] === " " ? "\u00A0" : (char || "#")}
+              {text[index] === " " ? "\u00A0" : char || "#"}
             </motion.span>
           ))}
         </span>

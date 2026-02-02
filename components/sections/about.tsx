@@ -106,10 +106,10 @@ const About = () => {
                   {"}"}
                 </span>
               </span>{" "}
-              as a Software Developer! But enough about career
-              ... In my free time I LOVE playing ping pong and badminton, or any
-              sport at that. If you ever find me, invite me to a game, I love
-              the challenge and getting to meet new people {"\u{1F929}"}
+              as a Software Developer! But enough about career ... In my free
+              time I LOVE playing ping pong and badminton, or any sport at that.
+              If you ever find me, invite me to a game, I love the challenge and
+              getting to meet new people {"\u{1F929}"}
             </div>
             <div>
               <p className="mb-3 mt-8 sm:mb-8 sm:mt-0 pt-5 text-base md:text-[22px] font-bold">
