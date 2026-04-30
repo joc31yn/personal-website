@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import SectionWrapper from "../../app/hoc/SectionWrapper";
-import Link from "next/link";
 import { GraduationCap, SquareTerminal, BriefcaseBusiness } from "lucide-react";
 import AnimateWord from "@/components/animateWord";
 import Carousel from "@/components/carousel";
@@ -47,7 +46,7 @@ const About = () => {
           >
             <Image
               className="md:-rotate-[8deg] object-contain"
-              src="/headshot.png"
+              src="/joce.png"
               alt="Portrait of Jocelyn Xu"
               fill
               sizes="(max-width: 640px) 12rem, (max-width: 768px) 14rem, (max-width: 1024px) 18rem, 24rem"
@@ -56,11 +55,11 @@ const About = () => {
             />
           </div>
           <div
-            className="flex flex-col text-base sm:text-[22px] md:text-xl lg:text-[22px] font-lato"
+            className="flex flex-col text-base sm:text-xl font-lato"
             data-aos="fade-up"
             data-aos-anchor-placement="top-bottom"
           >
-            <div className="leading-relaxed xl:mb-10 text-center md:text-left">
+            <div className="leading-snug xl:mb-10 text-center md:text-left">
               Hey, I&apos;m Jocelyn :D and I&apos;m currently in my 2nd year
               studying{" "}
               <span className="inline-flex items-center gap-1 whitespace-nowrap">
@@ -92,7 +91,10 @@ const About = () => {
                   {"}"}
                 </span>
               </span>
-              . I am back on study, just wrapping up my previous internship at
+              <br />
+              <br />
+              Why? 4 words: I&nbsp;&nbsp;&nbsp;l o v e&nbsp;&nbsp;&nbsp;t
+              o&nbsp;&nbsp;&nbsp;c r e a t e ! ! ! I have previously interned at
               &nbsp;
               <span className="inline-flex items-center gap-1 whitespace-nowrap">
                 <span className="text-xl font-mono text-[#0078C1] font-semibold text-glow-blue">
@@ -106,15 +108,17 @@ const About = () => {
                   {"}"}
                 </span>
               </span>{" "}
-              as a Software Developer! But enough about career ... In my free
-              time I LOVE playing ping pong and badminton, or any sport at that.
-              If you ever find me, invite me to a game, I love the challenge and
-              getting to meet new people {"\u{1F929}"}
+              as a Software Dev and involved from clubs such as UW Data Science
+              Club, UW Blueprint, to participating and organizing hackathons.
+              Currently looking for Fall 2026 internships!
+              <br />
+              <br />
+              But enough about career ... In my free time I LOVE playing ping
+              pong and badminton, or any sport at that. If you ever find me,
+              invite me to a game, I love the challenge and getting to meet new
+              people {"\u{1F929}"}
             </div>
             <div>
-              <p className="mb-3 mt-8 sm:mb-8 sm:mt-0 pt-5 text-base md:text-[22px] font-bold">
-                A couple snapshots of my interests&nbsp;&nbsp;📸
-              </p>
               <Carousel />
             </div>
           </div>
