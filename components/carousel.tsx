@@ -6,13 +6,13 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Lens } from "./ui/lens";
 
 const images = [
-  { src: "/carousel/matcha.jpg", caption: "matchaaa", width: 448, height: 336 },
   {
     src: "/carousel/pingpong.jpg",
     caption: "ping pong :D",
     width: 512,
     height: 288,
   },
+  { src: "/carousel/matcha.jpg", caption: "matchaaa", width: 448, height: 336 },
   { src: "/carousel/kayak.jpg", caption: "kayak", width: 448, height: 336 },
   {
     src: "/carousel/half_marathon.jpg",
@@ -20,7 +20,7 @@ const images = [
     width: 448,
     height: 336,
   },
-  { src: "/carousel/ice.jpg", caption: "yum", width: 448, height: 336 },
+  { src: "/carousel/ice.jpg", caption: "👀", width: 448, height: 336 },
   {
     src: "/carousel/biking.jpg",
     caption: "bike rides",
@@ -30,6 +30,19 @@ const images = [
   { src: "/carousel/minion.jpg", caption: "minion", width: 448, height: 336 },
   { src: "/carousel/bear.jpg", caption: "ice bear", width: 448, height: 336 },
   { src: "/carousel/whale.jpg", caption: "wally", width: 448, height: 397 },
+  {
+    src: "/carousel/flower_coaster.jpg",
+    caption: "flower coaster :)",
+    width: 448,
+    height: 397,
+  },
+  {
+    src: "/carousel/flower_coaster_2.jpg",
+    caption: "more flower coaster!",
+    width: 448,
+    height: 397,
+  },
+  { src: "/carousel/flower_pot.jpg", caption: "🌷", width: 448, height: 397 },
 ];
 
 export default function Carousel() {
