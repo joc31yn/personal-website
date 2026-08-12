@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
     const client = mailgun.client({ username: "api", key: API_KEY });
 
     const messageData = {
-      from: "Contact Form <contact@mg.jocelynxu.com>",
+      from: `Contact Form <postmaster@${DOMAIN}>`,
       to: "joce.xxt22@gmail.com",
       subject: "New Contact Form Message!",
       text: `Hello,\n\nYou have a new form entry from: ${name} (${email}).\n\n${message}`,
